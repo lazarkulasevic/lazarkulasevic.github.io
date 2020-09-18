@@ -7,39 +7,40 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="switch-wrapper">
-            <label class="switch">
-                <input type="checkbox" name="dark-mode">
-                <span class="slider"></span>
-            </label>
-        </div>
-    </header>
+    <div class="header-wrapper">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="switch-wrapper">
+                <label class="switch">
+                    <input type="checkbox" name="dark-mode">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </header>
+    </div>
 
-    <section>
+    <section class="parallax">
         <h1 id="title">
             Hello, my name is Lazar Kulasevic. <br> 
             I am a Front End Developer living in Nis, Serbia.
         </h1>
-        <div class="images">
-            <img src="images/Mountain-up.png" alt="Mountain" id="mountain-up">
-            <img src="images/Mountain-down.png" alt="Mountain" id="mountain-down">
-        </div>
-
-        
-        ovde nastavi... https://www.youtube.com/watch?v=TawH-AqHTXc
+        <img src="images/Mountain-up.png" alt="Mountain" class="mountain" id="mountain-up">
+        <img src="images/Mountain-down.png" alt="Mountain" class="mountain" id="mountain-down">        
     </section>
-    <ul>
-        <li><a href="https://lazarkulasevic.github.io/memory-game/">Memory Game</a></li>
-        <li><a href="https://lazarkulasevic.github.io/binary-search/">Guess the number</a></li>
-    </ul>
+
+    <section class="content">
+        <ul>
+            <li><a href="https://lazarkulasevic.github.io/memory-game/">Memory Game</a></li>
+            <li><a href="https://lazarkulasevic.github.io/binary-search/">Guess the number</a></li>
+        </ul>
+    </section>
+    
 
     <footer>
         <p><b>My <a href="https://github.com/lazarkulasevic">Github</a></b></p>
