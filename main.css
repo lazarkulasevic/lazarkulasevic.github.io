@@ -13,15 +13,29 @@ body {
     color: #ebebeb;
 }
 
+.dark-mode a {
+    color: white;
+}
+
 header {
-    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
     text-align: center;
+    overflow: hidden;
+    background-color: rgba(0, 128, 128, 0.096);
+    z-index: 20;
+}
+
+nav {
+    float: left;
 }
 
 nav ul {
     list-style-type: none;
     overflow: hidden;
-
 }
 
 nav ul li {
@@ -30,9 +44,38 @@ nav ul li {
 
 nav ul li a {
     display: block;
-    padding: 20px 10px;
+    padding: 10px 10px;
 }
 
+.images {
+    
+}
+
+.images img {
+    position: absolute;
+    width: 100%;
+}
+
+#mountain-up {
+    z-index: 1;
+}
+
+#title {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+    margin-top: 200px;
+    z-index: 2;
+}
+
+#mountain-down {
+    z-index: 3;
+}
+.dark-filter {
+    -webkit-filter: opacity(0.4);
+    filter: opacity(0.4);
+}
 
 .switch-wrapper {
     overflow: hidden;
@@ -86,4 +129,6 @@ input:checked + .slider:before {
     -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
+
+
 
