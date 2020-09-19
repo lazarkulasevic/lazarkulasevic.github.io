@@ -1,11 +1,14 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    overflow: auto;
 }
 
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     /* transition: .6s; */
+    overflow: hidden;
 }
 
 .dark-filter {
@@ -114,36 +117,68 @@ nav ul li a {
     height: 96vh;
 }
 
-#title {
-    padding: 0 40px;
-    font-size: 28px;
+#title h1 {
+    margin: 10px 20px;
+    font-size: 24px;
 }
 
-#img-laptop {
+#laptop {
+    text-align: center;
+}
+
+#laptop img {
     width: 240px;
 }
 
-.content {
-    background-color: #8ec4e7;
-    height: 400px;
+.portfolio {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}
+
+[class*="col-"] {
+    float: left;
+    width: 100%;
+    padding: 10px;
 }
 
 @media only screen and (min-width: 670px) {
-    #title {
-        padding: 40px;
+    
+    #title h1{
         font-size: 32px;
     }
-    
-    #img-laptop {
+
+    #laptop img {
         padding: 20px;
         width: 400px;
     }
+
+    .col-t-1{width:8.33%}.col-t-2{width:16.66%}.col-t-3{width:25%}
+    .col-t-4{width:33.33%}.col-t-5{width:41.66%}.col-t-6{width:50%}
+    .col-t-7{width:58.33%}.col-t-8{width:66.66%}.col-t-9{width:75%}
+    .col-t-10{width:83.33%}.col-t-11{width:91.66%}.col-t-12{width:100%}
 }
 
 @media only screen and (min-width: 940px) {
 
-    #img-laptop {
+    #title {
+        padding-top: 200px;
+    }
+
+    #laptop {
+        text-align: left;
+        padding: 100px 0;
+    }
+
+    #laptop img {
         padding: 20px;
         width: 400px;
     }
+
+    .col-1{width:8.33%}.col-2{width:16.66%}.col-3{width:25%}
+    .col-4{width:33.33%}.col-5{width:41.66%}.col-6{width:50%}
+    .col-7{width:58.33%}.col-8{width:66.66%}.col-9{width:75%}
+    .col-10{width:83.33%}.col-11{width:91.66%}.col-12{width:100%}
 }
