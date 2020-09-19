@@ -27,6 +27,7 @@ li {
 
 a {
     color: #4f46fd;
+    text-decoration: none;
 }
 
 a:hover {
