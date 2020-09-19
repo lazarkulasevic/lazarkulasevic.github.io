@@ -1,3 +1,3 @@
-# My portfolio site
+# My portfolio page (Version 1.0)
 
-Plain HTML for now.
+Mostly CSS. The only functionallity for now is the dark mode button.

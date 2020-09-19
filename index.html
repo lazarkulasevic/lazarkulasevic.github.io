@@ -9,13 +9,6 @@
 </head>
 <body>
     <header class="col-12 col-t-12">
-        <nav>
-            <ul>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
         <div class="switch-wrapper">
             <label class="switch">
                 <input type="checkbox" name="dark-mode">
@@ -24,32 +17,90 @@
         </div>
     </header>
 
-    <section class="col-1 col-t-1"></section>
-    <section class="col-6 col-t-6" id="title">
+    <section class="col-7 col-t-7" id="title">
         <h1>
             Hello, my name is Lazar Kulasevic. <br> 
             I am a Front End Developer living in Nis, Serbia.
         </h1>
-        
+        <nav>
+            <ul>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <!-- <li><a href="#">CONTACT</a></li> -->
+            </ul>
+        </nav>
     </section>
+
     <section class="col-5 col-t-5" id="laptop">
-        <img src="images/undraw_code_review_l1q9.svg">
+        <img src="images/undraw_code_review_l1q9.svg" draggable="false">
+    </section>
+    
+    <hr id="about">
+
+    <section class="col-6 col-t-6">
+        <div class="about">
+            <h2>About Me</h2>
+            <p>
+                Master Chemist by formal education and a self-taught web designer who is pursuing a career in Front End Development. One week away from finishing the JavaScript course at IT Bootcamp in Nis. Three weeks away from finishing React training.
+            </p>
+            <p>
+                Enjoying science, social philosophy and psychology books. Coffee, too &#9749;
+            </p>
+        </div>
     </section>
 
-    <section class="col-4 col-t-4"></section>
-    <section class="col-4 col-t-4"><hr></section>
-    <section class="col-4 col-t-4"></section>
-
+    <section class="col-6 col-t-6">
+        <div class="skills">
+            <h2>Stack</h2>
+            <ul>
+                <li>HTML5</li>
+                <li>CSS3 
+                    <ul>
+                        <li>Responsive Web Design</li>
+                    </ul>
+                </li>
+                <li>JavaScript
+                    <ul>
+                        <li>DOM</li>
+                        <li>ES5, ES6</li>
+                        <li>AJAX</li>
+                        <li>JSON</li>
+                    </ul>
+                </li>
+                <li>NoSQL (Firebase)</li>
+            </ul>
+        </div>
+    </section>
+    
+    <hr id="projects">
+    
     <section class="col-12 col-t-12 portfolio">
-        <ul>
-            <li><a href="https://lazarkulasevic.github.io/memory-game/">Memory Game</a></li>
-            <li><a href="https://lazarkulasevic.github.io/binary-search/">Guess the number</a></li>
-        </ul>
-    </section>
+        <div class="grid">
+            <h2>PROJECTS</h2>
 
+            <div class="item">
+                <a href="https://lazarkulasevic.github.io/memory-game/">
+                    <img src="images/memory-game-screen.png" alt="Memory Game">
+                    <p class="item-title">Memory Game</p>
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://lazarkulasevic.github.io/binary-search/">
+                    <img src="images/binary-search-featured.png" alt="Guess The Number">
+                    <p class="item-title">Guess The Number</p>
+                </a>
+            </div>
+            
+        </div>
+    </section>
 
     <footer class="col-12 col-t-12">
-        <p><b>My <a href="https://github.com/lazarkulasevic">Github</a></b></p>
+        <nav>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/lazarkulasevic/">LinkedIn</a></li>
+                <li><a href="https://github.com/lazarkulasevic">Github</a></li>
+            </ul>
+        </nav>
     </footer>
 
     <script src="main.js"></script>

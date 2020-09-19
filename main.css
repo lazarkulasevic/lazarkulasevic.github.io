@@ -3,12 +3,34 @@
     padding: 0;
     box-sizing: border-box;
     overflow: auto;
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    /* transition: .6s; */
+    transition: .6s;
+    font-size: 18px;
     overflow: hidden;
+    background: #ECE9E6;
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+li {
+    line-height: 1.6;
+}
+
+a {
+    color: #4f46fd;
+}
+
+a:hover {
+    color: #2a22c5;
 }
 
 .dark-filter {
@@ -17,28 +39,31 @@ body {
 }
 
 .dark-mode {
-    background-color: #110f1c;
     color: #ebebeb;
+    background: #0f0c29;
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
 }
 
 .dark-mode a {
-    color: white;
+    color: #ffe605;
+}
+
+.dark-mode a:hover {
+    color: #9994fa;
 }
 
 header {
     padding: 10px;
     text-align: center;
-    overflow: hidden;
-    background-color: #00808018;
 }
 
 nav {
-    float: left;
+    text-align: center;
 }
 
 nav ul {
     list-style-type: none;
-    overflow: hidden;
 }
 
 nav ul li {
@@ -51,62 +76,58 @@ nav ul li a {
     text-decoration: none;
 }
 
-/* SWITCH */
+.switch-wrapper {
+    overflow: hidden;
+}
 
-    .switch-wrapper {
-        overflow: hidden;
-    }
+.switch {
+    float: right;
+    position: relative;
+    width: 60px;
+    height: 34px;
+}
 
-    .switch {
-        float: right;
-        position: relative;
-        width: 60px;
-        height: 34px;
-    }
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 
-    .switch input { 
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
 
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-        border-radius: 34px;
-    }
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
 
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-        border-radius: 50%;
-    }
+input:checked + .slider {
+    background-color: #2196F3;
+}
 
-    input:checked + .slider {
-        background-color: #2196F3;
-    }
-
-    input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
-
-/* SWITCH END*/
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
 
 .header {
     display: flex;
@@ -118,41 +139,137 @@ nav ul li a {
 }
 
 #title h1 {
-    margin: 10px 20px;
-    font-size: 24px;
+    margin: 10px 30px 20px;
+    font-size: 26px;
 }
 
 #laptop {
     text-align: center;
+    padding: 40px 0 80px;
 }
 
 #laptop img {
     width: 240px;
 }
 
-.portfolio {
+hr {
+    background-color: #cecece;
+    height: 3px;
+    margin: 60px auto;
+    width: 60%;
+    border: none;
+    border-radius: 3px;
+}
+
+.about, .skills {
+    padding: 0 20px 50px;
+}
+
+.about h2, .skills h2 {
     text-align: center;
+    margin-bottom: 20px;
+}
+
+
+
+.skills ul li ul {
+    display: list-item;
+    margin-left: 40px;
+    list-style-type: disc;
+}
+
+.portfolio {
+    display: flex;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.item {
+    position: relative;
+    width: 280px;
+    margin: 30px 20px;
+    padding: 10px;
+    box-shadow: 0 0 15px #6c63ff;
+    border-radius: 8px;
+}
+
+.item img {
+    width: 100%;
+    object-fit: cover;
+    transition: .3s;
+}
+
+.item-title {
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .2s;
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+}
+
+.item:hover img {
+    filter: brightness(.25);
+}
+
+.item:hover .item-title {
+    visibility: visible;
 }
 
 footer {
     text-align: center;
+    margin: 50px 0;
 }
 
 [class*="col-"] {
     float: left;
     width: 100%;
+    max-width: 100%;
     padding: 10px;
 }
 
-@media only screen and (min-width: 670px) {
-    
+@media only screen and (min-width: 650px) {
+    body {
+        font-size: 20px;
+    }
+
+    #title {
+        padding-left: 10%;
+    }
+
     #title h1{
         font-size: 32px;
     }
 
     #laptop img {
-        padding: 20px;
-        width: 400px;
+        padding: 40px;
+        width: 270px;
+    }
+
+    .about {
+        margin-left: 5%;
+        padding-bottom: 100px;
+    }
+    
+    .skills {
+        margin-right: 5%;
+    }
+
+    .skills ul {
+        margin-left: 10%;
+    }
+
+    .item {
+        width: 520px;
+        margin: 50px 30px;
     }
 
     .col-t-1{width:8.33%}.col-t-2{width:16.66%}.col-t-3{width:25%}
@@ -162,19 +279,45 @@ footer {
 }
 
 @media only screen and (min-width: 940px) {
+    body {
+        font-size: 22px;
+    }
 
     #title {
         padding-top: 200px;
+        padding-left: 10%;
     }
 
     #laptop {
         text-align: left;
-        padding: 100px 0;
+        padding: 140px 0;
+        height: 96vh;
     }
 
     #laptop img {
-        padding: 20px;
         width: 400px;
+    }
+
+    hr {
+        margin: 80px auto;
+    }
+
+    .about {
+        margin-left: 20%;
+        padding-bottom: 100px;
+    }
+    
+    .skills {
+        margin-right: 20%;
+    }
+
+    .skills ul {
+        margin-left: 20%;
+    }
+
+    .item {
+        width: 580px;
+        margin: 50px 30px;
     }
 
     .col-1{width:8.33%}.col-2{width:16.66%}.col-3{width:25%}
