@@ -2,6 +2,7 @@ const bodyElement = document.body;
 const time = new Date().getHours();
 const inputSwitch = document.querySelector('input[name=dark-mode]');
 const itemTitleAll = document.querySelectorAll('.item-title');
+const itemImgAll = document.querySelectorAll('.item img');
 
 darkMode(time);
 
@@ -23,5 +24,8 @@ if ('ontouchstart' in bodyElement) {
     itemTitleAll.forEach(itemTitle => {
         itemTitle.style.visibility = "visible";
         itemTitle.style.backgroundColor = "#0000007c";
+    })
+    itemImgAll.forEach(img => {
+        img.style.animation = "filter-animation 5s infinite";
     })
 }

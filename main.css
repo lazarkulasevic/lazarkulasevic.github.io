@@ -374,12 +374,12 @@ footer {
 
 @-webkit-keyframes filter-animation {
     0% { -webkit-filter: sepia(0) saturate(2) }
-    50% { -webkit-filter: sepia(1) saturate(8) }
+    50% { -webkit-filter: sepia(1) saturate(6) }
     100% { -webkit-filter: sepia(0) saturate(2) }
 }
 
 @keyframes filter-animation {
     0% { filter: sepia(0) saturate(2) }
-    50% { filter: sepia(1) saturate(8) }
+    50% { filter: sepia(1) saturate(6) }
     100% { filter: sepia(0) saturate(2) }
 }
