@@ -1,6 +1,7 @@
 const bodyElement = document.body;
 const time = new Date().getHours();
 const inputSwitch = document.querySelector('input[name=dark-mode]');
+const itemTitleAll = document.querySelectorAll('.item-title');
 
 darkMode(time);
 
@@ -16,4 +17,11 @@ function darkMode(time) {
         inputSwitch.checked = false;
         bodyElement.classList.remove('dark-mode');
     }
+}
+
+if ('ontouchstart' in bodyElement) {
+    itemTitleAll.forEach(itemTitle => {
+        itemTitle.style.visibility = "visible";
+        itemTitle.style.backgroundColor = "#0000007c";
+    })
 }
