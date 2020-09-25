@@ -217,6 +217,7 @@ hr {
 
 .item img {
     width: 100%;
+    height: 140px;
     object-fit: cover;
 }
 
@@ -291,6 +292,10 @@ footer {
     .item {
         width: 520px;
         margin: 50px 30px;
+    }
+
+    .item img {
+        height: 300px;
     }
 
     .item-title {
