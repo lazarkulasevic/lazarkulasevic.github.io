@@ -5,7 +5,7 @@ const inputSwitch = document.querySelector('input[name=dark-mode]');
 const itemTitleAll = document.querySelectorAll('.item-title');
 const itemImgAll = document.querySelectorAll('.item img');
 
-const ulSkills = document.querySelector('.skills ul');
+const divSkills = document.querySelector('.skills');
 const lastSkill = document.querySelector('.lastSkill');
 const spanCountdown = document.querySelector('.countdown');
 const faClock = document.querySelector('.fa-clock');
@@ -26,6 +26,7 @@ function darkMode(time) {
     }
 }
 
+// PHONE & TOUCH
 if ('ontouchstart' in bodyElement) {
     itemTitleAll.forEach(itemTitle => {
         itemTitle.style.visibility = "visible";
@@ -70,13 +71,21 @@ function countdown(dateTime, dueDate) {
 clockMouseEvent('mouseenter', 'mouseleave');
 
 function clockMouseEvent(eventOn, eventOff) {
+    let clicked = false;
     faClock.addEventListener(eventOn, () => {
-        if (eventOn == 'touchstart') {
+        if (eventOn == 'touchstart' && !clicked) {
+            clicked = true;
+
             let divAlert = document.createElement('div');
             let countdownText = document.createTextNode(spanCountdown.textContent);
             divAlert.appendChild(countdownText);
             divAlert.setAttribute('class', 'divAlert');
-            ulSkills.appendChild(divAlert);
+            divSkills.appendChild(divAlert);
+
+            setTimeout(() => {
+                divSkills.removeChild(divSkills.lastChild);
+                clicked = false;
+            }, 3000);
         }
         if (bodyElement.classList.contains('dark-mode')) {
             spanCountdown.style.color = '#ffe605';
@@ -85,11 +94,6 @@ function clockMouseEvent(eventOn, eventOff) {
         spanCountdown.style.color = '#4f46fd';
     });
     faClock.addEventListener(eventOff, () => {
-        if (eventOff == 'touchend') {
-            setTimeout(() => {
-                ulSkills.removeChild(ulSkills.lastChild);
-            }, 3000);
-        }
         setTimeout(() => {
             spanCountdown.style.color = '';
         }, 400);

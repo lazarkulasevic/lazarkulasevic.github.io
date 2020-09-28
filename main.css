@@ -194,11 +194,11 @@ hr {
 }
 
 .divAlert {
-    width: 94%;
     color:  #4f46fd;
     border: 1px solid  #4f46fd;
     border-radius: 10px;
     padding: 10px;
+    margin-top: 10px;
 }
 
 .dark-mode .divAlert {
