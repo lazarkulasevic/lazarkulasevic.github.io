@@ -81,6 +81,6 @@ function clockMouseEvent(eventOn, eventOff) {
     faClock.addEventListener(eventOff, () => {
         setTimeout(() => {
             spanCountdown.style.color = '';
-        }, 500);
+        }, 400);
     });
 }
