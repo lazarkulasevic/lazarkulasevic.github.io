@@ -181,7 +181,7 @@ hr {
     margin-left: 20px;
 }
 
-.fa-clock {
+.far.fa-clock {
     display: inline;
     color: #4f46fd;
 }
@@ -361,6 +361,7 @@ footer {
     }
 
     .item:hover {
+        transform: scale(1.006);
         box-shadow: 0 12px 20px #0000001f, 0 10px 16px #0000003d;
     }
 
