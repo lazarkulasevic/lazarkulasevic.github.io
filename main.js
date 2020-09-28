@@ -5,11 +5,10 @@ const inputSwitch = document.querySelector('input[name=dark-mode]');
 const itemTitleAll = document.querySelectorAll('.item-title');
 const itemImgAll = document.querySelectorAll('.item img');
 
+const ulSkills = document.querySelector('.skills ul');
 const lastSkill = document.querySelector('.lastSkill');
 const spanCountdown = document.querySelector('.countdown');
 const faClock = document.querySelector('.fa-clock');
-
-console.log(lastSkill)
 
 darkMode(time);
 
@@ -72,6 +71,13 @@ clockMouseEvent('mouseenter', 'mouseleave');
 
 function clockMouseEvent(eventOn, eventOff) {
     faClock.addEventListener(eventOn, () => {
+        if (eventOn == 'touchstart') {
+            let divAlert = document.createElement('div');
+            let countdownText = document.createTextNode(spanCountdown.textContent);
+            divAlert.appendChild(countdownText);
+            divAlert.setAttribute('class', 'divAlert');
+            ulSkills.appendChild(divAlert);
+        }
         if (bodyElement.classList.contains('dark-mode')) {
             spanCountdown.style.color = '#ffe605';
             return;
@@ -81,6 +87,9 @@ function clockMouseEvent(eventOn, eventOff) {
     faClock.addEventListener(eventOff, () => {
         setTimeout(() => {
             spanCountdown.style.color = '';
+            if (eventOff == 'touchend') {
+                ulSkills.removeChild(ulSkills.lastChild);
+            }
         }, 400);
     });
 }
