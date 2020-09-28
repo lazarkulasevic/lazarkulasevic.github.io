@@ -187,6 +187,12 @@ hr {
     cursor: pointer;
 }
 
+.lastSkill {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
 .divAlert {
     width: 94%;
     color:  #4f46fd;
