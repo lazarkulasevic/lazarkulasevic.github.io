@@ -65,7 +65,6 @@ function countdown(dateTime, dueDate) {
         text = document.createTextNode(`Completed additional React training.`);
         lastSkill.textContent = 'React';
     }
-
     spanCountdown.appendChild(text);
 }
 
@@ -79,8 +78,9 @@ function clockMouseEvent(eventOn, eventOff) {
         }
         spanCountdown.style.color = '#4f46fd';
     });
-    
     faClock.addEventListener(eventOff, () => {
-        spanCountdown.style.color = '';
+        setTimeout(() => {
+            spanCountdown.style.color = '';
+        }, 500);
     });
 }
