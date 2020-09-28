@@ -9,19 +9,9 @@ const lastSkill = document.querySelector('.lastSkill');
 const spanCountdown = document.querySelector('.countdown');
 const faClock = document.querySelector('.fa-clock');
 
+console.log(lastSkill)
+
 darkMode(time);
-
-faClock.addEventListener('mouseenter', () => {
-    if (bodyElement.classList.contains('dark-mode')) {
-        spanCountdown.style.color = '#ffe605';
-        return;
-    }
-    spanCountdown.style.color = '#4f46fd';
-});
-
-faClock.addEventListener('mouseleave', () => {
-    spanCountdown.style.color = '';
-});
 
 inputSwitch.addEventListener('click', () => {
     bodyElement.classList.toggle('dark-mode');
@@ -72,7 +62,24 @@ function countdown(dateTime, dueDate) {
         text = document.createTextNode(`Exactly ${daysLeft} away from completing React training.`);
     } else {
         text = document.createTextNode(`Completed additional React training.`);
+        lastSkill.textContent = 'React';
     }
 
     spanCountdown.appendChild(text);
+}
+
+clockMouseEvent();
+
+function clockMouseEvent() {
+    faClock.addEventListener('mouseenter', () => {
+        if (bodyElement.classList.contains('dark-mode')) {
+            spanCountdown.style.color = '#ffe605';
+            return;
+        }
+        spanCountdown.style.color = '#4f46fd';
+    });
+    
+    faClock.addEventListener('mouseleave', () => {
+        spanCountdown.style.color = '';
+    });
 }
