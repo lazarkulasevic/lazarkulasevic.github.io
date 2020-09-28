@@ -313,6 +313,10 @@ footer {
         margin-left: 10%;
     }
 
+    .divAlert {
+        display: none;
+    }
+
     .item {
         width: 520px;
         height: 300px;

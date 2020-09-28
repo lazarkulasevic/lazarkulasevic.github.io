@@ -77,8 +77,6 @@ function clockMouseEvent(eventOn, eventOff) {
             divAlert.appendChild(countdownText);
             divAlert.setAttribute('class', 'divAlert');
             ulSkills.appendChild(divAlert);
-
-            return;
         }
         if (bodyElement.classList.contains('dark-mode')) {
             spanCountdown.style.color = '#ffe605';
@@ -91,8 +89,6 @@ function clockMouseEvent(eventOn, eventOff) {
             setTimeout(() => {
                 ulSkills.removeChild(ulSkills.lastChild);
             }, 3000);
-
-            return;
         }
         setTimeout(() => {
             spanCountdown.style.color = '';
