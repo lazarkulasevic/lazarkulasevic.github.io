@@ -4,8 +4,8 @@ const time = date.getHours();
 const inputSwitch = document.querySelector('input[name=dark-mode]');
 const itemTitleAll = document.querySelectorAll('.item-title');
 const itemImgAll = document.querySelectorAll('.item img');
-const lastSkill = document.querySelector('.lastSkill');
 
+const lastSkill = document.querySelector('.lastSkill');
 const spanCountdown = document.querySelector('.countdown');
 const faClock = document.querySelector('.fa-clock');
 
@@ -35,6 +35,7 @@ if ('ontouchstart' in bodyElement) {
     itemImgAll.forEach(img => {
         img.style.animation = "filter-animation 5s infinite";
     })
+    clockMouseEvent('touchstart', 'touchend');
 }
 
 // Countdown to new skill
@@ -68,10 +69,10 @@ function countdown(dateTime, dueDate) {
     spanCountdown.appendChild(text);
 }
 
-clockMouseEvent();
+clockMouseEvent('mouseenter', 'mouseleave');
 
-function clockMouseEvent() {
-    faClock.addEventListener('mouseenter' || 'touchstart', () => {
+function clockMouseEvent(eventOn, eventOff) {
+    faClock.addEventListener(eventOn, () => {
         if (bodyElement.classList.contains('dark-mode')) {
             spanCountdown.style.color = '#ffe605';
             return;
@@ -79,7 +80,7 @@ function clockMouseEvent() {
         spanCountdown.style.color = '#4f46fd';
     });
     
-    faClock.addEventListener('mouseleave' || 'touchend', () => {
+    faClock.addEventListener(eventOff, () => {
         spanCountdown.style.color = '';
     });
 }
