@@ -77,6 +77,8 @@ function clockMouseEvent(eventOn, eventOff) {
             divAlert.appendChild(countdownText);
             divAlert.setAttribute('class', 'divAlert');
             ulSkills.appendChild(divAlert);
+
+            return;
         }
         if (bodyElement.classList.contains('dark-mode')) {
             spanCountdown.style.color = '#ffe605';
@@ -85,11 +87,15 @@ function clockMouseEvent(eventOn, eventOff) {
         spanCountdown.style.color = '#4f46fd';
     });
     faClock.addEventListener(eventOff, () => {
+        if (eventOff == 'touchend') {
+            setTimeout(() => {
+                ulSkills.removeChild(ulSkills.lastChild);
+            }, 3000);
+
+            return;
+        }
         setTimeout(() => {
             spanCountdown.style.color = '';
-            if (eventOff == 'touchend') {
-                ulSkills.removeChild(ulSkills.lastChild);
-            }
         }, 400);
     });
 }
