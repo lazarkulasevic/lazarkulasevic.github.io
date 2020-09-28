@@ -1,10 +1,27 @@
 const bodyElement = document.body;
-const time = new Date().getHours();
+const date = new Date();
+const time = date.getHours();
 const inputSwitch = document.querySelector('input[name=dark-mode]');
 const itemTitleAll = document.querySelectorAll('.item-title');
 const itemImgAll = document.querySelectorAll('.item img');
+const lastSkill = document.querySelector('.lastSkill');
+
+const spanCountdown = document.querySelector('.countdown');
+const faClock = document.querySelector('.fa-clock');
 
 darkMode(time);
+
+faClock.addEventListener('mouseenter', () => {
+    if (bodyElement.classList.contains('dark-mode')) {
+        spanCountdown.style.color = '#ffe605';
+        return;
+    }
+    spanCountdown.style.color = '#4f46fd';
+});
+
+faClock.addEventListener('mouseleave', () => {
+    spanCountdown.style.color = '';
+});
 
 inputSwitch.addEventListener('click', () => {
     bodyElement.classList.toggle('dark-mode');
@@ -28,4 +45,34 @@ if ('ontouchstart' in bodyElement) {
     itemImgAll.forEach(img => {
         img.style.animation = "filter-animation 5s infinite";
     })
+}
+
+// Countdown to new skill
+let dueDate = new Date(2020, 9, 10).getTime();
+let dateTime = date.getTime();
+
+countdown(dateTime, dueDate);
+
+function countdown(dateTime, dueDate) {
+    let daysLeft = Math.floor((dueDate - dateTime) / 1000 / 60 / 60 / 24);
+    let weeksLeft = (daysLeft - (daysLeft % 7)) / 7;
+    let text;
+
+    daysLeft = (daysLeft % 7) > 1 ? (daysLeft % 7) + ' days':
+        (daysLeft % 7) == 1 ? (daysLeft % 7) + ' day' : '';
+
+    weeksLeft = weeksLeft > 1 ? weeksLeft + ' weeks':
+        weeksLeft == 1 ? weeksLeft + ' week' : '';
+
+    if (daysLeft && weeksLeft) {
+        text = document.createTextNode(`Exactly ${weeksLeft} and ${daysLeft} away from completing React training.`);
+    } else if (!daysLeft && weeksLeft) {
+        text = document.createTextNode(`Exactly ${weeksLeft} away from completing React training.`);
+    } else if (daysLeft && !weeksLeft) {
+        text = document.createTextNode(`Exactly ${daysLeft} away from completing React training.`);
+    } else {
+        text = document.createTextNode(`Completed additional React training.`);
+    }
+
+    spanCountdown.appendChild(text);
 }
