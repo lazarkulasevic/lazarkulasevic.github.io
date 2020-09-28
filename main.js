@@ -71,7 +71,7 @@ function countdown(dateTime, dueDate) {
 clockMouseEvent();
 
 function clockMouseEvent() {
-    faClock.addEventListener('mouseenter', () => {
+    faClock.addEventListener('mouseenter' || 'touchstart', () => {
         if (bodyElement.classList.contains('dark-mode')) {
             spanCountdown.style.color = '#ffe605';
             return;
@@ -79,7 +79,7 @@ function clockMouseEvent() {
         spanCountdown.style.color = '#4f46fd';
     });
     
-    faClock.addEventListener('mouseleave', () => {
+    faClock.addEventListener('mouseleave' || 'touchend', () => {
         spanCountdown.style.color = '';
     });
 }
