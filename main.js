@@ -56,13 +56,13 @@ function countdown(dateTime, dueDate) {
         weeksLeft == 1 ? weeksLeft + ' week' : '';
 
     if (daysLeft && weeksLeft) {
-        text = document.createTextNode(`Exactly ${weeksLeft} and ${daysLeft} away from completing React training.`);
+        text = document.createTextNode(`Exactly ${weeksLeft} and ${daysLeft} away from completing React training (basics).`);
     } else if (!daysLeft && weeksLeft) {
-        text = document.createTextNode(`Exactly ${weeksLeft} away from completing React training.`);
+        text = document.createTextNode(`Exactly ${weeksLeft} away from completing React training (basics).`);
     } else if (daysLeft && !weeksLeft) {
-        text = document.createTextNode(`Exactly ${daysLeft} away from completing React training.`);
+        text = document.createTextNode(`Exactly ${daysLeft} away from completing React training (basics).`);
     } else {
-        text = document.createTextNode(`Completed additional React training.`);
+        text = document.createTextNode(`Completed additional React training (basics).`);
         lastSkill.textContent = 'React';
     }
     spanCountdown.appendChild(text);
