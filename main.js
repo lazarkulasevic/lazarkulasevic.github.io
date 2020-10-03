@@ -49,20 +49,28 @@ function countdown(dateTime, dueDate) {
     let weeksLeft = (daysLeft - (daysLeft % 7)) / 7;
     let text;
 
-    daysLeft = (daysLeft % 7) > 1 ? (daysLeft % 7) + ' days':
+    daysLeft = (daysLeft % 7) > 1 ? (daysLeft % 7) + ' days' :
         (daysLeft % 7) == 1 ? (daysLeft % 7) + ' day' : '';
 
-    weeksLeft = weeksLeft > 1 ? weeksLeft + ' weeks':
+    weeksLeft = weeksLeft > 1 ? weeksLeft + ' weeks' :
         weeksLeft == 1 ? weeksLeft + ' week' : '';
 
     if (daysLeft && weeksLeft) {
-        text = document.createTextNode(`Exactly ${weeksLeft} and ${daysLeft} away from completing React training (basics).`);
+        text = document.createTextNode(
+            `Exactly ${weeksLeft} and ${daysLeft} away from completing React training (basics).`
+        );
     } else if (!daysLeft && weeksLeft) {
-        text = document.createTextNode(`Exactly ${weeksLeft} away from completing React training (basics).`);
+        text = document.createTextNode(
+            `Exactly ${weeksLeft} away from completing React training (basics).`
+        );
     } else if (daysLeft && !weeksLeft) {
-        text = document.createTextNode(`Exactly ${daysLeft} away from completing React training (basics).`);
+        text = document.createTextNode(
+            `Exactly ${daysLeft} away from completing React training (basics).`
+        );
     } else {
-        text = document.createTextNode(`Completed additional React training (basics).`);
+        text = document.createTextNode(
+            `Completed additional React training (basics).`
+        );
         lastSkill.textContent = 'React';
     }
     spanCountdown.appendChild(text);
