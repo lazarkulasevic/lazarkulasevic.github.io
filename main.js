@@ -36,7 +36,7 @@ if ("ontouchstart" in bodyElement) {
 // ################### Last Skill ###################
 import {countdown, clockMouseEvent} from './modules/LastSkill.js';
 
-let dueDate = new Date(2020, 9, 31).getTime();
+let dueDate = new Date(2020, 10, 2).getTime();
 let dateTime = date.getTime();
 countdown(dateTime, dueDate);
 clockMouseEvent('mouseenter', 'mouseleave');
