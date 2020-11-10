@@ -29,9 +29,9 @@ function countdown(dateTime, dueDate) {
         );
     } else {
         text = document.createTextNode(
-            `I have learned Vue basics.`
+            `I have learned VueJS basics.`
         );
-        lastSkill.textContent = 'Vue';
+        lastSkill.textContent = 'VueJS (basics)';
     }
     spanCountdown.appendChild(text);
 }
