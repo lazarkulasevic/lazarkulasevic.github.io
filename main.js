@@ -1,6 +1,10 @@
+import {countdown, clockMouseEvent} from './modules/LastSkill.js';
+import PortfolioItem from './modules/PortfolioItem.js';
+
 const bodyElement = document.body;
 const date = new Date();
 const time = date.getHours();
+const divPortfolio = document.querySelector('.grid');
 const inputSwitch = document.querySelector("input[name=dark-mode]");
 const itemTitleAll = document.querySelectorAll(".item-title");
 const itemImgAll = document.querySelectorAll(".item img");
@@ -34,10 +38,16 @@ if ("ontouchstart" in bodyElement) {
 }
 
 // ################### Last Skill ###################
-import {countdown, clockMouseEvent} from './modules/LastSkill.js';
-
 let dueDate = new Date(2020, 10, 2).getTime();
 let dateTime = date.getTime();
 countdown(dateTime, dueDate);
 clockMouseEvent('mouseenter', 'mouseleave');
 // ##################################################
+
+
+const portfolio = new PortfolioItem(divPortfolio);
+
+portfolio.item('Memory Game', 'images/memory-game-screen.png', 'https://lazarkulasevic.github.io/memory-game/');
+portfolio.item('Guess The Number', 'images/binary-search-featured.png', 'https://lazarkulasevic.github.io/binary-search/');
+portfolio.item('Public Chat', 'images/chat-screen.png', 'https://lazars-chat.web.app/');
+portfolio.item('To-do List (React)', 'images/ReactToDo.png', 'https://lazarkulasevic.github.io/react-to-do/');

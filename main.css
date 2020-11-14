@@ -210,6 +210,11 @@ hr {
 	color: #ffe605;
 }
 
+.projects-title {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
 .portfolio {
 	display: flex;
 	justify-content: center;
@@ -226,7 +231,7 @@ hr {
 	position: relative;
 	width: 280px;
 	height: 160px;
-	margin: 30px 20px;
+	margin: 20px 20px;
 	padding: 0;
 	box-shadow: 0 2px 3px #0000001f, 0 2px 4px #0000003d;
 	-webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
@@ -327,7 +332,6 @@ footer {
 	.item {
 		width: 520px;
 		height: 300px;
-		margin: 50px 30px;
 	}
 
 	.item-title {
@@ -379,10 +383,14 @@ footer {
 		margin-left: 20%;
 	}
 
+	.grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
 	.item {
 		width: 580px;
 		height: 320px;
-		margin: 50px 30px;
+		margin: 30px 30px;
 	}
 
 	.item:hover {
