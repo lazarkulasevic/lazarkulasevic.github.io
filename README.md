@@ -1,3 +1,16 @@
-# My portfolio page (Version 1.0)
+# My portfolio (Version 1.1)
 
-Mostly CSS. Only functionalities right now are the dark mode button and a "countdown" - how many weeks/days are left until reaching a new skill.
+Built using:
+- HTML5
+- CSS3 (Responsive Web Design)
+- JavaScript (Class)
+
+Functionalities:
+- Dark mode
+  - Button
+  - Auto-ON at 8 PM until 6 AM
+- New skill emphasizer (let everyone know what I'm working on right now)
+ 
+Plans for the future:
+- Add a contact form (probably Firebase)
+- Add a blog page
