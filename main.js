@@ -44,10 +44,10 @@ countdown(dateTime, dueDate);
 clockMouseEvent('mouseenter', 'mouseleave');
 // ##################################################
 
-
 const portfolio = new PortfolioItem(divPortfolio);
 
 portfolio.item('Memory Game', 'images/memory-game-screen.png', 'https://lazarkulasevic.github.io/memory-game/');
 portfolio.item('Guess The Number', 'images/binary-search-featured.png', 'https://lazarkulasevic.github.io/binary-search/');
 portfolio.item('Public Chat', 'images/chat-screen.png', 'https://lazars-chat.web.app/');
 portfolio.item('To-do List (React)', 'images/ReactToDo.png', 'https://lazarkulasevic.github.io/react-to-do/');
+
