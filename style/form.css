@@ -30,7 +30,8 @@ background-color:  #4f46fd0a;  /*  on blur */
 
 .ui-input textarea {
   resize: none;
-  transition: 0.5s;
+  transition-delay: 0.2s;
+  transition-duration: 0.3s;
   height: 60px;
 }
 
