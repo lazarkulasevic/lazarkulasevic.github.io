@@ -8,6 +8,8 @@ const divPortfolio = document.querySelector('.grid');
 const inputSwitch = document.querySelector("input[name=dark-mode]");
 const itemTitleAll = document.querySelectorAll(".item-title");
 const itemImgAll = document.querySelectorAll(".item img");
+const formFields = document.querySelectorAll('.form-fieldset > input');
+const form = document.getElementById('form');
 
 darkMode(time);
 
@@ -51,3 +53,20 @@ portfolio.item('Guess The Number', 'images/binary-search-featured.png', 'https:/
 portfolio.item('Public Chat', 'images/chat-screen.png', 'https://lazars-chat.web.app/');
 portfolio.item('To-do List (React)', 'images/ReactToDo.png', 'https://lazarkulasevic.github.io/react-to-do/');
 
+console.log(formFields)
+
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+
+});
+
+// sredi blur event
+
+formFields.forEach(input => {
+  if (input.value) {
+    input.setAttribute('class', 'filled');
+  } else {
+    input.removeAttribute('class', 'filled');
+  }
+});

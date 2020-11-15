@@ -21,7 +21,8 @@
     <meta name="twitter:image" content="https://lazarkulasevic.github.io/images/LK.png">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/form.css">
 </head>
 
 <body>
@@ -114,6 +115,31 @@
     </section>
 
     <footer class="col-12 col-t-12">
+        <div class="form-wrapper">
+            <form id="form" action="">
+                <fieldset class="form-fieldset ui-input">
+                    <input type="text" name="name" autocomplete="off">
+                    <label for="name">
+                        <span data-text="Name">Name</span>
+                    </label>
+                </fieldset>
+                <fieldset class="form-fieldset ui-input">
+                    <input type="text" name="email" autocomplete="off">
+                    <label for="email">
+                        <span data-text="Email">Email</span>
+                    </label>
+                </fieldset>
+                <fieldset class="form-fieldset ui-input">
+                    <textarea name="message" autocomplete="off"></textarea>
+                    <label for="message">
+                        <span data-text="Message">Message</span>
+                    </label>
+                </fieldset>
+                <div class="submit-wrapper">
+                    <button type="submit">Send</button>
+                </div>
+            </form>
+        </div>
         <nav>
             <ul>
                 <li><a href="https://www.linkedin.com/in/lazarkulasevic/">LinkedIn</a></li>
