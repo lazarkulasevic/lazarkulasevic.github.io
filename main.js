@@ -1,5 +1,6 @@
 import {countdown, clockMouseEvent} from './modules/LastSkill.js';
 import PortfolioItem from './modules/PortfolioItem.js';
+import { formEvents } from './modules/Form.js'
 
 const bodyElement = document.body;
 const date = new Date();
@@ -8,10 +9,11 @@ const divPortfolio = document.querySelector('.grid');
 const inputSwitch = document.querySelector("input[name=dark-mode]");
 const itemTitleAll = document.querySelectorAll(".item-title");
 const itemImgAll = document.querySelectorAll(".item img");
-const formFields = document.querySelectorAll('.form-fieldset > input');
-const form = document.getElementById('form');
 
 darkMode(time);
+
+// dark
+// bodyElement.classList.add("dark-mode");
 
 inputSwitch.addEventListener("click", () => {
   bodyElement.classList.toggle("dark-mode");
@@ -39,13 +41,13 @@ if ("ontouchstart" in bodyElement) {
   clockMouseEvent("touchstart", "touchend");
 }
 
-// ################### Last Skill ###################
+// Last Skill 
 let dueDate = new Date(2020, 10, 2).getTime();
 let dateTime = date.getTime();
 countdown(dateTime, dueDate);
 clockMouseEvent('mouseenter', 'mouseleave');
-// ##################################################
 
+// Portfolio
 const portfolio = new PortfolioItem(divPortfolio);
 
 portfolio.item('Memory Game', 'images/memory-game-screen.png', 'https://lazarkulasevic.github.io/memory-game/');
@@ -53,20 +55,6 @@ portfolio.item('Guess The Number', 'images/binary-search-featured.png', 'https:/
 portfolio.item('Public Chat', 'images/chat-screen.png', 'https://lazars-chat.web.app/');
 portfolio.item('To-do List (React)', 'images/ReactToDo.png', 'https://lazarkulasevic.github.io/react-to-do/');
 
-console.log(formFields)
+// Contact Form
+formEvents();
 
-
-form.addEventListener('submit', event => {
-  event.preventDefault();
-
-});
-
-// sredi blur event
-
-formFields.forEach(input => {
-  if (input.value) {
-    input.setAttribute('class', 'filled');
-  } else {
-    input.removeAttribute('class', 'filled');
-  }
-});

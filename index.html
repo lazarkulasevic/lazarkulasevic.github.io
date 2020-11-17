@@ -26,128 +26,130 @@
 </head>
 
 <body>
-    <header class="col-12 col-t-12">
-        <div class="switch-wrapper">
-            <label class="switch">
-                <input type="checkbox" name="dark-mode">
-                <span class="slider"></span>
-            </label>
-        </div>
-    </header>
-
-    <section class="col-7 col-t-7" id="title">
-        <h1>
-            Hello, my name is Lazar Kulasevic. <br>
-            I am a Frontend Developer living in Nis, Serbia.
-        </h1>
-        <nav>
-            <ul>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#projects">PROJECTS</a></li>
-                <!-- <li><a href="#">CONTACT</a></li> -->
-            </ul>
-        </nav>
-    </section>
-
-    <section class="col-5 col-t-5" id="laptop">
-        <img src="images/undraw_code_review_l1q9.svg" draggable="false">
-    </section>
-
-    <hr id="about">
-
-    <section class="col-6 col-t-6">
-        <div class="about">
-            <h2>About Me</h2>
-            <p>
-                Master Chemist by formal education and a self-taught web designer who is pursuing a career in frontend
-                development. Successfully completed the 10 + 2 weeks Frontend Development course (JavaScript + React)
-                course at <a href="https://itbootcamp.rs/" target="_blank">IT Bootcamp</a> in Nis.
-            </p>
-            <p>
-                <span class="countdown"></span>
-            </p>
-            <p>
-                Enjoying science, social philosophy and psychology books. Coffee, too &#9749;
-            </p>
-        </div>
-    </section>
-
-    <section class="col-6 col-t-6">
-        <div class="skills">
-            <h2>My Stack</h2>
-            <ul>
-                <li>HTML5</li>
-                <li>CSS3
-                    <ul>
-                        <li>- Responsive Web Design</li>
-                    </ul>
-                </li>
-                <li>JavaScript (ES6)
-                    <ul>
-                        <li>- Arrow functions</li>
-                        <li>- Classes (OOP)</li>
-                        <li>- DOM</li>
-                        <li>- Asynchronous JS</li>
-                    </ul>
-                </li>
-                <li>NoSQL
-                    <ul>
-                        <li>- Firebase</li>
-                    </ul>
-                </li>
-                <li>React (basics)</li>
-                <li class="lastSkill">
-                    Vue <i class="far fa-clock"></i>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <hr id="projects">
-
-    <section class="col-12 col-t-12">
-        <h2 class="projects-title">PROJECTS</h2>
-        <div class="portfolio">
-            <div class="grid">
-                <!-- Portfolio Items -->
+    <div class="container">
+        <header class="col-12 col-t-12">
+            <div class="switch-wrapper">
+                <label class="switch">
+                    <input type="checkbox" name="dark-mode">
+                    <span class="slider"></span>
+                </label>
             </div>
-        </div>
-    </section>
+        </header>
+        <section class="col-7 col-t-7" id="title">
+            <h1>
+                Hello, my name is Lazar Kulasevic. <br>
+                I am a Frontend Developer living in Nis, Serbia.
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#projects">PROJECTS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="col-5 col-t-5" id="laptop">
+            <img src="images/undraw_code_review_l1q9.svg" draggable="false">
+        </section>
+    </div>
 
-    <footer class="col-12 col-t-12">
-        <div class="form-wrapper">
-            <form id="form" action="">
-                <fieldset class="form-fieldset ui-input">
-                    <input type="text" name="name" autocomplete="off">
-                    <label for="name">
-                        <span data-text="Name">Name</span>
-                    </label>
-                </fieldset>
-                <fieldset class="form-fieldset ui-input">
-                    <input type="text" name="email" autocomplete="off">
-                    <label for="email">
-                        <span data-text="Email">Email</span>
-                    </label>
-                </fieldset>
-                <fieldset class="form-fieldset ui-input">
-                    <textarea name="message" autocomplete="off"></textarea>
-                    <label for="message">
-                        <span data-text="Message">Message</span>
-                    </label>
-                </fieldset>
-                <div class="submit-wrapper">
-                    <button type="submit">Send</button>
+    <div class="container" id="about">
+        <section class="col-6 col-t-6">
+            <div class="about">
+                <h2>About Me</h2>
+                <p>
+                    Master Chemist by formal education and a self-taught web designer who is pursuing a career in
+                    frontend
+                    development. Successfully completed the 10 + 2 weeks Frontend Development course (JavaScript +
+                    React)
+                    course at <a href="https://itbootcamp.rs/" target="_blank">IT Bootcamp</a> in Nis.
+                </p>
+                <p>
+                    <span class="countdown"></span>
+                </p>
+                <p>
+                    Enjoying science, social philosophy and psychology books. Coffee, too &#9749;
+                </p>
+            </div>
+        </section>
+        <section class="col-6 col-t-6">
+            <div class="skills">
+                <h2>My Stack</h2>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3
+                        <ul>
+                            <li>- Responsive Web Design</li>
+                        </ul>
+                    </li>
+                    <li>JavaScript (ES6)
+                        <ul>
+                            <li>- Arrow functions</li>
+                            <li>- Classes (OOP)</li>
+                            <li>- DOM</li>
+                            <li>- Asynchronous JS</li>
+                        </ul>
+                    </li>
+                    <li>NoSQL
+                        <ul>
+                            <li>- Firebase</li>
+                        </ul>
+                    </li>
+                    <li>React (basics)</li>
+                    <li class="lastSkill">
+                        Vue <i class="far fa-clock"></i>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <div class="container" id="projects">
+        <section class="col-12 col-t-12">
+            <h2 class="projects-title">PROJECTS</h2>
+            <div class="portfolio">
+                <div class="grid">
+                    <!-- Portfolio Items -->
                 </div>
-            </form>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="https://www.linkedin.com/in/lazarkulasevic/">LinkedIn</a></li>
-                <li><a href="https://github.com/lazarkulasevic">Github</a></li>
-            </ul>
-        </nav>
-    </footer>
+            </div>
+        </section>
+    </div>
 
+    <div id="contact">
+        <footer class="col-12 col-t-12">
+            <div class="form-wrapper">
+                <form id="form" action="">
+                    <fieldset class="fieldset">
+                        <input type="text" name="name" class="form-fields" autocomplete="off">
+                        <label for="name">
+                            <span data-text="Name">Name</span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <input type="text" name="email" class="form-fields" autocomplete="off">
+                        <label for="email">
+                            <span data-text="Email">Email</span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <textarea name="message" class="form-fields" autocomplete="off"></textarea>
+                        <label for="message">
+                            <span data-text="Message">Message</span>
+                        </label>
+                    </fieldset>
+                    <div class="submit-wrapper">
+                        <button type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/lazarkulasevic/">LinkedIn</a></li>
+                    <li><a href="https://github.com/lazarkulasevic">Github</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </div>
     <script type="module" src="main.js"></script>
 </body>
 

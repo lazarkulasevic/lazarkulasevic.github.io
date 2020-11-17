@@ -1,5 +1,5 @@
 .form-wrapper {
-  max-width: 60%;
+  max-width: 900%;
   margin: 0 auto;
   padding: 20px 16px 40px 16px;
   transform: translateZ(0);
@@ -10,47 +10,54 @@
   margin-top: 20px;
 }
 
-.ui-input {
+.fieldset {
   position: relative;
   padding: 0;
   border: 0;
 }
 
-.ui-input input,
-.ui-input textarea {
+.fieldset input,
+.fieldset textarea {
   border: 0;
   background: none;
   padding: 10px 10px;
   font-size: inherit;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.2;
   outline: 0;
   width: 100%;
-background-color:  #4f46fd0a;  /*  on blur */
 }
 
-.ui-input textarea {
+.bg-input,
+.fieldset input.filled,
+.fieldset textarea.filled {
+  transition: 0.3s;
+  background-color: #4f46fd0a!important;
+}
+
+.fieldset textarea {
   resize: none;
   transition-delay: 0.2s;
   transition-duration: 0.3s;
-  height: 60px;
+  height: 50px;
 }
 
-.ui-input textarea:focus {
+.fieldset textarea:focus,
+.fieldset textarea.filled {
   overflow: auto;
   height: 180px;
 }
 
-.ui-input input + label,
-.ui-input textarea + label {
+.fieldset input + label,
+.fieldset textarea + label {
   position: relative;
   display: block;
   padding: 8px 0 8px 0;
-  font-weight: 500;
   text-align: left;
 }
 
-.ui-input input + label::before, .ui-input input + label::after,
-.ui-input textarea + label::before, .ui-input textarea + label::after {
+.fieldset input + label::before, .fieldset input + label::after,
+.fieldset textarea + label::before, .fieldset textarea + label::after {
   position: absolute;
   top: 0;
   left: 0;
@@ -59,28 +66,29 @@ background-color:  #4f46fd0a;  /*  on blur */
   height: 1px;
 }
 
-.ui-input input + label::before,
-.ui-input textarea + label::before {
-  background-color: #4f46fd44;
+.fieldset input + label::before,
+.fieldset textarea + label::before {
+  background-color: #00000038;
 }
 
-.ui-input input + label::after,
-.ui-input textarea + label::after {
+.fieldset input + label::after,
+.fieldset textarea + label::after {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
   background-color:  #4f46fd;
-  height: 2px;
+  height: 1px;
 }
-.ui-input input + label span,
-.ui-input textarea + label span {
+
+.fieldset input + label span,
+.fieldset textarea + label span {
   position: relative;
-  color: #4f46fd44;
+  color: #00000060;
   transition: color 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-.ui-input input + label span::after,
-.ui-input textarea + label span::after {
+.fieldset input + label span::after,
+.fieldset textarea + label span::after {
   content: attr(data-text);
   position: absolute;
   overflow: hidden;
@@ -94,80 +102,79 @@ background-color:  #4f46fd0a;  /*  on blur */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   backface-visibility: hidden;
-  perspective: 1000;
   transform: translateZ(0);
   transition: background-position 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-.ui-input input:focus + label::after,
-.ui-input input.error + label::after,
-.ui-input input:invalid + label::after,
-.ui-input input.filled + label::after,
-.ui-input textarea:focus + label::after,
-.ui-input textarea.error + label::after,
-.ui-input textarea:invalid + label::after,
-.ui-input textarea.filled + label::after {
+.fieldset input:focus + label::after,
+.fieldset input.error + label::after,
+.fieldset input:invalid + label::after,
+.fieldset input.filled + label::after,
+.fieldset textarea:focus + label::after,
+.fieldset textarea.error + label::after,
+.fieldset textarea:invalid + label::after,
+.fieldset textarea.filled + label::after {
   transform: scaleX(1);
   transform-origin: left;
 }
-.ui-input input:focus + label span::after,
-.ui-input input.error + label span::after,
-.ui-input input:invalid + label span::after,
-.ui-input input.filled + label span::after,
-.ui-input textarea:focus + label span::after,
-.ui-input textarea.error + label span::after,
-.ui-input textarea:invalid + label span::after,
-.ui-input textarea.filled + label span::after {
-  background-image: linear-gradient(to right, white 50%, #ffffff00 0%);
-  background-position: 0% 50%;
-}
-
-.ui-input input.filled,
-.ui-input textarea.filled {
-  color: #ffffff;
-}
-
-.ui-input input.filled + label::after,
-.ui-input textarea.filled + label::after {
-  background-color: #ffffff;
-}
-
-.ui-input input.filled + label span::after,
-.ui-input textarea.filled + label span::after {
+.fieldset input:focus + label span::after,
+.fieldset input.error + label span::after,
+.fieldset input:invalid + label span::after,
+.fieldset input.filled + label span::after,
+.fieldset textarea:focus + label span::after,
+.fieldset textarea.error + label span::after,
+.fieldset textarea:invalid + label span::after,
+.fieldset textarea.filled + label span::after {
   background-image: linear-gradient(to right, #ffffff 50%, #ffffff00 0%);
   background-position: 0% 50%;
 }
 
-.ui-input input:focus,
-.ui-input textarea:focus {
+.fieldset input.filled,
+.fieldset textarea.filled {
+  color: #131313;
+}
+
+.fieldset input.filled + label::after,
+.fieldset textarea.filled + label::after {
+  background-color: #afafaf;
+}
+
+.fieldset input.filled + label span::after,
+.fieldset textarea.filled + label span::after {
+  background-image: linear-gradient(to right, #afafaf 50%, #ffffff00 0%);
+  background-position: 0% 50%;
+}
+
+.fieldset input:focus,
+.fieldset textarea:focus {
   color:  #4f46fd;
 }
 
-.ui-input input:focus + label::after,
-.ui-input textarea:focus + label::after {
+.fieldset input:focus + label::after,
+.fieldset textarea:focus + label::after {
   background-color:  #4f46fd;
 }
 
-.ui-input input:focus + label span::after,
-.ui-input textarea:focus + label span::after {
+.fieldset input:focus + label span::after,
+.fieldset textarea:focus + label span::after {
   background-image: linear-gradient(to right,  #4f46fd 50%, #ffffff00 0%);
   background-position: 0% 50%;
 }
 
-.ui-input input.error, .ui-input input:invalid,
-.ui-input textarea.error, .ui-input textarea:invalid {
+.fieldset input.error, .fieldset input:invalid,
+.fieldset textarea.error, .fieldset textarea:invalid {
   color: #E66161;
 }
 
-.ui-input input.error + label::after,
-.ui-input input:invalid + label::after,
-.ui-input textarea.error + label::after,
-.ui-input textarea:invalid + label::after {
+.fieldset input.error + label::after,
+.fieldset input:invalid + label::after,
+.fieldset textarea.error + label::after,
+.fieldset textarea:invalid + label::after {
   background-color: #E66161;
 }
 
-.ui-input input.error + label span::after,
-.ui-input input:invalid + label span::after {
+.fieldset input.error + label span::after,
+.fieldset input:invalid + label span::after {
   background-image: linear-gradient(to right, #E66161 50%, #ffffff00 0%);
   background-position: 0% 50%;
 }
@@ -175,18 +182,86 @@ background-color:  #4f46fd0a;  /*  on blur */
 button[type=submit] {
   border: 0;
   background-color: #50617A;
-  padding: 18px 30px;
+  padding: 18px 36px;
   text-transform: uppercase;
-  font-weight: 500;
   color: #ffffff;
-  border-radius: 100px;
+  border-radius: 34px;
   outline: 0;
   transition: background-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), color 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 button[type=submit]:focus, button[type=submit]:active,
 button[type=submit]:hover {
-  background-color:  #4f46fd;
+  background-color: #4f46fd;
   color: white;
   cursor: pointer;
+}
+
+/* DARK MODE */
+.dark-mode .fieldset input + label::before,
+.dark-mode .fieldset textarea + label::before {
+  background-color: #ffffff44;
+}
+
+.dark-mode .fieldset input + label span,
+.dark-mode .fieldset textarea + label span {
+  color: #ffffff9d;
+}
+
+.dark-mode .fieldset input.filled,
+.dark-mode .fieldset textarea.filled {
+  color: #ffffff;
+}
+
+.dark-mode .fieldset input.filled + label::after,
+.dark-mode .fieldset textarea.filled + label::after {
+  background-color: #ffffff;
+} 
+
+.dark-mode .fieldset input.filled + label span::after,
+.dark-mode .fieldset textarea.filled + label span::after {
+  background-image: linear-gradient(to right, #ffffff 50%, #ffffff00 0%);
+}
+
+.dark-mode .fieldset input:focus + label::after,
+.dark-mode .fieldset textarea:focus + label::after {
+  background-color:  #ffe605;
+}
+
+.dark-mode .fieldset input + label::after,
+.dark-mode .fieldset textarea + label::after {
+  background-color: #ffe605;
+}
+
+.dark-mode .fieldset input:focus + label span::after,
+.dark-mode .fieldset textarea:focus + label span::after {
+  background-image: linear-gradient(to right, #ffe605 50%, #ffffff00 0%);
+}
+
+.dark-mode .fieldset input + label span::after,
+.dark-mode .fieldset textarea + label span::after {
+  background-image: linear-gradient(to right, #ffe605 50%, #ffffff00 0%);
+}
+
+.dark-mode .fieldset input:focus,
+.dark-mode .fieldset textarea:focus {
+  color: #ffe605;
+}
+
+.dark-mode .bg-input,
+.dark-mode .fieldset input.filled,
+.dark-mode .fieldset textarea.filled  {
+  background-color: #ffffff11!important;
+}
+
+@media only screen and (min-width: 650px) {
+  .form-wrapper {
+    width: 500px;
+  }
+}
+
+@media only screen and (min-width: 940px) {
+  .form-wrapper {
+    width: 640px;
+  }
 }
