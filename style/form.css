@@ -23,7 +23,6 @@
   padding: 10px 10px;
   font-size: inherit;
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.2;
   outline: 0;
   width: 100%;
 }
@@ -39,7 +38,7 @@
   resize: none;
   transition-delay: 0.2s;
   transition-duration: 0.3s;
-  height: 50px;
+  height: 56px;
 }
 
 .fieldset textarea:focus,
@@ -163,19 +162,19 @@
 
 .fieldset input.error, .fieldset input:invalid,
 .fieldset textarea.error, .fieldset textarea:invalid {
-  color: #E66161;
+  color: #E66161!important;
 }
 
 .fieldset input.error + label::after,
 .fieldset input:invalid + label::after,
 .fieldset textarea.error + label::after,
 .fieldset textarea:invalid + label::after {
-  background-color: #E66161;
+  background-color: #E66161!important;
 }
 
 .fieldset input.error + label span::after,
 .fieldset input:invalid + label span::after {
-  background-image: linear-gradient(to right, #E66161 50%, #ffffff00 0%);
+  background-image: linear-gradient(to right, #E66161 50%, #ffffff00 0%)!important;
   background-position: 0% 50%;
 }
 

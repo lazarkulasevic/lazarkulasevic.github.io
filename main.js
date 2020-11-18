@@ -1,6 +1,6 @@
 import {countdown, clockMouseEvent} from './modules/LastSkill.js';
 import PortfolioItem from './modules/PortfolioItem.js';
-import { formEvents } from './modules/Form.js'
+import {formStyle, formValidation, formSubmit} from './modules/Form.js'
 
 const bodyElement = document.body;
 const date = new Date();
@@ -56,5 +56,6 @@ portfolio.item('Public Chat', 'images/chat-screen.png', 'https://lazars-chat.web
 portfolio.item('To-do List (React)', 'images/ReactToDo.png', 'https://lazarkulasevic.github.io/react-to-do/');
 
 // Contact Form
-formEvents();
-
+formStyle();
+formValidation();
+formSubmit();
