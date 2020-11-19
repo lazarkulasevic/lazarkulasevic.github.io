@@ -68,17 +68,32 @@ function formValidation() {
 function formSubmit() {
   form.addEventListener('submit', event => {
     event.preventDefault();
-    
-    if (data.name !== "" && data.email !== "" && data.message !== "") {
-      console.log(data);
 
+    if (data.name !== "" && data.email !== "" && data.message !== "") {
+      sending(data);
     } else {
-      console.log('Make sure you have entered the correct data.');
+      console.log('Make sure you have entered the correct data, otherwise the form cannot be sent.');
 
     }
-    
-    
   });
+}
+
+async function sending(data) {
+  let response = await fetch('https://formspree.io/f/myybponr', {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  
+  if (response.status !== 200) {
+    throw new Error("Oops! There's been an error while sending the form. Please try again.")
+    
+  }
+  let result = await response.json();
+  return result;
 }
 
 export {formStyle, formValidation, formSubmit};
