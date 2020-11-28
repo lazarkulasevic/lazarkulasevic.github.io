@@ -76,7 +76,7 @@
   transform-origin: left;
   transition: transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
   background-color:  #4f46fd;
-  height: 2px;
+  height: 1px;
 }
 
 .fieldset input + label span,
@@ -146,12 +146,12 @@
 
 .fieldset input:focus,
 .fieldset textarea:focus {
-  color:  #4f46fd;
+  color: #4f46fd;
 }
 
 .fieldset input:focus + label::after,
 .fieldset textarea:focus + label::after {
-  background-color:  #4f46fd;
+  background-color: #4f46fd;
 }
 
 .fieldset input:focus + label span::after,
@@ -173,7 +173,9 @@
 }
 
 .fieldset input.error + label span::after,
-.fieldset input:invalid + label span::after {
+.fieldset input:invalid + label span::after,
+.fieldset textarea.error + label span::after,
+.fieldset textarea:invalid + label span::after {
   background-image: linear-gradient(to right, #E66161 50%, #ffffff00 0%)!important;
   background-position: 0% 50%;
 }
@@ -181,21 +183,36 @@
 .btn-submit {
   border: 1px solid #999999;
   background-color: #99999900;
-  color: #999999;
+  color: #757575;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 20px;
   padding: 16px 36px;
   border-radius: 6px;
   outline: 0;
-  transition: transform .3s;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .btn-submit:hover {
-  background-color: #999999;
-  color: white;
-  cursor: pointer;
-  transform: scale(0.9);
+  border-color: #4f46fd;
+  color: #4f46fd;
+}
+
+.fa-paper-plane {
+  transform: rotate(10deg);
+}
+
+/* WHEN SUBMITTED */
+.fa-check-circle {
+  color: #56e456;
+  font-size: 50px;
+}
+
+#form-status {
+  color: #E66161;
+  font-size: 13px;
+  line-height: 1.4;
+  height: 40px;
 }
 
 /* DARK MODE */
@@ -253,6 +270,11 @@
 .dark-mode .fieldset input.filled,
 .dark-mode .fieldset textarea.filled  {
   background-color: #ffffff11!important;
+}
+
+.dark-mode .btn-submit:hover {
+  border-color: #ffe605;
+  color: #ffe605;
 }
 
 @media only screen and (min-width: 650px) {

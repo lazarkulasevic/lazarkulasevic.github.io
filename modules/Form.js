@@ -3,6 +3,9 @@ const formFields = document.querySelectorAll('.form-fields');
 const nameField = formFields[0];
 const emailField = formFields[1];
 const messageField = formFields[2];
+const btnSubmit = document.querySelector('.btn-submit');
+const formStatus = document.getElementById('form-status');
+const formWrapper = document.querySelector('.form-wrapper');
 
 function formStyle() {
   form.addEventListener('focus', event => {
@@ -20,19 +23,18 @@ function formStyle() {
       } else {
         field.classList.remove('filled');
       }
-    })
-  });  
+    });
+
+  });
 }
 
-let data = {};
+let data = {
+  name: "",
+  email: "",
+  message: ""
+}
 
 function formValidation() {
-  data = {
-    name: "",
-    email: "",
-    message: ""
-  }
-
   nameField.addEventListener('blur', () => {
     if (nameField.value.length > 2 || !nameField.value) {
       nameField.classList.remove('error');
@@ -71,10 +73,12 @@ function formSubmit() {
 
     if (data.name !== "" && data.email !== "" && data.message !== "") {
       sending(data);
-    } else {
-      console.log('Make sure you have entered the correct data, otherwise the form cannot be sent.');
-
+      form.reset();
+      handleButton();
+      return;
     }
+
+    errorMsg("Make sure you have entered the correct data, otherwise the form cannot be sent.");
   });
 }
 
@@ -87,13 +91,25 @@ async function sending(data) {
     },
     body: JSON.stringify(data)
   });
-  
+
   if (response.status !== 200) {
+    errorMsg("Oops! There's been an error while sending the form. Please try again.");
     throw new Error("Oops! There's been an error while sending the form. Please try again.")
-    
   }
   let result = await response.json();
+
   return result;
+}
+
+let errorMsg = (message) => {
+  return formStatus.textContent = `${message}`;
+}
+
+let handleButton = () => {
+  btnSubmit.style.display = "none";
+  let checkIcon = document.createElement('i');
+  checkIcon.setAttribute('class', 'fa fa-check-circle');
+  formWrapper.appendChild(checkIcon);
 }
 
 export {formStyle, formValidation, formSubmit};

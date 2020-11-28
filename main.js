@@ -13,7 +13,7 @@ const itemImgAll = document.querySelectorAll(".item img");
 darkMode(time);
 
 // dark
-// bodyElement.classList.add("dark-mode");
+bodyElement.classList.add("dark-mode");
 
 inputSwitch.addEventListener("click", () => {
   bodyElement.classList.toggle("dark-mode");
@@ -30,7 +30,7 @@ function darkMode(time) {
 }
 
 // PHONE & TOUCH
-if ("ontouchstart" in bodyElement) {
+if ("ontouchstart" in window) {
   itemTitleAll.forEach((itemTitle) => {
     itemTitle.style.visibility = "visible";
     itemTitle.style.backgroundColor = "#0000007c";
@@ -42,7 +42,7 @@ if ("ontouchstart" in bodyElement) {
 }
 
 // Last Skill 
-let dueDate = new Date(2020, 10, 2).getTime();
+let dueDate = new Date(2020, 10, 10).getTime();
 let dateTime = date.getTime();
 countdown(dateTime, dueDate);
 clockMouseEvent('mouseenter', 'mouseleave');
