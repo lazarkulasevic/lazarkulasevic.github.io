@@ -72,6 +72,7 @@ function formSubmit() {
     event.preventDefault();
 
     if (data.name !== "" && data.email !== "" && data.message !== "") {
+      errorMsg("");
       sending(data);
       form.reset();
       handleButton();
