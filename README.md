@@ -3,7 +3,7 @@
 Built using:
 - HTML5
 - CSS3 (Responsive Web Design)
-- JavaScript (Class)
+- JavaScript (used a class for portfolio items)
 
 Functionalities:
 - Dark mode
