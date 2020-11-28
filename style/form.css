@@ -38,7 +38,7 @@
   resize: none;
   transition-delay: 0.2s;
   transition-duration: 0.3s;
-  height: 56px;
+  height: 46px;
 }
 
 .fieldset textarea:focus,
