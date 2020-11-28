@@ -12,9 +12,6 @@ const itemImgAll = document.querySelectorAll(".item img");
 
 darkMode(time);
 
-// dark
-bodyElement.classList.add("dark-mode");
-
 inputSwitch.addEventListener("click", () => {
   bodyElement.classList.toggle("dark-mode");
 });
