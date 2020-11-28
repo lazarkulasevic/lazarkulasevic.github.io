@@ -10,7 +10,8 @@ Functionalities:
   - Button
   - Auto-ON at 8 PM until 6 AM
 - New skill emphasizer (let everyone know what I'm working on right now)
- 
+- Contact form added 
+  - Created by [Christian Petersen](https://codepen.io/cbp/pen/XJGQqZ) on Codepen and modified by me
+
 Plans for the future:
-- Add a contact form (probably Firebase)
 - Add a blog page
