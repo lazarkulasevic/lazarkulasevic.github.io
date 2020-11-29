@@ -47,7 +47,7 @@ function formValidation() {
   const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   emailField.addEventListener('blur', () => {
-    if (emailField.value.match(regexEmail) || !emailField.value) {
+    if (emailField.value.trim().match(regexEmail) || !emailField.value) {
       emailField.classList.remove('error');
       data.email = emailField.value;
     } else {
