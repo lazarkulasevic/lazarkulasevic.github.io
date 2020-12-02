@@ -1,0 +1,28 @@
+body {
+  background-color: #363636;
+  color: #eee;
+}
+
+.featured img {
+  width: 100%;
+}
+
+#blog {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+  width: 200px;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.read-more {
+  display: block;
+  padding: 8px 20px;
+  background-color: #eee;
+  text-align: center;
+  text-decoration: none;
+}
