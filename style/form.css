@@ -200,6 +200,7 @@
 
 .fa-paper-plane {
   transform: rotate(10deg);
+  overflow: hidden;
 }
 
 /* WHEN SUBMITTED */
