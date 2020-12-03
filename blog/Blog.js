@@ -1,4 +1,5 @@
 import Posts from './Post.js';
+import db from './config.js';
 
 class Blog {
     constructor() {
@@ -6,7 +7,7 @@ class Blog {
         this.blogEl = document.getElementById('blog');
     }
 
-    ui(doc, id) {
+    ui(doc) {
         let card = document.createElement('div');
         card.setAttribute('class', 'card');
 
@@ -62,7 +63,7 @@ class Blog {
         .then(snapshot => {
             snapshot.docs.forEach(doc => {
                 if (doc.data().published) {
-                    this.ui(doc.data(), doc.id);
+                    this.ui(doc.data());
                 }
             })
         })

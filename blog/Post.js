@@ -1,3 +1,5 @@
+import db from './config.js';
+
 class Post {
     constructor(title, text) {
         this.title = title;
