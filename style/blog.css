@@ -1,6 +1,8 @@
 body {
-  background-color: #363636;
+  background: #363636;
   color: #eee;
+
+  width: 800px;
 }
 
 .featured img {
@@ -9,11 +11,12 @@ body {
 
 #blog {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px;
 }
 
 .card {
-  width: 200px;
+  width: 300px;
   border: 1px solid white;
   border-radius: 10px;
   padding: 10px;

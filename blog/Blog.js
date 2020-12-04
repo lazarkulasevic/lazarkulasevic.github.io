@@ -1,5 +1,5 @@
 import Posts from './Post.js';
-import db from './config.js';
+import db from '../config.js';
 
 class Blog {
     constructor() {
@@ -73,19 +73,3 @@ class Blog {
 let blog = new Blog()
 
 blog.getPosts();
-
-let post = {
-    published: true,
-    slug: '2020-12-01/example-title-2',
-
-    title: 'Example Title 2',
-    date: firebase.firestore.Timestamp.fromDate(new Date()),
-    image: 'images/LK.png',
-    text: `Some text example. Lorem ipsum dolor sit amet consectetur, 
-    adipisicing elit. Sapiente voluptatum est dignissimos, 
-    vel unde illo excepturi recusandae sunt repudiandae 
-    suscipit beatae corrupti quaerat hic officia explicabo 
-    cumque magni soluta aliquam!`
-}
-
-// db.collection('blog').doc().set(post)
