@@ -70,7 +70,7 @@ class Post {
         date.appendChild(dateText);
         card.appendChild(date);
 
-        let excerpt = document.createElement('excerpt');
+        let excerpt = document.createElement('p');
         excerpt.setAttribute('class', 'excerpt');
         let excerptText = document.createTextNode(doc.text.slice(0, 100) + '...');
         excerpt.appendChild(excerptText);

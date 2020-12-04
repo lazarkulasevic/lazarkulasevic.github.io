@@ -1,4 +1,3 @@
-import Posts from './Post.js';
 import db from '../config.js';
 
 class Blog {
@@ -29,7 +28,7 @@ class Blog {
         date.appendChild(dateText);
         card.appendChild(date);
 
-        let excerpt = document.createElement('excerpt');
+        let excerpt = document.createElement('p');
         excerpt.setAttribute('class', 'excerpt');
         let excerptText = document.createTextNode(doc.text.slice(0, 160) + '...');
         excerpt.appendChild(excerptText);
@@ -71,5 +70,5 @@ class Blog {
 }
 
 let blog = new Blog()
-
 blog.getPosts();
+
