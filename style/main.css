@@ -355,7 +355,6 @@ footer {
 	}
 
 	.item-title {
-		font-size: 24px;
 		padding: 6px 10px;
 		width: 60%;
 	}
@@ -403,8 +402,8 @@ footer {
 	}
 
 	.item {
-		width: 580px;
-		height: 320px;
+		width: 380px;
+		height: 220px;
 		margin: 30px 30px;
 	}
 
@@ -414,7 +413,6 @@ footer {
 	}
 
 	.item-title {
-		font-size: 28px;
 		padding: 10px 15px;
 		width: 60%;
 	}

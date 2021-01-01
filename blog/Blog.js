@@ -1,10 +1,30 @@
 import db from '../config.js';
+import Router from './router.js';
 
 class Blog {
+    router = new Router({
+        mode: 'hash',
+        root: '/'
+    });
+
     constructor() {
         this.blog = db.collection('blog');
         this.blogEl = document.getElementById('blog');
     }
+
+    // setRoute() {
+    //     router
+    //         .add(/about/, () => {
+    //             alert('welcome in about page');
+    //         })
+    //         .add(/products\/(.*)\/specification\/(.*)/, (id, specification) => {
+    //             alert(`products: ${id} specification: ${specification}`);
+    //         })
+    //         .add('', () => {
+    //             // general controller
+    //             console.log('welcome in catch all controller');
+    //         });
+    // }
 
     ui(doc) {
         let card = document.createElement('div');
@@ -55,15 +75,14 @@ class Blog {
 
     getPosts() {
         this.blog
+        .where('published', '==', true)
         .orderBy('date', 'desc')
         .get()
         .then(snapshot => {
             snapshot.docs.forEach(doc => {
-                if (doc.data().published) {
-                    this.ui(doc.data());
-                }
+                this.ui(doc.data());
             })
-        })
+        });
     }
 }
 

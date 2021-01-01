@@ -7,16 +7,15 @@ const publish = document.getElementById('btn-publish');
 const deletedPosts = document.getElementById('deleted-posts');
 const postsDesc = document.getElementById('posts-description');
 
-
 class Dashboard {
     constructor(title, text) {
         this.title = title;
         this.text = text;
-        this.save = document.getElementById('btn-save');
         this.blog = db.collection('blog');
         this.posts = document.getElementById('posts');
+        this.save = document.getElementById('btn-save');
         this.trash = document.getElementById('btn-trash');
-        this.id = '';
+        this.id = null;
     }
 
     set title(value) {
@@ -44,6 +43,7 @@ class Dashboard {
     postUI(doc, id, boolean) {
         let card = document.createElement('div');
         card.setAttribute('class', 'card');
+        card.setAttribute('data-id', id);
 
         let h2 = document.createElement('h2');
         h2.setAttribute('class', 'post-title');
@@ -64,14 +64,12 @@ class Dashboard {
 
         let editBtn = document.createElement('button');
         editBtn.textContent = 'Edit';
-        editBtn.setAttribute('data-id', `${id}`);
         editBtn.setAttribute('class', 'edit');
         card.appendChild(editBtn);
 
         if (boolean) {
             let deleteBtn = document.createElement('button');
             deleteBtn.textContent = 'Delete forever';
-            deleteBtn.setAttribute('data-id', `${id}`);
             deleteBtn.setAttribute('class', 'delete-forever');
             card.appendChild(deleteBtn);
         } else {
@@ -84,42 +82,44 @@ class Dashboard {
         this.posts.prepend(card);
     }
 
-    editOrDeletePost() {
+    editPost() {
         this.posts.addEventListener('click', (event) => {
-            if (event.target.tagName === 'BUTTON' && event.target.textContent === "Edit") {
-                this.id = event.target.getAttribute('data-id');
+            if (event.target.tagName === 'BUTTON' && event.target.textContent === "Edit") {                
+                this.id = event.target.parentElement.getAttribute('data-id');
+                this.getTitleText(this.id);
                 
                 publish.style.display = "block";
                 this.trash.style.display = "block";
+            }
+        });
+    }
 
-                this.blog
-                .doc(this.id)
-                .get()
-                .then(doc => {
-                    if (doc.exists) {
-                        title.value = doc.data().title;
-                        text.value = doc.data().text;
-                        publish.textContent = doc.data().published ? 'Revert to draft': 'Publish';
-                        this.trash.textContent = doc.data().deleted ? 'Restore': 'Trash';
-                    }
-                })
-            } else if (event.target.tagName === 'BUTTON' && event.target.textContent === "Delete forever") {
-                this.id = event.target.getAttribute('data-id');
-
-                let status = confirm('Are you sure you want to DELETE post from database?');
-                if (status) {
-                    this.deleteForever(this.id);
-                }
-                return;
+    getTitleText(id) {
+        this.blog
+        .doc(id)
+        .get()
+        .then(doc => {
+            if (doc.exists) {
+                title.value = doc.data().title;
+                text.value = doc.data().text;
+                publish.textContent = doc.data().published ? 'Revert to draft': 'Publish';
+                this.trash.textContent = doc.data().deleted ? 'Restore': 'Trash';
             }
         })
+        .catch(err => console.error(err));
     }
 
-    async deleteForever(id) {
-        return await this.blog.doc(id).delete()
-            .catch(err => alert('Something went wrong. Error:', err));
+    deletePost() {
+        this.posts.addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON' 
+                && event.target.textContent === "Delete forever" 
+                && confirm('Are you sure you want to DELETE post from database?')) {
+                this.deleteForever(event.target.parentElement.getAttribute('data-id'));
+            }
+        });
     }
 
+    
     async savePost(title, text) {
         const firstDate = new Date();
 
@@ -134,10 +134,10 @@ class Dashboard {
             text: text
         }
 
-        if (this.id) {
-            return await this.blog.doc(this.id).update(post);
+        if (this.id && this.id !== null) {
+            await this.blog.doc(this.id).update(post);
         } else {
-            return await this.blog.doc().set(post);
+            await this.blog.doc().set(post);
         }
     }
 
@@ -151,56 +151,51 @@ class Dashboard {
 
     trashEvent() {
         this.trash.addEventListener('click', event => {
-            if (event.target.textContent === "Trash") {
-                let state = confirm('Are you sure you want to move this post to trash?');
-                if (state) {
-                    this.moveToTrash(true);
-                }
-                return document.querySelector(`button[data-id="${this.id}"]`).parentElement.remove();
-            } else {
-                this.moveToTrash(false);
+            if (event.target.textContent === "Trash" 
+            && confirm('Are you sure you want to move this post to trash?')) {
+                this.moveToTrash();
+                document.querySelector(`div[data-id="${this.id}"]`).remove();
             }
         })
     }
 
-    async moveToTrash(boolean) {
+    async moveToTrash() {
         return await this.blog.doc(this.id).update({
             published: false,
-            deleted: boolean
+            deleted: true
+        })
+        .then(() => {
+            title.value = '';
+            text.value = '';
         })
         .catch(err => alert('Something went wrong. Error:', err));
     }
 
-    autosave(title, text, id) {
-        let timer = setTimeout(() => {
-            this.savePost(title, text, id);
-        }, 10000);
+    // autosave(title, text, id) {
+    //     let timer = setTimeout(() => {
+    //         this.savePost(title, text, id);
+    //     }, 10000);
         
-        // needs to be completed
+    //     // needs to be completed
+    // }
+
+    async deleteForever(id) {
+        await this.blog.doc(id).delete()
+            .catch(err => alert('Something went wrong. Error:', err));
+        return document.querySelector(`div[data-id="${id}"]`).remove();
     }
 
     getPosts(boolean) {
         this.posts.innerHTML = '';
 
         this.blog
+        .where('deleted', '==', boolean)
         .orderBy('date', 'asc')
         .onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {
-                if (change.type === 'added' && change.doc.data().deleted === boolean) {
+                if (change.type === 'added') {
                     this.postUI(change.doc.data(), change.doc.id, boolean);
-                } else if (change.type === 'removed') {
-
-
-
-
-                    
-                    // Javlja se error
-
-
-
-
-                    document.querySelector(`button[data-id="${change.doc.id}"]`).parentElement.remove();
-                } 
+                }
             });
         });
     }
@@ -209,8 +204,9 @@ class Dashboard {
 const post = new Dashboard();
 
 post.getPosts(false); // print posts 
-post.editOrDeletePost(); // event
-post.trashEvent();
+post.editPost(); // event
+post.deletePost(); // event
+post.trashEvent(); // event
 
 let toggle;
 deletedPosts.addEventListener('click', () => {
@@ -233,15 +229,10 @@ save.addEventListener('click', () => {
 });
 
 publish.addEventListener('click', () => {
-    if (publish.textContent === "Publish") {
-        let state = confirm('Are you sure?');
-        if (state) {
-            post.publishPost(true);
-        }
-        return;
-    } else {
-        post.publishPost(false);
+    if (publish.textContent === "Publish" && confirm('Are you sure?')) {
+        return post.publishPost(true);
     }
+    post.publishPost(false);
 });
 
 
