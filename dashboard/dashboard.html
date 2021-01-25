@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+	<div class="left">
+		<div class="buttons">
+			<button id="deleted-posts">Deleted posts</button>
+		</div>
+		<h3 id="posts-description">Active posts</h3>
+		<div id="posts"></div>
+	</div>
+
+	<div class="middle">
+		<div class="container">
+			<input type="text" name="title" id="title" placeholder="Title">
+			<div class="buttons">
+				<button class="text-styler"><b>b</b></button>
+				<button class="text-styler"><i>i</i></button>
+				<button class="text-styler"><u>u</u></button>
+			</div>
+			<textarea name="text" id="text"></textarea>
+		</div>
+	</div>
+
+	<div class="right">
+		<div class="buttons">
+			<button id="btn-save">Save</button>
+			<button id="btn-publish"></button>
+			<button id="btn-trash"></button>
+		</div>
+	</div>
+
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+	<script type="module" src="dashboard.js"></script>
+</body>
+
+</html>
