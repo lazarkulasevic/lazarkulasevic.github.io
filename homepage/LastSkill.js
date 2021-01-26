@@ -31,7 +31,7 @@ function countdown(dateTime, dueDate) {
 		text = document.createTextNode(
 			`I have learned VueJS basics.`
 		);
-		lastSkill.textContent = 'VueJS (basics)';
+		return lastSkill.textContent = 'VueJS (basics)';
 	}
 	spanCountdown.appendChild(text);
 }
