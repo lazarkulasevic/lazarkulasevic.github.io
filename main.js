@@ -1,6 +1,6 @@
-import {countdown, clockMouseEvent} from './homepage/LastSkill.js';
 import PortfolioItem from './homepage/PortfolioItem.js';
 import {formStyle, formValidation, formSubmit} from './homepage/Form.js'
+import {countdown, clockMouseEvent} from './homepage/LastSkill.js';
 
 const bodyElement = document.body;
 const date = new Date();
