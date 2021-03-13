@@ -46,7 +46,7 @@ function darkMode(time) {
 }
 
 // Last Skill 
-let dueDate = new Date(2020, 10, 10).getTime();
+let dueDate = new Date(2021, 6, 1).getTime();
 let dateTime = date.getTime();
 countdown(dateTime, dueDate);
 clockMouseEvent('mouseenter', 'mouseleave');

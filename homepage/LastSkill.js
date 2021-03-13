@@ -17,21 +17,21 @@ function countdown(dateTime, dueDate) {
 
 	if (daysLeft && weeksLeft) {
 		text = document.createTextNode(
-			`Approximately ${weeksLeft} and ${daysLeft} left to learn Vue basics.`
+			`Approximately ${weeksLeft} and ${daysLeft} left to learn Node.js.`
 		);
 	} else if (!daysLeft && weeksLeft) {
 		text = document.createTextNode(
-			`Approximately ${weeksLeft} left to learn Vue basics.`
+			`Approximately ${weeksLeft} left to learn Node.js.`
 		);
 	} else if (daysLeft && !weeksLeft) {
 		text = document.createTextNode(
-			`Approximately ${daysLeft} left to learn Vue basics.`
+			`Approximately ${daysLeft} left to learn Node.js.`
 		);
 	} else {
 		text = document.createTextNode(
-			`I have learned VueJS basics.`
+			`I have learned Node.js.`
 		);
-		lastSkill.textContent = 'VueJS (basics)';
+		lastSkill.textContent = 'Node.js';
 	}
 	spanCountdown.appendChild(text);
 }

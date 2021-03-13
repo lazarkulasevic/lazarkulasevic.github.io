@@ -124,15 +124,6 @@ input:checked + .slider:before {
 	transform: translateX(26px);
 }
 
-.header {
-	display: flex;
-	flex-flow: wrap;
-	justify-content: center;
-	align-items: center;
-	top: 50%;
-	height: 96vh;
-}
-
 #title h1 {
 	margin: 10px 30px 20px;
 	font-size: 26px;
