@@ -15,6 +15,7 @@ portfolio.item('Memory Game', 'images/memory-game-screen.png', 'https://lazarkul
 portfolio.item('Guess The Number', 'images/binary-search-featured.png', 'https://lazarkulasevic.github.io/binary-search/');
 portfolio.item('Public Chat', 'images/chat-screen.png', 'https://lazars-chat.web.app/');
 portfolio.item('Scrumdomize', 'images/scrumdomize.png', 'https://lazarkulasevic.github.io/scrumdomize/');
+portfolio.item('Min-heighter', 'https://lazarkulasevic.github.io/min-heighter/images/min-heighter.png', 'https://lazarkulasevic.github.io/min-heighter/');
 
 const itemTitleAll = document.querySelectorAll(".item-title");
 
