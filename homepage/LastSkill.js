@@ -17,15 +17,15 @@ function countdown(dateTime, dueDate) {
 
 	if (daysLeft && weeksLeft) {
 		text = document.createTextNode(
-			`Approximately ${weeksLeft} and ${daysLeft} left to learn Node.js.`
+			`Approximately ${weeksLeft} and ${daysLeft} left to learn Node.js with Express and MongoDB.`
 		);
 	} else if (!daysLeft && weeksLeft) {
 		text = document.createTextNode(
-			`Approximately ${weeksLeft} left to learn Node.js.`
+			`Approximately ${weeksLeft} left to learn Node.js with Express and MongoDB.`
 		);
 	} else if (daysLeft && !weeksLeft) {
 		text = document.createTextNode(
-			`Approximately ${daysLeft} left to learn Node.js.`
+			`Approximately ${daysLeft} left to learn Node.js with Express and MongoDB.`
 		);
 	} else {
 		text = document.createTextNode(
