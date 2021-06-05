@@ -1,4 +1,5 @@
-import PortfolioItem from './homepage/PortfolioItem.js';
+import PortfolioItem from './homepage/portfolio/PortfolioItem.js';
+import items from './homepage/portfolio/items.js'
 import {formStyle, formValidation, formSubmit} from './homepage/Form.js'
 import {countdown, clockMouseEvent} from './homepage/LastSkill.js';
 
@@ -11,12 +12,10 @@ const inputSwitch = document.querySelector("input[name=dark-mode]");
 // Portfolio
 const portfolio = new PortfolioItem(divPortfolio);
 
-portfolio.item('Memory Game', 'images/memory-game-screen.png', 'https://lazarkulasevic.github.io/memory-game/');
-portfolio.item('Guess The Number', 'images/binary-search-featured.png', 'https://lazarkulasevic.github.io/binary-search/');
-portfolio.item('Public Chat', 'images/chat-screen.png', 'https://lazars-chat.web.app/');
-portfolio.item('Scrumdomize', 'images/scrumdomize.png', 'https://lazarkulasevic.github.io/scrumdomize/');
-portfolio.item('Min-heighter', 'https://lazarkulasevic.github.io/min-heighter/images/min-heighter.png', 'https://lazarkulasevic.github.io/min-heighter/');
-portfolio.item('JSON Form', 'https://lazarkulasevic.github.io/json-form/images/json-form-featured.png', 'https://lazarkulasevic.github.io/json-form/');
+items.forEach(item => {
+  const { name, image, link } = item
+  portfolio.item(name, image, link)
+})
 
 const itemTitleAll = document.querySelectorAll(".item-title");
 
