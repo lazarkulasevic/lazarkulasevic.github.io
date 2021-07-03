@@ -10,10 +10,10 @@ function countdown(dateTime, dueDate) {
 	let text;
 
 	daysLeft = (daysLeft % 7) > 1 ? (daysLeft % 7) + ' days' :
-		(daysLeft % 7) == 1 ? (daysLeft % 7) + ' day' : '';
+		(daysLeft % 7) === 1 ? (daysLeft % 7) + ' day' : '';
 
 	weeksLeft = weeksLeft > 1 ? weeksLeft + ' weeks' :
-		weeksLeft == 1 ? weeksLeft + ' week' : '';
+		weeksLeft === 1 ? weeksLeft + ' week' : '';
 
 	if (daysLeft && weeksLeft) {
 		text = document.createTextNode(
@@ -39,7 +39,7 @@ function countdown(dateTime, dueDate) {
 function clockMouseEvent(eventOn, eventOff) {
 	let clicked = false;
 	faClock.addEventListener(eventOn, () => {
-		if (eventOn == 'touchstart' && !clicked) {
+		if (eventOn === 'touchstart' && !clicked) {
 			clicked = true;
 
 			let divAlert = document.createElement('div');

@@ -11,11 +11,11 @@ function formStyle() {
   form.addEventListener('focus', event => {
     event.target.classList.add('bg-input')
   }, true)
-  
+
   form.addEventListener('blur', event => {
     event.target.classList.remove('bg-input');
   }, true)
-  
+
   formFields.forEach(field => {
     field.addEventListener('change', event => {
       if (event.target.value) {
@@ -44,7 +44,7 @@ function formValidation() {
     }
   });
 
-  const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   emailField.addEventListener('blur', () => {
     if (emailField.value.trim().match(regexEmail) || !emailField.value) {
@@ -67,7 +67,7 @@ function formValidation() {
   return data;
 }
 
-function formSubmit() {
+async function formSubmit() {
   form.addEventListener('submit', event => {
     event.preventDefault();
 
@@ -97,9 +97,7 @@ async function sending(data) {
     errorMsg("Oops! There's been an error while sending the form. Please try again.");
     throw new Error("Oops! There's been an error while sending the form. Please try again.")
   }
-  let result = await response.json();
-
-  return result;
+  return await response.json();
 }
 
 let errorMsg = (message) => {

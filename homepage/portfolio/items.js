@@ -30,5 +30,10 @@ export default [
         name: 'JSON Form',
         image: `${baseURL}json-form/images/json-form-featured.png`,
         link: `${baseURL}json-form`
+    },
+    {
+        name: 'Javascript Router',
+        image: 'https://javascript-router.herokuapp.com/static/images/featured.png',
+        link: 'https://javascript-router.herokuapp.com/'
     }
 ]
