@@ -1,0 +1,17 @@
+{
+  "name": "minimalistico",
+  "version": "1.0.0",
+  "description": "Personal portfolio",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev docs --open",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
+  },
+  "author": "Lazar Kulasevic",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.2",
+    "vue": "^3.2.37"
+  }
+}
