@@ -39,27 +39,11 @@ export default {
         ],
         socialLinks: [
             { icon: 'linkedin', link: 'https://www.linkedin.com/in/lazarkulasevic/' }
-        ],
-        // sidebar: {
-        //     '/portfolio/': [
-        //         {
-        //             text: 'Navigation',
-        //             items: [
-        //                 { text: 'Portfolio', link: '/portfolio/' },
-        //                 { text: 'Intro', link: '/portfolio/#intro' },
-        //                 { text: 'Tech Stack', link: '/portfolio/#tech-stack' }
-        //             ]
-        //         }
-        //     ],
-        // },
-        footer: {
-            message: 'Thank you for visiting my website!',
-            copyright: '© 2022 - Lazar Kulasevic'
-        }
+        ]
     },
     markdown: {
         // options for markdown-it-anchor
-        // anchor: { permalink: true },
+        anchor: { permalink: true },
 
         // options for markdown-it-toc
         toc: { includeLevel: [1, 2] }

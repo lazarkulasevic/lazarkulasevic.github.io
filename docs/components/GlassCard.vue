@@ -23,6 +23,8 @@ const height = `${props.height}px`
 </template>
 
 <style lang="scss" scoped>
+@use '../style/variables.scss' as v;
+
 .card {
     position: relative;
     width: calc(v-bind('height') * 1.4);
@@ -51,33 +53,33 @@ const height = `${props.height}px`
     }
 
     span:nth-of-type(1) {
-        background: #33ca7f;
+        background: v.$base-green;
     }
 
     span:nth-of-type(2) {
-        background: #fdca40;
+        background: v.$base-yellow;
     }
 
     span:nth-of-type(3) {
-        background: #3772ff;
+        background: v.$base-blue;
     }
 
     span:nth-of-type(4) {
-        background: #ff1654;
+        background: v.$base-red;
     }
 }
 
 .glass {
     position: absolute;
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.6);
     border-radius: 20px;
     border: 2px solid var(--vp-c-white);
     overflow: hidden;
-    justify-content: flex-start;
-    align-items: flex-end;
 
     &::before {
         content: "";
@@ -86,7 +88,7 @@ const height = `${props.height}px`
         left: -50%;
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.2);
         pointer-events: none;
         transform: skewX(345deg);
     }
