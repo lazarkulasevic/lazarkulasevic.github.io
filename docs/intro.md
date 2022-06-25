@@ -1,3 +1,0 @@
----
-editLink: true
----

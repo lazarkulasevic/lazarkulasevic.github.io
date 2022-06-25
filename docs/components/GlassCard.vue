@@ -10,10 +10,12 @@ const height = `${props.height}px`
 
 <template>
     <div class="card">
-        <span style="--glass-card-bg-color: 0;"></span>
-        <span style="--glass-card-bg-color: 1;"></span>
-        <span style="--glass-card-bg-color: 2;"></span>
-        <span style="--glass-card-bg-color: 3;"></span>
+        <div class="bg-light">
+            <span style="--glass-card-bg-color: 0;"></span>
+            <span style="--glass-card-bg-color: 1;"></span>
+            <span style="--glass-card-bg-color: 2;"></span>
+            <span style="--glass-card-bg-color: 3;"></span>
+        </div>
         <div class="glass">
             <slot></slot>
         </div>
@@ -23,21 +25,28 @@ const height = `${props.height}px`
 <style lang="scss" scoped>
 .card {
     position: relative;
+    width: calc(v-bind('height') * 1.4);
+    height: v-bind('height');
+}
+
+.bg-light {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
 
     span {
         position: absolute;
-        top: 0;
+        top: 50%;
         width: v-bind('height');
         height: v-bind('height');
         display: block;
-        background: #1111;
         border-radius: 50%;
         transform-origin: calc(v-bind('height') / 1.94) 0;
         transform: rotate(calc(90deg * var(--glass-card-bg-color)));
-        filter: blur(calc(v-bind('height') / 3.75));
+        filter: blur(calc(v-bind('height') / 4.75));
         opacity: 0.75;
     }
 
@@ -61,11 +70,11 @@ const height = `${props.height}px`
 .glass {
     position: absolute;
     display: flex;
-    width: calc(v-bind('height') * 1.5);
-    height: v-bind('height');
+    width: 100%;
+    height: 100%;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 20px;
-    border: 2px solid #ffff;
+    border: 2px solid var(--vp-c-white);
     overflow: hidden;
     justify-content: flex-start;
     align-items: flex-end;
