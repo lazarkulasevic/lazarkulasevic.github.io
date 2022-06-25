@@ -3,7 +3,6 @@ layout: home
 
 editLink: false
 title: Welcome
-description: Lazar's personal web space.
 hero:
   name: Hi, I am Lazar
   text: Front-end Developer who thrives in Vue.js

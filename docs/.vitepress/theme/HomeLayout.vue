@@ -9,7 +9,7 @@ const { Layout } = DefaultTheme
 <template>
     <Layout>
         <template #home-hero-after>
-            <GlassCard>
+            <GlassCard :height="216">
                 <GlassCardCodeSnippet />
             </GlassCard>
         </template>
@@ -18,6 +18,13 @@ const { Layout } = DefaultTheme
 
 <style lang="scss" scoped>
 @use '../../style/breakpoints.scss' as b;
+
+.Layout::v-deep(.VPContent.is-home) {
+    display: grid;
+    align-content: center;
+    align-items: center;
+    justify-items: stretch;
+}
 
 .Layout::v-deep(.VPHome) {
     display: flex;
@@ -30,7 +37,7 @@ const { Layout } = DefaultTheme
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
-        padding-top: 50px;
+        min-height: 90vh;
     }
 }
 
