@@ -43,9 +43,6 @@ export default {
     },
     markdown: {
         // options for markdown-it-anchor
-        anchor: { permalink: true },
-
-        // options for markdown-it-toc
-        toc: { includeLevel: [1, 2] }
+        anchor: { permalink: true }
     }
 }

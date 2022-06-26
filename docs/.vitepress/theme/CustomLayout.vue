@@ -17,7 +17,7 @@ const { Layout } = DefaultTheme
 </template>
 
 <style lang="scss" scoped>
-@use '../../style/breakpoints.scss' as b;
+@use "../../style/breakpoints.scss" as b;
 
 .Layout::v-deep(.VPContent.is-home) {
     display: grid;
@@ -38,7 +38,14 @@ const { Layout } = DefaultTheme
         align-items: center;
         justify-content: space-around;
         min-height: 90vh;
+        .VPHero {
+            padding-left: 100px;
+            padding-right: 0;
+        }
     }
 }
 
+.Layout::v-deep(.VPContent .aside) {
+    display: none;
+}
 </style>

@@ -1,6 +1,5 @@
 ---
 layout: home
-
 editLink: false
 title: Welcome
 hero:
