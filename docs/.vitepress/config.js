@@ -18,14 +18,14 @@ export default {
                                 activeMatch: '/portfolio/#intro'
                             },
                             {
-                                text: 'Tech Stack',
-                                link: '/portfolio/#tech-stack',
-                                activeMatch: '/portfolio/#tech-stack'
-                            },
-                            {
                                 text: 'Projects',
                                 link: '/portfolio/#projects',
                                 activeMatch: '/portfolio/#projects'
+                            },
+                            {
+                                text: 'Tech Stack',
+                                link: '/portfolio/#tech-stack',
+                                activeMatch: '/portfolio/#tech-stack'
                             },
                             {
                                 text: 'Contact',
@@ -38,7 +38,8 @@ export default {
             },
         ],
         socialLinks: [
-            { icon: 'linkedin', link: 'https://www.linkedin.com/in/lazarkulasevic/' }
+            { icon: 'linkedin', link: 'https://www.linkedin.com/in/lazarkulasevic/' },
+            { icon: 'github', link: 'https://github.com/lazarkulasevic/' }
         ]
     },
     markdown: {

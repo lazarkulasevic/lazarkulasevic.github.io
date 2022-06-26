@@ -21,7 +21,7 @@ const lightOrder = handleOrder(props.startLight)
 <template>
     <div class="card">
         <div class="bg-light">
-            <span v-for="i of lightOrder" :key="i" :style="`--glass-card-bg-color: ${i};`"></span>
+            <span v-for="i of lightOrder" :key="i" :style="`--glass-card-index: ${i};`"></span>
         </div>
         <div class="glass">
             <slot></slot>
@@ -54,7 +54,7 @@ const lightOrder = handleOrder(props.startLight)
         display: block;
         border-radius: 50%;
         transform-origin: calc(v-bind("height") / 1.94) 0;
-        transform: rotate(calc(90deg * var(--glass-card-bg-color)));
+        transform: rotate(calc(90deg * var(--glass-card-index)));
         filter: blur(calc(v-bind("height") / 4.75));
         opacity: 0.75;
         z-index: -1;
@@ -85,7 +85,7 @@ const lightOrder = handleOrder(props.startLight)
     align-items: center;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     border: 2px solid var(--vp-c-white);
     overflow: hidden;
@@ -97,7 +97,7 @@ const lightOrder = handleOrder(props.startLight)
         left: -50%;
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
         pointer-events: none;
         transform: skewX(345deg);
     }
