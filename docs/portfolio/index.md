@@ -14,15 +14,9 @@ cards:
 import GridCards from '../components/GridCards.vue'
 </script>
 
-# [Intro](/portfolio/#intro)
+# [Brief Intro](/portfolio/#intro)
 
-Almost 2 years of experience
-
-Software Developer with a Master's degree in Chemistry. And before you start judging me for not having a degree in Computer Science, let me tell you something. Chemistry is already a science and I have a computer in front of me, so if you put those together... that's it, you've got it!
-
-Jokes aside, I love coding for the web. Currently, I develop front-ends by tweaking UIs so that they don't piss off the user. We don't want that for sure.
-
-I used to be a science blogger because I love science too. And I also own a personal blog where I used to write about my personal views on life and learning. It's in Serbian (my native language), so if you come from the same geolocation as I do, type in my full name in the browser and read away!
+Front-end Developer with nearly 2 years of professional experience. Even though I am only at the beginning of my career, so far I've worked on several different projects that included some serious challenges, such as advanced data remapping and manipulation on client-side, establishing clean front-end architecture for new technical features, building CI/CD pipelines, but also some soft work such as pixel-perfect development.
 
 <br/>
 
