@@ -53,17 +53,18 @@ Projects listed below are selected few, and they are a product of my learning cu
 
 Currently, it all revolves around JavaScript.
 
-|        Tech        | Sub-tech                                                                        |
-|:------------------:|---------------------------------------------------------------------------------|
-|     HTML, CSS      | SCSS, PostCSS and major CSS frameworks (Material, Element, Bootstrap, Tailwind) |
-|     JavaScript     | Vue.js, React.js                                                                |
-|    Unit testing    | Jest (Vue-test-utils)                                                           |
-|      Bundlers      | Vite, Webpack                                                                   |
-|      Node.js       | Express.js                                                                      |
-|  NoSQL databases   | Cloud Firestore                                                                 |
-|     Serverless     | Firebase services (i.e., Firestore, Storage, Auth, Cloud Functions)             |
-|        Git         | GitLab                                                                          |
-|  CI/CD (frontend)  | Jenkins, Docker, Kubernetes, SonarQube                                          |
+|       Tech       | Sub-tech                                                                        |
+|:----------------:|---------------------------------------------------------------------------------|
+|    HTML, CSS     | SCSS, PostCSS and major CSS frameworks (Material, Element, Bootstrap, Tailwind) |
+|    JavaScript    | Vue.js, React.js                                                                |
+|   Unit testing   | Jest (Vue-test-utils)                                                           |
+|     Bundlers     | Vite, Webpack                                                                   |
+|     JamStack     | VitePress                                                                       |
+|     Node.js      | Express.js                                                                      |
+| NoSQL databases  | Cloud Firestore                                                                 |
+|    Serverless    | Firebase services (i.e., Firestore, Storage, Auth, Cloud Functions)             |
+|       Git        | GitLab, GitHub, BitBucket, SourceTree                                           |
+| CI/CD (frontend) | Jenkins, Docker, Kubernetes, SonarQube                                          |
 
 <br/>
 
