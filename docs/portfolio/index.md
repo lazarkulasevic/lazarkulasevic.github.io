@@ -36,17 +36,17 @@ Major projects that I am especially proud of are shown using these colorful card
 
 In under 4 months of part-time dedication I've managed to singlehandedly build this platform using Vue.js and Firebase as a serverless solution. The platform consists of two major parts — website and dashboard. Website is open to the public, so feel free to check it out by clicking the link within the colorful card.
 
-Dashboard, on the other hand, can be accessed only by admins and users. The logic spreads over several highly intuitive pages with a dark mode option and role based authorization, including: 
+Dashboard, on the other hand, can be accessed only by registered users. The logic spreads over several highly intuitive pages with a dark mode option and role based authorization: 
 
 - Companies related analytics
 - Company management
 - Comment management
-- User management (role management)
+- User management
 - Settings that includes database synchronization scripts (cost-effective solution)
 
-### Solo playground projects
+### Mini side-projects
 
-Projects listed below are product 
+Projects listed below are selected few, and they are a product of my learning curve. If you wanna see them all, check out my Github profile.
 
 - [Vanilla JavaScript Router](https://javascript-router.herokuapp.com/)
 - [Memory Game](http://lazarkulasevic.github.io/memory-game/)
@@ -57,7 +57,7 @@ Projects listed below are product
 
 # [Tech Stack](/portfolio/#tech-stack)
 
-In the table
+Currently, it all revolves around JavaScript.
 
 |        Tech        | Sub-tech                                                                        |
 |:------------------:|---------------------------------------------------------------------------------|
@@ -75,4 +75,9 @@ In the table
 
 # [Contact](/portfolio/#contact)
 
-Contact
+I encourage you to contact me directly on [LinkedIn](https://www.linkedin.com/in/lazarkulasevic/) or via email.
+
+::: details Click here to reveal the email
+lazar.kulasevic@gmail.com
+
+:::

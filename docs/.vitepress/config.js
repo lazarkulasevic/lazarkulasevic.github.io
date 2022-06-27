@@ -11,28 +11,20 @@ export default {
                 text: 'Portfolio',
                 items: [
                     {
-                        items: [
-                            {
-                                text: 'Intro',
-                                link: '/portfolio/#intro',
-                                activeMatch: '/portfolio/#intro'
-                            },
-                            {
-                                text: 'Projects',
-                                link: '/portfolio/#projects',
-                                activeMatch: '/portfolio/#projects'
-                            },
-                            {
-                                text: 'Tech Stack',
-                                link: '/portfolio/#tech-stack',
-                                activeMatch: '/portfolio/#tech-stack'
-                            },
-                            {
-                                text: 'Contact',
-                                link: '/portfolio/#contact',
-                                activeMatch: '/portfolio/#contact'
-                            }
-                        ]
+                        text: 'Intro',
+                        link: '/portfolio/#intro'
+                    },
+                    {
+                        text: 'Projects',
+                        link: '/portfolio/#projects'
+                    },
+                    {
+                        text: 'Tech Stack',
+                        link: '/portfolio/#tech-stack'
+                    },
+                    {
+                        text: 'Contact',
+                        link: '/portfolio/#contact'
                     }
                 ]
             },
