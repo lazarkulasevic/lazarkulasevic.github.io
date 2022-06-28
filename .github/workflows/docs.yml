@@ -1,26 +1,23 @@
 name: docs
-on: [push]
+on:
+  push:
+    branches: [master]
 jobs:
   docs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-        with:
-          # fetch all commits to get last updated time or other git log info
-          fetch-depth: 0
-
+      - uses: actions/checkout@v3
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          # choose node.js version to use
           node-version: '16.13.2'
 
-      # remove old build files
       - name: Remove old build files
         run: rm -rf docs/.vitepress/dist
 
-      # run build script
+      - run: npm ci
+
       - name: Build VitePress site
         run: npm run build
 
