@@ -1,17 +1,5 @@
 name: docs
-
-on:
-  push:
-    tags:
-      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
-
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Version v1.0.0'
-        required: true
-        default: 'v1.'
-
+on: [push]
 jobs:
   docs:
     runs-on: ubuntu-latest
