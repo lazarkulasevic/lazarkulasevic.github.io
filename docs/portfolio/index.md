@@ -76,5 +76,3 @@ I encourage you to contact me directly on [LinkedIn](https://www.linkedin.com/in
 lazar.kulasevic@gmail.com
 
 :::
-
-This portfolio is built using VitePress.
