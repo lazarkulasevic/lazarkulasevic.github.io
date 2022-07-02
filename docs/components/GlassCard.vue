@@ -83,6 +83,7 @@ const lightOrder = handleOrder(props.startLight)
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 16px;
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.5);
