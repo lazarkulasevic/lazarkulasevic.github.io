@@ -57,7 +57,7 @@ Currently, it all revolves around JavaScript.
 |:----------------:|---------------------------------------------------------------------------------|
 |    HTML, CSS     | SCSS, PostCSS and major CSS frameworks (Material, Element, Bootstrap, Tailwind) |
 |    JavaScript    | Vue.js, React.js                                                                |
-|   Unit testing   | Jest (Vue-test-utils)                                                           |
+|   Unit testing   | Jest (Vue Test Utils)                                                           |
 |     Bundlers     | Vite, Webpack                                                                   |
 |     JamStack     | VitePress                                                                       |
 |     Node.js      | Express.js                                                                      |
