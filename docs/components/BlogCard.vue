@@ -16,6 +16,10 @@ const props = defineProps({
     },
     description: {
         type: String
+    },
+    publishedOn: {
+        type: String,
+        required: true
     }
 })
 
@@ -28,6 +32,7 @@ const props = defineProps({
         </div>
         <div class="text">
             <h2 class="title">{{ props.title }}</h2>
+            <p class="published-on">{{ props.publishedOn }}</p>
             <p class="description">
                 {{ props.description }}
             </p>
@@ -45,6 +50,7 @@ const props = defineProps({
     grid-template-columns: 1fr;
     width: 100%;
     height: 100%;
+    min-height: 220px;
     border-radius: 14px;
     border: 1px solid transparent;
     transition: border-color 0.2s ease-in-out;
@@ -69,6 +75,10 @@ const props = defineProps({
         line-height: 1.1;
         color: var(--vp-c-brand-dark);
         transition: color 0.2s ease-in-out;
+    }
+
+    .published-on {
+        display: none;
     }
 
     .description {
@@ -138,6 +148,12 @@ const props = defineProps({
 
         .title {
             font-size: 32px;
+        }
+
+        .published-on {
+            display: block;
+            font-size: 11px;
+            font-weight: 500;
         }
 
         .image {
