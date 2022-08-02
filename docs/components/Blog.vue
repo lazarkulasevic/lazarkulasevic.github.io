@@ -1,5 +1,8 @@
 <script setup>
+import { useRouter } from 'vitepress'
 import BlogCard from './BlogCard.vue'
+
+const router = useRouter()
 
 const getPosts = async () => {
     const modules = import.meta.glob('../blog/*.md')
@@ -13,14 +16,14 @@ const getPosts = async () => {
 }
 
 const rawPosts = await getPosts()
-// TODO: Sort by date
 
 const posts = rawPosts
-    .map(post => post.__pageData.frontmatter)
-    .sort((a, b) => {
-        console.log(a, b)
-    })
+    .map(post => post.__pageData)
+    .sort((a, b) => new Date(a.publishedOn) > new Date(b.publishedOn) ? -1 : 1)
 
+const handleClick = (event) => {
+    router.go(event)
+}
 </script>
 
 <template>
@@ -28,8 +31,10 @@ const posts = rawPosts
         <BlogCard
             v-for="post of posts"
             :title="post.title"
-            :image="post.image"
-            :description="post.description">
+            :image="post.frontmatter.image"
+            :description="post.description"
+            :path="post.relativePath.slice(0, -3)"
+            @click="handleClick($event)">
         </BlogCard>
     </div>
 </template>

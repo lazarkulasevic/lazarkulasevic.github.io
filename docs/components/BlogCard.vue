@@ -1,10 +1,16 @@
 <script setup>
+const emit = defineEmits(['click'])
+
 const props = defineProps({
     title: {
         type: String,
         required: true
     },
     image: {
+        type: String,
+        required: true
+    },
+    path: {
         type: String,
         required: true
     },
@@ -16,7 +22,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="blog-card" tabindex="0">
+    <div class="blog-card" tabindex="0" @click="emit('click', props.path)">
         <div class="image">
             <img :src="props.image" :alt="props.title" />
         </div>
