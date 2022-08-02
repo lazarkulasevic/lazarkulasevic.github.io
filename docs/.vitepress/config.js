@@ -39,6 +39,10 @@ export default {
                     }
                 ]
             },
+            {
+                text: 'Blog',
+                link: '/blog/'
+            }
         ],
         socialLinks: [
             { icon: 'linkedin', link: 'https://www.linkedin.com/in/lazarkulasevic/' },

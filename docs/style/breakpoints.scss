@@ -1,6 +1,6 @@
 @use 'variables.scss' as v;
 
-// Small devices
+// Small devices 375px
 @mixin sm {
     @media (min-width: #{v.$screen-sm-min}) {
         @content;
