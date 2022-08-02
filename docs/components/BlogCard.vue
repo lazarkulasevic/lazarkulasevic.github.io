@@ -111,7 +111,7 @@ const props = defineProps({
         background-color: transparent;
         opacity: 1;
         z-index: 1;
-        box-shadow: inset 0 0 0 1px var(--vp-c-brand-lighter), inset 0 0 3px 1px var(--vp-c-brand-dark);
+        box-shadow: inset 0 0 0 1px var(--vp-c-brand-lighter);
     }
 
     &:focus,
