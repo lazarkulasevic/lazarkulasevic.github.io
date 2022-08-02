@@ -1,5 +1,5 @@
 <script setup>
-import RgbCard from './RgbCard.vue'
+import BlogCard from './BlogCard.vue'
 
 const getPosts = async () => {
     const modules = import.meta.glob('../blog/*.md')
@@ -12,18 +12,25 @@ const getPosts = async () => {
     return Promise.all(promises)
 }
 
-const pages = await getPosts()
-console.log(pages)
+const rawPosts = await getPosts()
+// TODO: Sort by date
+
+const posts = rawPosts
+    .map(post => post.__pageData.frontmatter)
+    .sort((a, b) => {
+        console.log(a, b)
+    })
 
 </script>
 
 <template>
     <div class="blog">
-        <RgbCard
-            v-for="page of pages"
-            :title="page.__pageData.title"
-            :description="page.__pageData.description">
-        </RgbCard>
+        <BlogCard
+            v-for="post of posts"
+            :title="post.title"
+            :image="post.image"
+            :description="post.description">
+        </BlogCard>
     </div>
 </template>
 
@@ -31,15 +38,26 @@ console.log(pages)
 @use "../style/breakpoints.scss" as b;
 
 .blog {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 50px;
-    justify-items: center;
-    justify-content: space-evenly;
-    margin: 50px 0;
+    margin: 24px;
+
+    .blog-card {
+        margin-bottom: 24px;
+    }
 
     @include b.md {
-        grid-template-columns: repeat(3, 1fr);
+        margin: 32px 10%;
+
+        .blog-card {
+            margin-bottom: 32px;
+        }
+    }
+
+    @include b.lg {
+        margin: 42px 14%;
+
+        .blog-card {
+            margin-bottom: 42px;
+        }
     }
 }
 </style>
