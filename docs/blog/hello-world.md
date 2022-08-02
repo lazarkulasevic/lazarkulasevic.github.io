@@ -1,8 +1,19 @@
 ---
-title: It is a long-established fact that a reader will be distracted
-image: https://cdn.vox-cdn.com/thumbor/ZhgpSUb-Q5BbMKDYD9V10XCULHE=/0x0:2000x1125/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/53195715/JohnWicksHorribleHair.0.jpg
-description: It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+title: Hello World
+image: /featured.png
+description: Hello, world! I've decided to put a good use of the site generator such as VitePress and to see whether my posts here will get a good SEO. Funny enough, I also wanted to share with the developer community some JavaScript quirks that I've stumbled across in the past year or so.
+
 publishedOn: 2022-08-02T11:10:09.512Z
 ---
 
-# It is a long-established fact that a reader will be distracted
+# Hello World
+
+Published: {{ new Date($frontmatter.publishedOn).toLocaleString('en-GB') }}
+
+![Featured Image](/featured.png)
+
+Hello, world! This is my first blog post. Well, to be precise, this is my first blog post on *this* blog. I've decided to put a good use of the site generator such as VitePress and to see whether my posts here will get a good SEO. 
+
+Funny enough, I also wanted to share with the developer community some JavaScript quirks that I've stumbled across in the past year or so.
+
+So buckle up, folks! It's about to get crrraz... exactly the same as yesterday, only the internet got richer by one more software development blog. Yay. :man_technologist:
