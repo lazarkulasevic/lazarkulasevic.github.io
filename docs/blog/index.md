@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Blog
-<!-- @include: ../partials/head-meta-defaults.txt -->
+<!-- @include: ../partials/_head-meta-defaults -->
 ---
 <script setup>
 import Blog from '../components/Blog.vue'

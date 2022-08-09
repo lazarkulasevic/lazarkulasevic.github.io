@@ -7,7 +7,7 @@ cards:
   description: A platform that offers citizens of Serbia the opportunity to check how safe and protected their personal data is, which they leave and trust to a state body or a privately owned company.
   link: https://otisak.org
 
-<!-- @include: ../partials/head-meta-defaults.txt -->
+<!-- @include: ../partials/_head-meta-defaults -->
 ---
 <script setup>
 import GridCards from '../components/GridCards.vue'
