@@ -13,4 +13,6 @@ hero:
   - theme: alt
     text: Tech Stack
     link: /portfolio/#tech-stack
+
+<!-- @include: ./partials/head-meta-defaults.md -->
 ---
