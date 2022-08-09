@@ -18,14 +18,14 @@ head:
     - property: og:image
       content: /featured.png 
   - - meta
-    - property: twitter:title
+    - name: twitter:title
       content: Lazar Kulasevic
   - - meta
-    - property: twitter:description
+    - name: twitter:description
       content: Lazar Kulasevic's portfolio site.
   - - meta
     - property: og:url
       content: https://lazarkulasevic.github.io
   - - meta
-    - property: twitter:image
+    - name: twitter:image
       content: /featured.png

@@ -4,8 +4,9 @@ export default {
     description: 'Lazar Kulasevic\'s portfolio site.',
     head: [
         ['meta', { property: 'author', content: 'Lazar Kulasevic' }],
-        ['meta', { property: 'twitter:card', content: 'summary_large_image' }],
-        ['meta', { property: 'twitter:creator', content: '@else_clause' }]
+        ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+        ['meta', { name: 'twitter:site', content: '@else_clause' }],
+        ['meta', { name: 'twitter:creator', content: '@else_clause' }]
     ],
     themeConfig: {
         nav: [

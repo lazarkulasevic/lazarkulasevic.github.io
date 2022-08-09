@@ -23,16 +23,16 @@ head:
     - property: og:image
       content: /blog/hello-world-featured.png
   - - meta
-    - property: twitter:title
+    - name: twitter:title
       content: Hello World
   - - meta
-    - property: twitter:description
+    - name: twitter:description
       content: Hello, world! I've decided to put a good use of the site generator such as VitePress and to see whether my posts here will get a good SEO.
   - - meta
     - property: og:url
       content: https://lazarkulasevic.github.io/blog/hello-world.html
   - - meta
-    - property: twitter:image
+    - name: twitter:image
       content: /blog/hello-world-featured.png
 ---
 
