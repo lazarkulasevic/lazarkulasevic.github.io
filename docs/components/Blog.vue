@@ -1,6 +1,7 @@
 <script setup>
 import { useRouter } from 'vitepress'
 import BlogCard from './BlogCard.vue'
+import Utils from '../utils/Utils'
 
 const router = useRouter()
 
@@ -21,10 +22,6 @@ const posts = rawPosts
     .map(post => post.__pageData)
     .sort((a, b) => new Date(a.publishedOn) > new Date(b.publishedOn) ? -1 : 1)
 
-const formatDate = (dateISOstring) => {
-    return new Date(dateISOstring).toLocaleString('en-GB')
-}
-
 const handleClick = (event) => {
     router.go(event)
 }
@@ -38,7 +35,7 @@ const handleClick = (event) => {
             :image="post.frontmatter.image"
             :description="post.description"
             :path="post.relativePath.slice(0, -3)"
-            :published-on="formatDate(post.frontmatter.publishedOn)"
+            :published-on="Utils.formatDateTime(post.frontmatter.publishedOn)"
             @click="handleClick($event)">
         </BlogCard>
     </div>
