@@ -9,6 +9,13 @@ const formatDateTime = (date) => {
     return new Date(date).toLocaleString('en-GB', options)
 }
 
+const setAttributes = (el, attrs) => {
+    for (const key in attrs) {
+        el.setAttribute(key, attrs[key]);
+    }
+}
+
 export default {
-    formatDateTime
+    formatDateTime,
+    setAttributes
 }

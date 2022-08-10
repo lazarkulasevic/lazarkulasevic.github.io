@@ -1,9 +1,15 @@
 <script setup>
+import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import GlassCard from '../../components/GlassCard.vue'
 import GlassCardCodeSnippet from '../../components/GlassCardCodeSnippet.vue'
+import BlogComments from '../../components/BlogComments.vue'
 
 const { Layout } = DefaultTheme
+const { page } = useData()
+
+const isBlogPost = page.value.frontmatter.hasOwnProperty('publishedOn')
+
 </script>
 
 <template>
@@ -12,6 +18,9 @@ const { Layout } = DefaultTheme
             <GlassCard :height="216">
                 <GlassCardCodeSnippet />
             </GlassCard>
+        </template>
+        <template #doc-after>
+            <BlogComments v-if="isBlogPost" />
         </template>
     </Layout>
 </template>
