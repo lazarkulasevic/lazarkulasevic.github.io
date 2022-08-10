@@ -1,5 +1,6 @@
 <script setup>
-import { useData } from 'vitepress'
+import { ref, watch } from 'vue'
+import { useData, useRouter } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import GlassCard from '../../components/GlassCard.vue'
 import GlassCardCodeSnippet from '../../components/GlassCardCodeSnippet.vue'
@@ -7,8 +8,12 @@ import BlogComments from '../../components/BlogComments.vue'
 
 const { Layout } = DefaultTheme
 const { page } = useData()
+const router = useRouter()
+const isBlogPost = ref(false)
 
-const isBlogPost = page.value.frontmatter.hasOwnProperty('publishedOn')
+watch(() => router.route.data.relativePath, () => {
+    isBlogPost.value = page.value.frontmatter.hasOwnProperty('publishedOn')
+}, { immediate: true })
 
 </script>
 
