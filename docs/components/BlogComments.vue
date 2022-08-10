@@ -15,7 +15,7 @@ onMounted(() => {
         'data-category': 'General',
         'data-category-id': 'DIC_kwDOEZVcTs4CQt8M',
         'data-mapping': 'pathname',
-        'data-strict': '1',
+        'data-strict': '0',
         'data-reactions-enabled': '1',
         'data-emit-metadata': '0',
         'data-input-position': 'top',
