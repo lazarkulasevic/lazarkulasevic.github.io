@@ -8,8 +8,11 @@ $base-purple: #773aff;
 
 /* BREAKPOINTS */
 
+// Mobiles
+$screen-xs-min: 375px;
+
 // Small tablets and large smartphones (landscape view)
-$screen-sm-min: 375px;
+$screen-sm-min: 480px;
 
 // Small tablets (portrait view)
 $screen-md-min: 768px;

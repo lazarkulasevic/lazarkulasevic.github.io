@@ -61,7 +61,7 @@ const props = defineProps({
         flex-direction: column;
         justify-content: space-between;
         z-index: 2;
-        height: calc(100% - 14px);
+        height: calc(100% - 8px);
         overflow: hidden;
         padding: 12px 12px 0 12px;
     }
@@ -87,6 +87,12 @@ const props = defineProps({
     .description {
         color: var(--vp-c-text-1);
         font-weight: 400;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+        -webkit-box-orient: vertical;
     }
 
     .image {
@@ -136,13 +142,13 @@ const props = defineProps({
         }
     }
 
-    @include b.sm {
+    @include b.xs {
         .title {
             font-size: 28px;
         }
     }
 
-    @include b.md {
+    @include b.sm {
         grid-template-columns: 1fr 2fr;
 
         .text {
@@ -151,6 +157,11 @@ const props = defineProps({
 
         .title {
             font-size: 32px;
+        }
+
+        .description {
+            -webkit-line-clamp: 4;
+            line-clamp: 3;
         }
 
         .published-on {
