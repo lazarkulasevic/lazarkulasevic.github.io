@@ -32,10 +32,10 @@ const props = defineProps({
         </div>
         <div class="text">
             <h2 class="title">{{ props.title }}</h2>
-            <p class="published-on">{{ props.publishedOn }}</p>
-            <p class="description">
-                {{ props.description }}
-            </p>
+            <div>
+                <p class="published-on">{{ props.publishedOn }}</p>
+                <p class="description">{{ props.description }}</p>
+            </div>
         </div>
     </div>
 </template>
@@ -52,8 +52,7 @@ const props = defineProps({
     height: 100%;
     min-height: 220px;
     border-radius: 14px;
-    border: 1px solid transparent;
-    transition: border-color 0.2s ease-in-out;
+    transition: box-shadow 0.2s ease-in-out;
     background-color: var(--vp-c-bg);
 
     .text {
@@ -78,7 +77,11 @@ const props = defineProps({
     }
 
     .published-on {
-        display: none;
+        display: block;
+        font-size: 11px;
+        font-weight: 500;
+        margin: 5px 0;
+        color: var(--vp-c-text-2);
     }
 
     .description {
@@ -126,7 +129,7 @@ const props = defineProps({
 
     &:focus,
     &:hover {
-        border-color: var(--vp-c-brand-lighter);
+        box-shadow: 0 0 0 1px var(--vp-c-brand-lighter);
 
         .title {
             color: var(--vp-c-brand);
@@ -154,6 +157,7 @@ const props = defineProps({
             display: block;
             font-size: 11px;
             font-weight: 500;
+            margin-bottom: 5px;
         }
 
         .image {

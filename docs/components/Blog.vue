@@ -29,6 +29,8 @@ const handleClick = (event) => {
 
 <template>
     <div class="blog">
+        <h2 class="blog-title">{{ $frontmatter.title }}</h2>
+        <p class="blog-description">{{ $frontmatter.description }}</p>
         <BlogCard
             v-for="post of posts"
             :title="post.title"
@@ -46,6 +48,17 @@ const handleClick = (event) => {
 
 .blog {
     margin: 24px;
+
+    .blog-title {
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+
+    .blog-description {
+        margin-bottom: 20px;
+    }
 
     .blog-card {
         margin-bottom: 24px;
