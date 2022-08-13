@@ -51,6 +51,7 @@ const props = defineProps({
     width: 100%;
     height: 100%;
     min-height: 220px;
+    max-height: 300px;
     border-radius: 14px;
     transition: box-shadow 0.2s ease-in-out;
     background-color: var(--vp-c-bg);
