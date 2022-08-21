@@ -1,8 +1,10 @@
 ---
+type: article
 title: Hello World
-image: /blog/hello-world-featured.png
+image: /blog/hello-world/featured.png
 description: Hello, world! I've decided to put a good use of the site generator such as VitePress and to see whether my posts here will get a good SEO. Funny enough, I also wanted to share with the developer community some JavaScript quirks that I've stumbled across in the past year or so.
-publishedOn: 2022-08-02T11:10:09.512Z
+publishedOn: 2 August 2022 10:50
+updatedOn: 21 August 2022 10:56
 head:
   - - meta
     - property: og:title
@@ -35,12 +37,6 @@ head:
     - name: twitter:image
       content: /blog/hello-world-featured.png
 ---
-
-# Hello World
-
-Published: {{ Utils.formatDateTime($frontmatter.publishedOn) }}
-
-![Featured Image](/blog/hello-world-featured.png)
 
 ```js
 console.log('Hello, world!')

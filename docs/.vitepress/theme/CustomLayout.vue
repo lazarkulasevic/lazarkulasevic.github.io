@@ -12,7 +12,7 @@ const router = useRouter()
 const isBlogPost = ref(false)
 
 watch(() => router.route.data.relativePath, () => {
-    isBlogPost.value = page.value.frontmatter.hasOwnProperty('publishedOn')
+    isBlogPost.value = page.value.frontmatter.type === 'article'
 }, { immediate: true })
 
 </script>
@@ -23,6 +23,18 @@ watch(() => router.route.data.relativePath, () => {
             <GlassCard :height="216">
                 <GlassCardCodeSnippet />
             </GlassCard>
+        </template>
+        <template #doc-before>
+            <div class="blog-meta" v-if="isBlogPost">
+                <h1 class="title">{{ page.frontmatter.title }}</h1>
+                <p class="date">
+                    <span>Published: {{ Utils.formatDateTime(page.frontmatter.publishedOn) }}</span>
+                    <span v-if="page.frontmatter.updatedOn">
+                        / {{ Utils.formatDateTime(page.frontmatter.updatedOn) }}
+                    </span>
+                </p>
+                <img :src="page.frontmatter.image" :alt="page.frontmatter.title" />
+            </div>
         </template>
         <template #doc-after>
             <BlogComments v-if="isBlogPost" />
@@ -62,5 +74,27 @@ watch(() => router.route.data.relativePath, () => {
 
 .Layout::v-deep(.VPContent .aside) {
     display: none;
+}
+
+.blog-meta {
+    margin-bottom: 25px;
+
+    .title {
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 1.2;
+        color: var(--vp-c-brand);
+    }
+
+    .date {
+        font-size: 0.75rem;
+        line-height: 2;
+        color: var(--vp-c-text-2);
+    }
+
+    img {
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
 }
 </style>
