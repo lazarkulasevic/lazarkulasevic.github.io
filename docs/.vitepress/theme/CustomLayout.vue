@@ -5,6 +5,7 @@ import DefaultTheme from 'vitepress/theme'
 import GlassCard from '../../components/GlassCard.vue'
 import GlassCardCodeSnippet from '../../components/GlassCardCodeSnippet.vue'
 import BlogComments from '../../components/BlogComments.vue'
+import PostHeader from '../../components/PostHeader.vue'
 
 const { Layout } = DefaultTheme
 const { page } = useData()
@@ -25,16 +26,13 @@ watch(() => router.route.data.relativePath, () => {
             </GlassCard>
         </template>
         <template #doc-before>
-            <div class="blog-meta" v-if="isBlogPost">
-                <h1 class="title">{{ page.frontmatter.title }}</h1>
-                <p class="date">
-                    <span>Published: {{ Utils.formatDateTime(page.frontmatter.publishedOn) }}</span>
-                    <span v-if="page.frontmatter.updatedOn">
-                        / {{ Utils.formatDateTime(page.frontmatter.updatedOn) }}
-                    </span>
-                </p>
-                <img :src="page.frontmatter.image" :alt="page.frontmatter.title" />
-            </div>
+            <PostHeader
+                v-if="isBlogPost"
+                :title="page.frontmatter.title"
+                :published-on="page.frontmatter.publishedOn"
+                :updated-on="page.frontmatter.updatedOn"
+                :image="page.frontmatter.image">
+            </PostHeader>
         </template>
         <template #doc-after>
             <BlogComments v-if="isBlogPost" />
@@ -74,27 +72,5 @@ watch(() => router.route.data.relativePath, () => {
 
 .Layout::v-deep(.VPContent .aside) {
     display: none;
-}
-
-.blog-meta {
-    margin-bottom: 25px;
-
-    .title {
-        font-size: 2rem;
-        font-weight: bold;
-        line-height: 1.2;
-        color: var(--vp-c-brand);
-    }
-
-    .date {
-        font-size: 0.75rem;
-        line-height: 2;
-        color: var(--vp-c-text-2);
-    }
-
-    img {
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-    }
 }
 </style>
