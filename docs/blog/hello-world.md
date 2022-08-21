@@ -42,7 +42,11 @@ Published: {{ Utils.formatDateTime($frontmatter.publishedOn) }}
 
 ![Featured Image](/blog/hello-world-featured.png)
 
-Hello, world! This is my first blog post. Well, to be precise, this is my first blog post on *this* blog. I've decided to put a good use of the site generator such as VitePress and to see whether my posts here will get a good SEO. 
+```js
+console.log('Hello, world!')
+```
+
+This is my first blog post. Well, to be precise, this is my first blog post on *this* blog. I've decided to put a good use of the site generator such as VitePress and to see whether my posts here will get a good SEO. 
 
 Funny enough, I also wanted to share with the developer community some JavaScript quirks that I've stumbled across in the past year or so.
 
