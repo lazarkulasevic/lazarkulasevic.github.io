@@ -41,7 +41,7 @@ Dashboard, on the other hand, can be accessed only by registered users. The logi
 
 Projects listed below are selected few, and they are a product of my learning curve. If you wanna see them all, check out my Github profile.
 
-- [Vanilla JavaScript Router](https://javascript-router.herokuapp.com/)
+- [Vanilla Javascript Router](https://javascript-router.herokuapp.com/)
 - [Memory Game](http://lazarkulasevic.github.io/memory-game/)
 - [Binary Search](http://lazarkulasevic.github.io/binary-search/)
 - [Json Form](https://lazarkulasevic.github.io/json-form)
@@ -50,20 +50,20 @@ Projects listed below are selected few, and they are a product of my learning cu
 
 # [Tech Stack](/portfolio/#tech-stack)
 
-Currently, it all revolves around JavaScript.
+Currently, it all revolves around Javascript.
 
-|       Tech       | Sub-tech                                                                        |
-|:----------------:|---------------------------------------------------------------------------------|
-|    HTML, CSS     | SCSS, PostCSS and major CSS frameworks (Material, Element, Bootstrap, Tailwind) |
-|    JavaScript    | Vue.js, React.js                                                                |
-|   Unit testing   | Jest (Vue Test Utils)                                                           |
-|     Bundlers     | Vite, Webpack                                                                   |
-|     JamStack     | VitePress                                                                       |
-|     Node.js      | Express.js                                                                      |
-| NoSQL databases  | Cloud Firestore                                                                 |
-|    Serverless    | Firebase services (i.e., Firestore, Storage, Auth, Cloud Functions)             |
-|       Git        | GitLab, GitHub, BitBucket, SourceTree                                           |
-| CI/CD (frontend) | Jenkins, Docker, Kubernetes, SonarQube                                          |
+|          Tech          | Sub-tech                                                                        |
+|:----------------------:|---------------------------------------------------------------------------------|
+|       HTML, CSS        | SCSS, PostCSS and major CSS frameworks (Material, Element, Bootstrap, Tailwind) |
+| Javascript, Typescript | Vue.js, React.js                                                                |
+|      Unit testing      | Jest (Vue Test Utils)                                                           |
+|        Bundlers        | Vite, Webpack                                                                   |
+|        JamStack        | VitePress                                                                       |
+|        Node.js         | Express.js                                                                      |
+|    NoSQL databases     | Cloud Firestore                                                                 |
+|       Serverless       | Firebase services (i.e., Firestore, Storage, Auth, Cloud Functions)             |
+|          Git           | GitLab, GitHub, BitBucket, SourceTree                                           |
+|    CI/CD (frontend)    | Jenkins, Docker, Kubernetes, SonarQube                                          |
 
 <br/>
 
