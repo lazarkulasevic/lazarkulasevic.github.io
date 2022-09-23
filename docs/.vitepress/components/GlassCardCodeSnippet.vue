@@ -10,7 +10,7 @@
 </template>
 
 <style lang="scss">
-@use '../style/variables.scss' as v;
+@use '../style/variables' as v;
 
 .code {
     &--red {

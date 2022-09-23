@@ -10,7 +10,7 @@ cards:
 <!-- @include: ../partials/_head-meta-defaults -->
 ---
 <script setup>
-import GridCards from '../components/GridCards.vue'
+import GridCards from '../.vitepress/components/GridCards.vue'
 </script>
 
 # [Brief Intro](/portfolio/#intro)

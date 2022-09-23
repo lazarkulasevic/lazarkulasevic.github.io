@@ -30,7 +30,7 @@ const lightOrder = handleOrder(props.startLight)
 </template>
 
 <style lang="scss" scoped>
-@use "../style/variables.scss" as v;
+@use "../style/variables" as v;
 
 .card {
     position: relative;

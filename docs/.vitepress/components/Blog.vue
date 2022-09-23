@@ -6,10 +6,10 @@ import Utils from '../utils/Utils'
 const router = useRouter()
 
 const getPosts = async () => {
-    const modules = import.meta.glob('../blog/*.md')
+    const modules = import.meta.glob('../../blog/*.md')
     const promises = []
     for (const path in modules) {
-        if (!path.match('../blog/index.md')) {
+        if (!path.match('../../blog/index.md')) {
             promises.push(modules[path]())
         }
     }
@@ -44,7 +44,7 @@ const handleClick = (event) => {
 </template>
 
 <style lang="scss" scoped>
-@use "../style/breakpoints.scss" as b;
+@use "../style/breakpoints" as b;
 
 .blog {
     margin: 24px;

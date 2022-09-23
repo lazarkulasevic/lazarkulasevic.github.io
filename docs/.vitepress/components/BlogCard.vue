@@ -41,7 +41,7 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
-@use "../style/breakpoints.scss" as b;
+@use "../style/breakpoints" as b;
 
 .blog-card {
     cursor: pointer;

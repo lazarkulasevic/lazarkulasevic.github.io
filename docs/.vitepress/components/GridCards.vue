@@ -1,7 +1,7 @@
 <script setup>
 import { useData } from 'vitepress'
 const { frontmatter } = useData()
-import GlassCard from '../components/GlassCard.vue'
+import GlassCard from './GlassCard.vue'
 
 const props = defineProps({
     height: {
@@ -26,8 +26,8 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
-@use "../style/breakpoints.scss" as b;
-@use "../style/variables.scss" as v;
+@use "../style/breakpoints" as b;
+@use "../style/variables" as v;
 
 .container {
     display: grid;
