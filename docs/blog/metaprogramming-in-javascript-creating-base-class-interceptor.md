@@ -271,12 +271,14 @@ function handleBtn(btnSelector, btnColor) {
 }
 ```
 
-### Example
+### Demo App Example
+
+Each button is clicked three times. You will notice there are 6 click registered in the output and only 3 clicks in the console (with a timestamp) which come from the *Super Spy Button*.
 
 ![Screenshot](/public/blog/metaprogramming-in-javascript-creating-base-class-interceptor/spy-btn-screenshot.png)
 
 Console output:
-```text
+```text {9-11}
 The app will mount on root "#app".
 The app is mounted.
 The console will be registered on root "#output".
@@ -292,6 +294,10 @@ New HTML output log at 23/09/2022, 17:40:00: The button is now <span class="text
 
 ## Demo and Code
 
+Check out the demo app and repo, feel free to play around. I hope you have learned something that will help you become a better Javascript developer, or perhaps found a code error I made along the way. Either way, let me know about your feedback.
+
 Demo: https://lazarkulasevic.github.io/javascript-proxy
 
 Code: https://github.com/lazarkulasevic/javascript-proxy
+
+If you have any ideas of how this little Interceptor can be useful in a real-life application, please don't hesitate to type a comment.
