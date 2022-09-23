@@ -38,9 +38,9 @@ head:
       content: /blog/metaprogramming-in-javascript-creating-base-class-interceptor/featured.png
 ---
 
-Metaprogramming is a very specific technique in software engineering in which a part of the software code treats other code as its data. Weird, right? This article is about to put a light on that concept using Proxy and Reflect in vanilla Javascript. 
+Metaprogramming is a very specific technique in software engineering in which a part of the software code treats other code as its data. Weird, right? This article is about to put a light on that concept using `Proxy` and `Reflect` in vanilla Javascript. 
 
-If you haven't heard about JS proxy yet, you can treat it as a target object wrapper that you'll use throughout the code instead of the _target object_ itself. Basically, the wrapper receives all the passed data and have the control of the object inside over the _handler object_. 
+If you haven't heard of JS proxy yet, here's a bit of explanation. You can treat proxy as a wrapper that contains the target object. You will use that wrapper throughout the code instead of the *target object* itself. Basically, the wrapper receives all the passed data and have the control of the object inside over the *handler object* methods.
 
 ```js
 const target = {
@@ -57,7 +57,7 @@ Console output:
 Hello World!
 ```
 
-Now let's add a handler method `get` and see what will happen when we want to say hi again. Because handler methods are also called _traps_, we are going to have to _reflect_ the arguments in order for the target object to perform its original behavior.
+Now let's add a handler method `get` and see what will happen when we want to say hi again. Because handler methods are also called *traps*, we are going to have to *reflect* the arguments in order for the target object to perform its original behavior.
 
 ```js {5-8}
 const target = {
@@ -80,9 +80,13 @@ You want to call "sayHi" method on the target object.
 Hello World!
 ```
 
-## Creating an Interceptor using Proxy
+This is a very basic explanation and I believe it will be sufficient for you to understand what we're about to create by the end of this article. However, if you're looking for something thorough, check out the [MDN Docs on Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy).
 
-In this case, we're going to create class, so we can easily inherit the functionality wherever we need to intercept any method call throughout the app. The Interceptor constructor accepts _options_ object with array of methods-to-watch and a `beforeMethodCall` function which is basically a code block with trapped data that executes before the original method code.
+## Creating an Interceptor Using Javascript Proxy
+
+In this case, we're going to create class, so we can easily inherit the functionality wherever we need to intercept any method call throughout the app. The Interceptor constructor accepts *options* object with array of methods-to-watch and a `beforeMethodCall` function which is basically a code block with trapped data that executes before the original method code.
+
+I am using JSDoc to somewhat increase readability by pointing out types of the parameters.
 
 ```js {18}
 class Interceptor {
@@ -117,15 +121,19 @@ class Interceptor {
 export default Interceptor
 ```
 
-As you probably noticed, a Proxy with a `get` method handler is wrapped around a Proxy with an `apply` method handler. Inside the apply method, you will notice highlighted `beforeMethodCall` function that is being executed right before returning reflecting all the arguments.
+As you probably noticed, a Proxy with a `get` method handler is wrapped around a Proxy with an `apply` method handler. Inside the apply method, you will notice highlighted `beforeMethodCall` function that is being executed right before reflecting all the arguments. 
 
-In this example, we are not mutating any arguments that `beforeMethodCall` receives, instead we're just going to pass them along.
+In today's example, we are not mutating any arguments that `beforeMethodCall` receives, instead we're just going to use them as a data pass them along intact.
 
-### How to Use
+However, if you want to mutate arguments before passing them to the target object, you would need to return mutated arguments from the `beforeMethodCall` and then reflect them on the `argumentsList` position.
 
-The use is very simple - just extend the Interceptor class and inside the `super` pass an object with an array of method names you want to watch and a `beforeMethodCall` function.
+### How to Use Interceptor Base Class
 
-```js {74-81}
+The use is very simple - just extend the `Interceptor` class and inside the `super` pass the options object which will include an array of method names you want to watch and a `beforeMethodCall` with your functionality. I am using static property to keep objects within the class, but you are free to displace this object outside and pass it through the constructor. Whatever works for you (the beauty of Javascript).
+
+As you may notice in the example below, our `Dom` class monitors 4 out of 6 of its methods. 
+
+```js {5,21-23,77-84,86-92}
 import Interceptor from './Interceptor.js'
 
 class Dom extends Interceptor {
@@ -192,23 +200,6 @@ class Dom extends Interceptor {
     }
 
     /**
-     * @param {String} data
-     */
-    consoleLog(data) {
-        this.log(data)
-        return this
-    }
-
-    /**
-     * @description This method is not being watched
-     * @param {String} data
-     */
-    log(data) {
-        this.consoleRoot.innerHTML += `<p>${data}</p>`
-        return this
-    }
-
-    /**
      * @param {String} root
      * @param {Function} handler
      */
@@ -218,14 +209,86 @@ class Dom extends Interceptor {
         console.log('The button is registered.')
         return this
     }
+
+    /**
+     * This method is not being monitored
+     * @param {String} data
+     */
+    log(data) {
+        this.consoleRoot.innerHTML += `<p>${data}</p>`
+        return this
+    }
+
+    /**
+     * @param {String} data
+     */
+    consoleLog(data) {
+        this.log(data)
+        return this
+    }
 }
 
 export default Dom
 ```
 
+We are going to pay attention to `log` and `consoleLog` methods, because the former is not being monitored. Both of them are used in our event handlers:
 
+- Regular Button: `log` - prints out the text on the screen.
+- Super Spy Button: `consoleLog` - prints out the text in the console **and then** on the screen.
 
+```js {16,21}
+// main.js
+import Dom from './core/Dom.js'
+import AppButtons from './components/AppButtons.js'
+import ConsoleOutput from './components/ConsoleOutput.js'
 
+const app = new Dom({
+    components: [AppButtons, ConsoleOutput]
+}).mount('#app')
+
+app.registerConsole('#output')
+    .registerButton('.super-spy-btn', handleSpyBtn)
+    .registerButton('.regular-btn', handleRegularBtn)
+
+function handleSpyBtn() {
+    const btnColor = handleBtn('.super-spy-btn', 'red')
+    app.consoleLog(`The button is now ${btnColor}.`)
+}
+
+function handleRegularBtn() {
+    const btnColor = handleBtn('.regular-btn', 'orange')
+    app.log(`The button is now ${btnColor}.`)
+}
+
+function handleBtn(btnSelector, btnColor) {
+    const btnClassList = app.buttonElement(btnSelector).classList
+    btnClassList.toggle(btnColor)
+
+    if (btnClassList.contains(btnColor)) {
+        return `<span class="text-${btnColor}">${btnColor}</span>`
+    }
+    return '<span class="text-blue">blue</span>'
+}
+```
+
+### Example
+
+![Screenshot](/public/blog/metaprogramming-in-javascript-creating-base-class-interceptor/spy-btn-screenshot.png)
+
+Console output:
+```text
+The app will mount on root "#app".
+The app is mounted.
+The console will be registered on root "#output".
+The console is registered.
+The button will be registered on root ".super-spy-btn".
+The button is registered.
+The button will be registered on root ".regular-btn".
+The button is registered.
+New HTML output log at 23/09/2022, 17:39:55: The button is now <span class="text-red">red</span>.
+New HTML output log at 23/09/2022, 17:39:56: The button is now <span class="text-blue">blue</span>.
+New HTML output log at 23/09/2022, 17:40:00: The button is now <span class="text-red">red</span>.
+```
 
 ## Demo and Code
 
