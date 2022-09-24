@@ -38,9 +38,12 @@ head:
       content: /blog/metaprogramming-in-javascript-creating-base-class-interceptor/featured.png
 ---
 
-Metaprogramming is a very specific technique in software engineering in which a part of the software code treats other code as its data. Weird, right? This article is about to put a light on that concept using `Proxy` and `Reflect` in vanilla Javascript. 
+Metaprogramming is a very specific technique in software development in which a portion of code treats other code as its data. Weird, right? This article is about to put a light on that concept using ES6 `Proxy`. 
 
-If you haven't heard of JS proxy yet, here's a bit of explanation. You can treat proxy as a wrapper that contains the target object. You will use that wrapper throughout the code instead of the *target object* itself. Basically, the wrapper receives all the passed data and have the control of the object inside over the *handler object* methods.
+Proxies are an essential part of all modern front-end frameworks and a key to data reactivity (e.g., Vue 3).
+ If you haven't heard of Javascript Proxy yet, here's a bit of explanation. You can treat Proxy as a wrapper that wraps around the target object. You will use that wrapper throughout the code instead of the *target object* itself. Basically, the wrapper receives all the passed data and have the control of the object inside over the *handler object* methods.
+
+In the following example, the wrapper will behave identically as the target, because the handler object is empty.
 
 ```js
 const target = {
@@ -57,7 +60,7 @@ Console output:
 Hello World!
 ```
 
-Now let's add a handler method `get` and see what will happen when we want to say hi again. Because handler methods are also called *traps*, we are going to have to *reflect* the arguments in order for the target object to perform its original behavior.
+See, nothing weird happened. Now let's add a method `get` to our handler and look what will be the output when we "say hi" again.
 
 ```js {5-8}
 const target = {
@@ -80,13 +83,17 @@ You want to call "sayHi" method on the target object.
 Hello World!
 ```
 
-This is a very basic explanation and I believe it will be sufficient for you to understand what we're about to create by the end of this article. However, if you're looking for something thorough, check out the [MDN Docs on Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy).
+Now we have two logs in the console. One log comes from our `get` handler and it is executed *before* the `saiHi` method.
+
+Handler methods are also called *traps* — probably because they trap passed arguments and control the further flow of data — we need to *reflect* received arguments in order for target object to perform its original behavior. In essence, `Reflect` should use the same handler method and call a target function (from the target object).
+
+This is a very basic explanation, but I believe it will be sufficient for you to understand what we're about to create by the end of this article. However, if you're looking for something thorough, check out the [MDN docs on Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy).
 
 ## Creating an Interceptor Using Javascript Proxy
 
-In this case, we're going to create class, so we can easily inherit the functionality wherever we need to intercept any method call throughout the app. The Interceptor constructor accepts *options* object with array of methods-to-watch and a `beforeMethodCall` function which is basically a code block with trapped data that executes before the original method code.
+We're going to create `class Interceptor`, so we can easily inherit the functionality wherever we need to intercept any method call throughout the app. The constructor accepts *options* object which contains array of methods-to-watch and a `beforeMethodCall` function which is basically a code block with "stolen" data that executes before the original method.
 
-I am using JSDoc to somewhat increase readability by pointing out types of the parameters.
+I am using JSDoc to somewhat increase readability by pointing out types of the parameters. Hope it's helpful!
 
 ```js {18}
 class Interceptor {
@@ -103,7 +110,7 @@ class Interceptor {
     static #proxy(obj, options) {
         return new Proxy(obj, {
             get(target, prop) {
-                if (typeof target[prop] === 'function'&& options.watchMethods.includes(prop)) {
+                if (typeof target[prop] === 'function' && options.watchMethods.includes(prop)) {
                     return new Proxy(target[prop], {
                         apply(target, thisArg, argumentsList) {
                             options.beforeMethodCall(prop, argumentsList)
@@ -121,17 +128,17 @@ class Interceptor {
 export default Interceptor
 ```
 
-As you probably noticed, a Proxy with a `get` method handler is wrapped around a Proxy with an `apply` method handler. Inside the apply method, you will notice highlighted `beforeMethodCall` function that is being executed right before reflecting all the arguments. 
+As you probably noticed, a Proxy with a `get` trap is wrapped around a Proxy with an `apply` trap. We cannot get arguments using a `get` trap alone, because the target function is not called yet. 
 
-In today's example, we are not mutating any arguments that `beforeMethodCall` receives, instead we're just going to use them as a data pass them along intact.
+Inside the `apply` trap, you will notice highlighted `beforeMethodCall` function that is being executed right before reflecting all the arguments. In today's example, we are not mutating any arguments that `beforeMethodCall` receives, instead we're just going to use them as readable data and pass them along intact. (This approach is a neat way to validate forms.)
 
 However, if you want to mutate arguments before passing them to the target object, you would need to return mutated arguments from the `beforeMethodCall` and then reflect them on the `argumentsList` position.
 
 ### How to Use Interceptor Base Class
 
-The use is very simple - just extend the `Interceptor` class and inside the `super` pass the options object which will include an array of method names you want to watch and a `beforeMethodCall` with your functionality. I am using static property to keep objects within the class, but you are free to displace this object outside and pass it through the constructor. Whatever works for you (the beauty of Javascript).
+Very simple — just extend the `Interceptor` and inside the `super` pass the options which will include an array of method names you want to watch for and a `beforeMethodCall` with your functionality. I am using a static property to keep objects within the class, but you are free to displace this object outside and pass it through the constructor. Whatever works for you (the beauty of Javascript).
 
-As you may notice in the example below, our `Dom` class monitors 4 out of 6 of its methods. 
+As you may notice in the example below, Interceptor monitors 4 out of 6 of its methods in the `Dom` class. 
 
 ```js {5,21-23,77-84,86-92}
 import Interceptor from './Interceptor.js'
@@ -231,7 +238,7 @@ class Dom extends Interceptor {
 export default Dom
 ```
 
-We are going to pay attention to `log` and `consoleLog` methods, because the former is not being monitored. Both of them are used in our event handlers:
+We are going to pay attention to the highlighted `log` and `consoleLog` methods, because the former is not being monitored and both of them are used in our event handlers:
 
 - Regular Button: `log` - prints out the text on the screen.
 - Super Spy Button: `consoleLog` - prints out the text in the console **and then** on the screen.
@@ -271,11 +278,17 @@ function handleBtn(btnSelector, btnColor) {
 }
 ```
 
-### Demo App Example
+### Applicability of Proxy Interceptors
 
-Each button is clicked three times. You will notice there are 6 click registered in the output and only 3 clicks in the console (with a timestamp) which come from the *Super Spy Button*.
+As it was previously mentioned, form validation is a great example. You may have also heard of request and response interceptors (e.g., Axios), which are mainly used for updating token in request headers and *preparation* of response messages. Other use cases could be caching, logging events and/or errors, you name it! Whatever requires pre or postprocessing in runtime, interceptor is your savior.
 
-![Screenshot](/public/blog/metaprogramming-in-javascript-creating-base-class-interceptor/spy-btn-screenshot.png)
+## See it in Action
+
+I've typed down a simple vanilla Javascript app using Vite as a dev server (repo is linked at the bottom of the article). It is a one-pager that contains two buttons and the HTML output area.
+
+Each button is clicked three times. You will notice there are 6 click registered in the output and only 3 clicks in the console (with a timestamp) that come from the *Super Spy Button*.
+
+![Screenshot](/blog/metaprogramming-in-javascript-creating-base-class-interceptor/spy-btn-screenshot.png)
 
 Console output:
 ```text {9-11}
@@ -292,12 +305,12 @@ New HTML output log at 23/09/2022, 17:39:56: The button is now <span class="text
 New HTML output log at 23/09/2022, 17:40:00: The button is now <span class="text-red">red</span>.
 ```
 
-## Demo and Code
+I hope you have learned something that will help you become a better Javascript developer, or perhaps found a code error I made along the way. Either way, let me know about your feedback.
 
-Check out the demo app and repo, feel free to play around. I hope you have learned something that will help you become a better Javascript developer, or perhaps found a code error I made along the way. Either way, let me know about your feedback.
+If you have any ideas of how this little Interceptor can be useful in a real-life application, please don't hesitate to type a comment.
+
+### Demo and Repo
 
 Demo: https://lazarkulasevic.github.io/javascript-proxy
 
 Code: https://github.com/lazarkulasevic/javascript-proxy
-
-If you have any ideas of how this little Interceptor can be useful in a real-life application, please don't hesitate to type a comment.
