@@ -83,11 +83,11 @@ You want to call "sayHi" method on the target object.
 Hello World!
 ```
 
-Now we have two logs in the console. One log comes from our `get` handler and it is executed *before* the `saiHi` method.
+This time we have two logs in the console. One log comes from our `get` handler and it is executed *before* the `saiHi` method.
 
-Handler methods are also called *traps* — probably because they trap passed arguments and control the further flow of data — we need to *reflect* received arguments in order for target object to perform its original behavior. In essence, `Reflect` should use the same handler method and call a target function (from the target object).
+Handler methods are also called *traps* — probably because they trap passed arguments and control the further flow of data. We will need to *reflect* received arguments in order for target object to perform its original behavior. In essence, `Reflect` should use the same handler method and call a target function (from the target object).
 
-This is a very basic explanation, but I believe it will be sufficient for you to understand what we're about to create by the end of this article. However, if you're looking for something thorough, check out the [MDN docs on Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy).
+This is a very basic explanation covering only `get` trap, but I believe it will be sufficient for you to understand what we're about to create by the end of this article. However, if you're looking for something thorough, check out the [MDN docs on Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy).
 
 ## Creating an Interceptor Using Javascript Proxy
 
@@ -128,9 +128,9 @@ class Interceptor {
 export default Interceptor
 ```
 
-As you probably noticed, a Proxy with a `get` trap is wrapped around a Proxy with an `apply` trap. We cannot get arguments using a `get` trap alone, because the target function is not called yet. 
+As you probably noticed, a Proxy with a `get` trap is wrapped around a Proxy with an `apply` trap. We cannot get arguments using a `get` trap alone, because the target function is not called at that time. 
 
-Inside the `apply` trap, you will notice highlighted `beforeMethodCall` function that is being executed right before reflecting all the arguments. In today's example, we are not mutating any arguments that `beforeMethodCall` receives, instead we're just going to use them as readable data and pass them along intact. (This approach is a neat way to validate forms.)
+Inside the `apply` trap, you will notice highlighted `beforeMethodCall` function that is being executed right before reflecting all the arguments. In today's example, we are not mutating any arguments that `beforeMethodCall` receives, instead we're just going to use them as readable data and pass them along intact.
 
 However, if you want to mutate arguments before passing them to the target object, you would need to return mutated arguments from the `beforeMethodCall` and then reflect them on the `argumentsList` position.
 
@@ -280,11 +280,15 @@ function handleBtn(btnSelector, btnColor) {
 
 ### Applicability of Proxy Interceptors
 
-As it was previously mentioned, form validation is a great example. You may have also heard of request and response interceptors (e.g., Axios), which are mainly used for updating token in request headers and *preparation* of response messages. Other use cases could be caching, logging events and/or errors, you name it! Whatever requires pre or postprocessing in runtime, interceptor is your savior.
+Form validation is a great example. Trapping and validating data in a separate code block seems like a neat way to keep the technical stuff separate from the business stuff in a project. 
 
-## See it in Action
+You may have also heard of HTTP client's request and response interceptors (e.g., Axios), which are mainly used for updating token in request headers and *preparation* of response messages. Well, they don't use `Proxy`. However, a front-end guy named Dennis wrote a very cool [blog post on Divotion](https://divotion.com/blog/using-proxies-for-intercepting-http-calls) in which he provided the very same yet cleaner implementation using Javascript Proxy.
 
-I've typed down a simple vanilla Javascript app using Vite as a dev server (repo is linked at the bottom of the article). It is a one-pager that contains two buttons and the HTML output area.
+Other use cases could be caching, logging events and/or errors, you name it! Whatever requires pre or postprocessing in runtime, Proxy interceptor is your savior.
+
+## The Interceptor in Action
+
+I've scrambled up a simple vanilla Javascript app using Vite as a dev server (repo is linked at the bottom of the article). It is a one-pager that contains two buttons and the HTML output area.
 
 Each button is clicked three times. You will notice there are 6 click registered in the output and only 3 clicks in the console (with a timestamp) that come from the *Super Spy Button*.
 
