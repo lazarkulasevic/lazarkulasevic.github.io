@@ -240,8 +240,8 @@ export default Dom
 
 We are going to pay attention to the highlighted `log` and `consoleLog` methods, because the former is not being monitored and both of them are used in our event handlers:
 
-- Regular Button: `log` - prints out the text on the screen.
-- Super Spy Button: `consoleLog` - prints out the text in the console **and then** on the screen.
+- Regular Button: `app.log(...)` - prints out the text on the screen.
+- Super Spy Button: `app.consoleLog(...)` - prints out the text in the console with a timestamp **and then** on the screen.
 
 ```js {16,21}
 // main.js
