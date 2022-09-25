@@ -20,7 +20,7 @@ const rawPosts = await getPosts()
 
 const posts = rawPosts
     .map(post => post.__pageData)
-    .sort((a, b) => new Date(a.publishedOn) > new Date(b.publishedOn) ? -1 : 1)
+    .sort((a, b) => new Date(a.frontmatter.publishedOn) > new Date(b.frontmatter.publishedOn) ? -1 : 1)
 
 const handleClick = (event) => {
     router.go(event)
