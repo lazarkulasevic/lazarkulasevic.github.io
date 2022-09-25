@@ -23,7 +23,7 @@ head:
       content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor.html
   - - meta
     - property: og:image
-      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-base-class-interceptor/featured.png
+      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor/featured.png
   - - meta
     - name: twitter:title
       content: 'Metaprogramming in JavaScript: Creating a Proxy Interceptor'
