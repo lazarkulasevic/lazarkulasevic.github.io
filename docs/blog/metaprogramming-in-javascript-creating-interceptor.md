@@ -1,41 +1,41 @@
 ---
 type: article
-title: 'Metaprogramming in JavaScript: Creating a Base Class Interceptor'
-image: /blog/metaprogramming-in-javascript-creating-base-class-interceptor/featured.png
+title: 'Metaprogramming in JavaScript: Creating a Proxy Interceptor'
+image: /blog/metaprogramming-in-javascript-creating-interceptor/featured.png
 description: Metaprogramming in JavaScript using Web APIs such as Proxy and Reflect.
-publishedOn: 9 September 2022 10:00
+publishedOn: 25 September 2022 10:00
 
 head:
   - - meta
     - property: og:title
-      content: 'Metaprogramming in JavaScript: Creating a Base Class Interceptor'
+      content: 'Metaprogramming in JavaScript: Creating a Proxy Interceptor'
   - - meta
     - property: og:description
-      content: Metaprogramming in JavaScript using Web APIs such as Proxy and Reflect.
+      content: Metaprogramming in JavaScript - Creating an Interceptor using Proxy and Reflect.
   - - meta
     - property: keywords
-      content: interceptor, proxy, reflect, metaprogramming in javascript
+      content: interceptor, javascript proxy, metaprogramming in javascript
   - - meta
     - property: og:type
       content: article
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-base-class-interceptor.html
+      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor.html
   - - meta
     - property: og:image
       content: /blog/metaprogramming-in-javascript-creating-base-class-interceptor/featured.png
   - - meta
     - name: twitter:title
-      content: 'Metaprogramming in JavaScript: Creating a Base Class Interceptor'
+      content: 'Metaprogramming in JavaScript: Creating a Proxy Interceptor'
   - - meta
     - name: twitter:description
-      content: Metaprogramming in JavaScript using Web APIs such as Proxy and Reflect.
+      content: Metaprogramming in JavaScript - Creating an Interceptor using Proxy and Reflect.
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-base-class-interceptor.html
+      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor.html
   - - meta
     - name: twitter:image
-      content: /blog/metaprogramming-in-javascript-creating-base-class-interceptor/featured.png
+      content: /blog/metaprogramming-in-javascript-creating-interceptor/featured.png
 ---
 
 Metaprogramming is a very specific technique in software development in which a portion of code treats other code as its data. Weird, right? This article is about to put a light on that concept using ES6 `Proxy`. 
@@ -278,21 +278,13 @@ function handleBtn(btnSelector, btnColor) {
 }
 ```
 
-### Applicability of Proxy Interceptors
-
-Form validation is a great example. Trapping and validating data in a separate code block seems like a neat way to keep the technical stuff separate from the business stuff in a project. 
-
-You may have also heard of HTTP client's request and response interceptors (e.g., Axios), which are mainly used for updating token in request headers and *preparation* of response messages. Well, they don't use `Proxy`. However, a front-end guy named Dennis wrote a very cool [blog post on Divotion](https://divotion.com/blog/using-proxies-for-intercepting-http-calls) in which he provided the very same yet cleaner implementation using Javascript Proxy.
-
-Other use cases could be caching, logging events and/or errors, you name it! Whatever requires pre or postprocessing in runtime, Proxy interceptor is your savior.
-
-## The Interceptor in Action
+### The Interceptor in Action
 
 I've scrambled up a simple vanilla Javascript app using Vite as a dev server (repo is linked at the bottom of the article). It is a one-pager that contains two buttons and the HTML output area.
 
 Each button is clicked three times. You will notice there are 6 click registered in the output and only 3 clicks in the console (with a timestamp) that come from the *Super Spy Button*.
 
-![Screenshot](/blog/metaprogramming-in-javascript-creating-base-class-interceptor/spy-btn-screenshot.png)
+![Screenshot](/blog/metaprogramming-in-javascript-creating-interceptor/spy-btn-screenshot.png)
 
 Console output:
 ```text {9-11}
@@ -309,12 +301,24 @@ New HTML output log at 23/09/2022, 17:39:56: The button is now <span class="text
 New HTML output log at 23/09/2022, 17:40:00: The button is now <span class="text-red">red</span>.
 ```
 
+Pretty cool, right? 
+
+## Applications of Proxy Interceptors
+
+Form validation is a great example. Trapping and validating data in a separate code block seems like a neat way to keep the technical stuff separate from the business stuff in a project.
+
+You may have also heard of HTTP client's request and response interceptors (e.g., Axios), which are mainly used for updating token in request headers and *preparation* of response messages. Well, they don't use `Proxy`. However, a front-end guy named Dennis wrote a very cool [blog post on Divotion](https://divotion.com/blog/using-proxies-for-intercepting-http-calls) in which he provided the very same yet cleaner implementation using Javascript Proxy.
+
+Other use cases could be caching, logging events and/or errors, you name it! Whatever requires pre or postprocessing in runtime, Proxy interceptor is your savior.
+
+### Wrapping Up
+
 I hope you have learned something that will help you become a better Javascript developer, or perhaps found a code error I made along the way. Either way, let me know about your feedback.
 
-If you have any ideas of how this little Interceptor can be useful in a real-life application, please don't hesitate to type a comment.
+If you have any ideas of how this little Interceptor can be useful in a real-life application, please don't hesitate to type a comment. And don't forget to check out the live demo. :wave::wink:
 
-### Demo and Repo
-
-Demo: https://lazarkulasevic.github.io/javascript-proxy
+::: info Live Demo and Code
+Live demo: https://lazarkulasevic.github.io/javascript-proxy
 
 Code: https://github.com/lazarkulasevic/javascript-proxy
+:::
