@@ -23,7 +23,7 @@ head:
       content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor.html
   - - meta
     - property: og:image
-      content: /blog/metaprogramming-in-javascript-creating-base-class-interceptor/featured.png
+      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-base-class-interceptor/featured.png
   - - meta
     - name: twitter:title
       content: 'Metaprogramming in JavaScript: Creating a Proxy Interceptor'
@@ -35,7 +35,7 @@ head:
       content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor.html
   - - meta
     - name: twitter:image
-      content: /blog/metaprogramming-in-javascript-creating-interceptor/featured.png
+      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor/featured.png
 ---
 
 Metaprogramming is a very specific technique in software development in which a portion of code treats other code as its data. Weird, right? This article is about to put a light on that concept using ES6 `Proxy`. 

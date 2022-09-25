@@ -23,7 +23,7 @@ head:
       content: https://lazarkulasevic.github.io/blog/hello-world.html
   - - meta
     - property: og:image
-      content: /blog/hello-world/featured.png
+      content: https://lazarkulasevic.github.io/blog/hello-world/featured.png
   - - meta
     - name: twitter:title
       content: Hello World
@@ -35,7 +35,7 @@ head:
       content: https://lazarkulasevic.github.io/blog/hello-world.html
   - - meta
     - name: twitter:image
-      content: /blog/hello-world/featured.png
+      content: https://lazarkulasevic.github.io/blog/hello-world/featured.png
 ---
 
 ```js
