@@ -2,7 +2,7 @@
 type: article
 title: 'Metaprogramming in JavaScript: Creating a Proxy Interceptor'
 image: /blog/metaprogramming-in-javascript-creating-interceptor/featured.png
-description: Metaprogramming in JavaScript using Web APIs such as Proxy and Reflect.
+description: Metaprogramming is a very specific technique in software development in which a portion of code treats other code as its data. This article is about to put a light on that concept using ES6 Proxy.
 publishedOn: 25 September 2022 10:00
 
 head:
@@ -11,7 +11,7 @@ head:
       content: 'Metaprogramming in JavaScript: Creating a Proxy Interceptor'
   - - meta
     - property: og:description
-      content: Metaprogramming in JavaScript - Creating an Interceptor using Proxy and Reflect.
+      content: Metaprogramming is a very specific technique in software development in which a portion of code treats other code as its data. This article is about to put a light on that concept using ES6 Proxy.
   - - meta
     - property: keywords
       content: interceptor, javascript proxy, metaprogramming in javascript
@@ -29,7 +29,7 @@ head:
       content: 'Metaprogramming in JavaScript: Creating a Proxy Interceptor'
   - - meta
     - name: twitter:description
-      content: Metaprogramming in JavaScript - Creating an Interceptor using Proxy and Reflect.
+      content: Metaprogramming is a very specific technique in software development in which a portion of code treats other code as its data. This article is about to put a light on that concept using ES6 Proxy.
   - - meta
     - property: og:url
       content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor.html
@@ -307,7 +307,7 @@ Pretty cool, right?
 
 Form validation is a great example. Trapping and validating data in a separate code block seems like a neat way to keep the technical stuff separate from the business stuff in a project.
 
-You may have also heard of HTTP client's request and response interceptors (e.g., Axios), which are mainly used for updating token in request headers and *preparation* of response messages. Well, they don't use `Proxy`. However, a front-end guy named Dennis wrote a very cool [blog post on Divotion](https://divotion.com/blog/using-proxies-for-intercepting-http-calls) in which he provided the very same yet cleaner implementation using Javascript Proxy.
+You may have also heard of HTTP client's request and response interceptors (e.g., Axios), which are mainly used for updating token in request headers and *preparation* of response messages. Well, they don't use `Proxy`. However, a front-end dev named Dennis wrote a very cool [blog post on Divotion](https://divotion.com/blog/using-proxies-for-intercepting-http-calls) in which he provided the very same yet cleaner implementation using Javascript Proxy.
 
 Other use cases could be caching, logging events and/or errors, you name it! Whatever requires pre or postprocessing in runtime, Proxy interceptor is your savior.
 
