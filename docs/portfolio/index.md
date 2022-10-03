@@ -15,7 +15,7 @@ import GridCards from '../.vitepress/components/GridCards.vue'
 
 # [Brief Intro](/portfolio/#intro)
 
-Front-end Developer with nearly 2 years of professional experience. Even though I am only at the beginning of my career, so far I've worked on several different projects that included some serious challenges, such as advanced data remapping and manipulation on client-side, establishing clean front-end architecture for new technical features, building CI/CD pipelines, but also some soft work such as pixel-perfect development.
+Front-end oriented Software Developer with {{ Utils.getRoundedAge('01 Dec 2020') }} years of professional experience. So far I've worked on several different projects that included some serious challenges, such as advanced data remapping and manipulation on client-side, establishing clean front-end architecture for new technical features, interactive data visualization, building CI/CD pipelines, but also some fine-tuning work such as pixel-perfect development.
 
 <br/>
 

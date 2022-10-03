@@ -15,7 +15,14 @@ const setAttributes = (el, attrs) => {
     }
 }
 
+const getRoundedAge = (dateString) => {
+    const differenceInMilliseconds = Date.now() - new Date(dateString).getTime()
+    const yearInMilliseconds = 31536000000
+    return Math.round(differenceInMilliseconds / yearInMilliseconds)
+}
+
 export default {
     formatDateTime,
-    setAttributes
+    setAttributes,
+    getRoundedAge
 }
