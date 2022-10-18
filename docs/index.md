@@ -4,15 +4,15 @@ editLink: false
 title: Welcome
 hero:
   name: Hi, I am Lazar
-  text: Front-end Developer who thrives in Vue.js
-  tagline: Check out my portfolio and get in touch
+  text: Front-end Developer
+  tagline: Check out my portfolio and blog
   actions:
   - theme: brand
-    text: Projects
-    link: portfolio/#projects
+    text: Portfolio
+    link: portfolio/
   - theme: alt
-    text: Tech Stack
-    link: /portfolio/#tech-stack
+    text: Tech Blog
+    link: /blog/
 
 <!-- @include: ./partials/_head-meta-defaults -->
 ---

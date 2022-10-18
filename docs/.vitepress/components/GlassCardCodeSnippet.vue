@@ -10,23 +10,23 @@
 </template>
 
 <style lang="scss">
-@use '../style/variables' as v;
+@use '../style/variables' as *;
 
 .code {
     &--red {
-        color: v.$base-red;
+        color: $base-red;
     }
     &--blue {
-        color: v.$base-blue;
+        color: $base-blue;
     }
     &--green {
-        color: v.$base-green;
+        color: #0c934d;
     }
     &--yellow {
-        color: v.$base-yellow;
+        color: $base-yellow;
     }
     &--purple {
-        color: v.$base-purple;
+        color: $base-purple;
     }
 }
 </style>
