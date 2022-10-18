@@ -4,7 +4,7 @@ editLink: false
 title: Welcome
 hero:
   name: Hi, I am Lazar
-  text: Front-end Developer
+  text: Front-end focused Software Developer
   tagline: Check out my portfolio and blog
   actions:
   - theme: brand

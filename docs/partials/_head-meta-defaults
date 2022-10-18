@@ -1,13 +1,13 @@
 head:
   - - meta
     - property: og:title
-      content: Lazar Kulasevic 
+      content: Lazar Kulasevic
   - - meta
     - property: og:description
-      content: Lazar Kulasevic's portfolio site.
+      content: Lazar Kulasevic is a front-end focused software developer. Check out his portfolio and blog.
   - - meta
     - property: keywords
-      content: Lazar Kulasevic, JavaScript, Frontend Developer
+      content: Lazar Kulasevic, Software Developer, Front-end Developer
   - - meta
     - property: og:type
       content: website
@@ -16,16 +16,16 @@ head:
       content: https://lazarkulasevic.github.io
   - - meta
     - property: og:image
-      content: /featured.png 
+      content: https://lazarkulasevic.github.io/featured.png
   - - meta
     - name: twitter:title
       content: Lazar Kulasevic
   - - meta
     - name: twitter:description
-      content: Lazar Kulasevic's portfolio site.
+      content: Lazar Kulasevic is a front-end focused software developer. Check out his portfolio and blog.
   - - meta
     - property: og:url
       content: https://lazarkulasevic.github.io
   - - meta
     - name: twitter:image
-      content: /featured.png
+      content: https://lazarkulasevic.github.io/featured.png
