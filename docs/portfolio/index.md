@@ -15,9 +15,9 @@ import GridCards from '../.vitepress/components/GridCards.vue'
 
 # [Brief Intro](/portfolio/#intro)
 
-Front-end oriented Software Developer with {{ Utils.getRoundedAge('01 Dec 2020') }} years of professional experience. So far I've worked on several different projects that included some serious challenges, such as advanced data remapping and manipulation on client-side, establishing clean front-end architecture for new technical features, interactive data visualization, building CI/CD pipelines, but also some fine-tuning work such as pixel-perfect development.
+Front-end focused Software Developer with {{ Utils.getRoundedAge('01 Dec 2020') }} years of professional experience. So far I've worked on several different projects that included some serious challenges, such as advanced data remapping and manipulation on client-side, establishing clean front-end architecture for new technical features, interactive data visualization, building CI/CD pipelines, but also some fine-tuning work such as pixel-perfect development.
 
-<br/>
+Also, I have a master’s degree in Chemistry. So I know science too.
 
 # [Projects](/portfolio/#projects)
 
