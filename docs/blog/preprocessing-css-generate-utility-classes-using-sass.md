@@ -2,8 +2,8 @@
 type: article
 title: 'Pre-processing CSS: Generate Utility Classes Using Sass – Part 1'
 image: /blog/preprocessing-css-generate-utility-classes-using-sass/featured.png
-description: Generate CSS utility classes or helpers using advanced Sass features – loops, maps and type-checker guards.
-publishedOn: 17 October 2022 16:45
+description: Generate CSS utility classes or helpers using advanced Sass features – loops, maps and type guards.
+publishedOn: 06 November 2022 21:30
 
 head:
   - - meta
@@ -11,7 +11,7 @@ head:
       content: 'Pre-processing CSS: Generate Utility Classes Using Sass – Part 1'
   - - meta
     - property: og:description
-      content: Generate CSS utility classes or helpers using advanced Sass features – loops, maps and type-checker guards.
+      content: Generate CSS utility classes or helpers using advanced Sass features – loops, maps and type guards.
   - - meta
     - property: keywords
       content: css preprocessor, sass, scss, utility class
@@ -29,7 +29,7 @@ head:
       content: 'Pre-processing CSS: Generate Utility Classes Using Sass – Part 1'
   - - meta
     - name: twitter:description
-      content: Generate CSS utility classes or helpers using advanced Sass features – loops, maps and type-checker guards.
+      content: Generate CSS utility classes or helpers using advanced Sass features – loops, maps and type guards.
   - - meta
     - property: og:url
       content: https://lazarkulasevic.github.io/blog/preprocessing-css-generate-utility-classes-using-sass.html
