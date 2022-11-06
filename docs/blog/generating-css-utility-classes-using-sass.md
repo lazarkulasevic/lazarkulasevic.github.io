@@ -265,9 +265,17 @@ $axes: "y", "x";
 }
 ```
 
-My job here is done. (long pause) NOT! :stuck_out_tongue_winking_eye:
+Alright, we have a fully functioning utility class generator with a unit-check guard. The `$spacing` map now only receives numerical values in `px`, `em` or `rem`.
 
-Almost every single website or app today is responsive. That means we cannot use our spacings as they are, but we need to upgrade them to accept breakpoints too. This can be achieved by placing another loop for breakpoints.
+My job here is done. (long pause) **NOT!** :stuck_out_tongue_winking_eye:
+
+Almost every single website or app today is responsive. That means we cannot use our spacings as they are, but we need to upgrade them to accept breakpoints too, so that we can dynamically change spacing based on the screen size:
+
+```html
+<div class="m-8 m-sm-16 m-md-32 m-lg-64">
+    Hi mom!
+</div>
+```
 
 ### Adding Breakpoints
 
@@ -286,7 +294,11 @@ $breakpoints: (
 );
 ```
 
-Second, they have to be included in the (grand)parent loop because of the cascade rule (mobile-first web design). We are dictating the generation of utility classes to increase `min-width` from top to bottom.
+Second, they have to be included in the (grand)parent loop because of the cascade rule (mobile-first web design). We are dictating the generation of utility classes to increase `min-width` from top to bottom and we want them to be grouped together by breakpoint.
+
+### End Result
+
+Fully functioning utility class generator.
 
 ```scss
 // _spacing.scss
@@ -297,7 +309,7 @@ $properties: ("m": margin, "p": padding);
 $directions: ("t": top, "b": bottom, "l": left, "r": right);
 $axes: "y", "x";
 
-// classes without breakpoint abbreviation (i.e. mx-16)
+// classes without breakpoint abbreviation (i.e. m-16)
 
 @each $prefix, $property in $properties {
     @each $suffix, $space in $spacing {
@@ -327,7 +339,7 @@ $axes: "y", "x";
     }
 }
 
-// classes WITH breakpoint abbreviation (i.e. mx-sm-16)
+// classes WITH breakpoint abbreviation (i.e. m-sm-16)
 
 @each $breakpoint, $breakpoint-value in $breakpoints {
     @media (min-width: $breakpoint-value) {
@@ -362,12 +374,9 @@ $axes: "y", "x";
 }
 ```
 
+Instead of writing about 2000 lines of repetitive CSS (that is subjected to human error), we have achieved the same thing in under 100 lines of SCSS. 
 
-Done and done! We have a fully functioning utility class generator with a type-check guard. The `$spacing` map now only receives numerical values in px, em or rem.
-
-Instead of writing 60 lines of repetitive CSS for only one spacing value, we have achieved the same thing in 40 lines of SCSS. Given the increased complexity in our code, that didn't turn out to be a good idea. Right? But, imagine you add more spacing values in map `$spacing`, for example 5 or 6 (xs, sm, md, lg, xl, xxl), you'll get 300-400 lines of generated CSS. Now the hustle we went through really pays off!
-
-Or does it?!
+The hustle we went through really pays off! (a bit shorter pause) Or does it?! :monocle_face:
 
 ### Potential Performance Issue
 
