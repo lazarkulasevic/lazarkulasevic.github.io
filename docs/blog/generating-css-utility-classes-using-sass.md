@@ -52,8 +52,6 @@ Introducing the concept of pre-processing styles using Sass/Scss. If you are alr
 
 In today's article, we are going to handle spacings only. Our Scss code (e.g., `input.scss`) will be compiled into CSS code (`output.css`) that will contain a bunch of similar-looking classes like ones in the example below.
 
-The advantage of Sass pre-processor is in its unique syntax and flexibility achieved with features such as variables, nested rules, loops, mixins, etc. Once written, code goes through the compiler and generates CSS code as output.
-
 ```css
 /* output.css */
 .m-8 {
@@ -73,6 +71,10 @@ The advantage of Sass pre-processor is in its unique syntax and flexibility achi
     }
 }
 ```
+
+The advantage of Sass pre-processor is in its unique syntax and flexibility achieved with features such as variables, nested rules, loops, mixins, etc. Once written, code goes through the compiler and generates CSS code as output.
+
+### Making It Work
 
 To get there, we're going to take a walk through the whole process. I am going to use vanilla Javascript and Vite as a bundler. You can either [clone my repo](https://github.com/lazarkulasevic/css-utility-classes) or follow the steps:
 
@@ -117,7 +119,15 @@ $properties: ("m": margin, "p": padding);
 }
 ```
 
-Okay, we've got that one covered. Next we are going to do is to cover cases for each axis and direction.
+Okay, we've got that one covered. This piece of code will generate classes for all-direction margins and paddings.
+
+```css
+.m-8 {
+    margin: 8px !important;
+}
+```
+
+Next we are going to do is to cover cases for each axis and direction.
 
 ```scss
 // _spacing.scss
@@ -168,11 +178,21 @@ $axes: "y", "x";
 }
 ```
 
+And those will look as the following.
 
+```css
+.mx-8 {
+    margin: 8px !important;
+}
+
+.mt-8 {
+    margin: 8px !important;
+}
+```
 
 Now we just need to analyze our code and look for potential improvements.
 
-### Minor Refactor
+#### Minor Refactor
 
 You may recognize a repetitive pattern in our nested loops. We are looping through `$properties` and `$spacing` three times, that is for each orientation individual and per axis, which can be simplified by nesting them together and loop through each of them one time only for all cases.
 
@@ -184,7 +204,7 @@ You may recognize a repetitive pattern in our nested loops. We are looping throu
 }
 ```
 
-Now cover all other cases. The first set that produces all-direction spacing (`m-8` or `p-8`) is generated without additional loops. But direction and axis-oriented spacings each need one additional loop.
+The first set that produces all-direction spacing (`m-8` or `p-8`) is generated without additional loops. But direction and axis-oriented spacings each need one additional loop. The resulting Scss will give us what we initially wanted – utility classes for spacing.
 
 ```scss {7,19}
 @each $prefix, $property in $properties {
@@ -214,7 +234,7 @@ Now cover all other cases. The first set that produces all-direction spacing (`m
 }
 ```
 
-The job is almost done. To complete it, all we need to do is to add a validator to prevent developer from assigning values to `$spacing` that either `margin` or `padding` property doesn't accept, such as `auto`, because `padding: auto;` is not valid. 
+The job is almost done. To complete it, all we need to do is to add a validator to prevent developer from assigning values to `$spacing` that either `margin` or `padding` property doesn't accept, such as _auto_, because `padding: auto;` is not valid. 
 
 For this purpose, we're going to create `_mixins.scss` and inside that file declare `validate-unit` which will be used in `_spacing.scss`.
 
@@ -227,7 +247,7 @@ For this purpose, we're going to create `_mixins.scss` and inside that file decl
 }
 ```
 
-The resulting Scss will give us what we initially wanted – utility classes for spacing.
+Inject the validator in the `$spacing` loop.
 
 ```scss {11}
 // _spacing.scss
@@ -271,6 +291,8 @@ Alright, we have a fully functioning utility class generator with a unit-check g
 
 Our job here is done. (long pause) **NOT!** :stuck_out_tongue_winking_eye:
 
+### Making It Responsive
+
 Almost every single website or app today is responsive. That means we cannot use our spacings as they are, because mobile spacings are usually small and growing as screen size increases. That's why we need to upgrade them to accept breakpoints too, so that we can dynamically change spacing based on the screen size.
 
 ```html
@@ -279,7 +301,7 @@ Almost every single website or app today is responsive. That means we cannot use
 </div>
 ```
 
-### Adding Breakpoints
+#### Adding Breakpoints
 
 First, `$breakpoints` are configurable, hence they'll go to `_config.scss`.
 
@@ -374,16 +396,16 @@ $axes: "y", "x";
 }
 ```
 
-Instead of writing about 2000 lines of repetitive CSS that is subjected to human error, we have achieved the same thing in under 100 lines of SCSS. 
-
-The hustle we went through really pays off! (a bit shorter pause) Or does it?! :monocle_face:
+Instead of writing about 2000 lines of repetitive CSS that is subjected to human error, we have achieved the same thing in under 100 lines of SCSS. Of course, this code can be additionally refactored to fit in fewer lines. But for the sake of readability, I'm going to leave it as is.
 
 ### Potential Performance Issue
 
-What if hypothetically we end up using only a few of these classes in our project? For example, your team has decided to handle spacing by adding only bottom margin and x-axis padding to elements. 
+The hustle we went through really pays off! (a bit shorter pause) Or does it?! :monocle_face:
+
+What if hypothetically we end up using only a few of these classes in our project? For example, the team has decided to handle spacing by adding only bottom margin and x-axis padding to elements.
 
 Don't worry, there's a solution for that too. Cleaning up unused CSS with a post-processor plugin will be covered in the **Part 2**.
 
-::: info Code
-Repo: https://github.com/lazarkulasevic/css-utility-classes
+::: info Check out the repo
+Code: https://github.com/lazarkulasevic/css-utility-classes
 :::
