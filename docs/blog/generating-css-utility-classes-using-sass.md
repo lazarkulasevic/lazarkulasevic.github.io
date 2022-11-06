@@ -38,9 +38,9 @@ head:
       content: https://lazarkulasevic.github.io/blog/preprocessing-css-generate-utility-classes-using-sass/featured.png
 ---
 
-When it comes to styling, you know what I really like? Utility classes! All the boring stuff about styling such as spacing, coloring, text formatting, etc. can be easily handled by simply using a utility class (`m-sm` – margin small, `color-primary`, `font-lg` – font-size large). 
+When it comes to styling, you know what I really like? Utility classes! All the boring stuff about styling such as spacing, coloring, text formatting, etc. can be easily handled by using a utility class (e.g., `m-sm` – margin small, `color-primary`, `font-lg` – font-size large). As it turned out, I'm not the sole fan of this approach to CSS architecture. There are lots of devs out there preferring small and single-purpose classes than large semantic ones. This movement in front-end is named _Atomic CSS_, and it is gaining on velocity as we speak.
 
-Including these in your project can be easily done by including a CSS library such as Bootstrap, TailwindCSS or any other that provides utility classes out of the box. However, from my perspective, this approach is not recommended when you just want to use utilities, because they usually come as a *secondary feature*. You will end up installing the whole package with all its components and features and use only a fraction. This may produce a negative effect to your bundle size and app performance accordingly.
+Including these in your project can be easily done by including a CSS library such as Bootstrap, TailwindCSS or any other that provides utility classes out of the box. However, from my perspective, this approach is not recommended when you just want to use spacing helpers, because they usually come as a _secondary feature_. You will end up installing the whole package with all its components and features and use only a small fraction. This may produce a negative effect to your bundle size and app performance accordingly.
 
 Since we are going to write our own utility classes, we now have the power to dictate the nomenclature. However, I wouldn't get too creative about these, because the name should be as short as possible, uniform and yet intuitive enough to be easily memorable.
 
@@ -56,30 +56,48 @@ The advantage of Sass pre-processor is in its unique syntax and flexibility achi
 
 ```css
 /* output.css */
-.m-sm {
-    margin: 12px !important;
+.m-8 {
+    margin: 8px !important;
 }
 
-.mx-md {
-    margin-left: 24px !important;
-    margin-right: 24px !important;
+@media (min-width: 480px) {
+    .mt-sm-16 {
+        margin-top: 16px !important;
+    }
 }
 
-.mt-sm {
-    margin-top: 12px !important;
+@media (min-width: 768px) {
+    .mx-md-32 {
+        margin-left: 32px !important;
+        margin-right: 32px !important;
+    }
 }
 ```
 
-To get there, we're going to take a walk through the process which — when you put it all together — turns out to be quite simple. Let's create two partial files and name them `_config.scss` and `_spacing.scss`. In *config* file we're going to declare a map with key-value pairs that will be consumed in *spacing* file to generate utility classes like those in the `output.css` file.
+To get there, we're going to take a walk through the whole process. I am going to use vanilla Javascript and Vite as a bundler. You can either [clone my repo](https://github.com/lazarkulasevic/css-utility-classes) or follow the steps:
+
+1. Create Vite project and pick vanilla Javascript boilerplate:
+
+```text
+npm create vite@latest
+```
+
+2. Install dependencies:
+
+```text
+npm i sass postcss @fullhuman/postcss-purgecss -D
+```
+
+Now let's create two partial files and name them `_config.scss` and `_spacing.scss`. In _config_ file we're going to declare a map with key-value pairs that will be consumed in _spacing_ file to generate utility classes like those in the `output.css` file.
 
 ```scss
 // _config.scss
 $spacing: (
-    "lg": 64px,
-    "md": 32px,
-    "sm": 16px,
-    "xs": 8px,
-    "none": 0px
+    0: 0px,
+    8: 8px,
+    16: 16px,
+    32: 32px,
+    64: 64px
 );
 ```
 
@@ -88,12 +106,12 @@ Then, the logic comes into play. By looping through `$selectors` and `$spacing` 
 ```scss
 // _spacing.scss
 @use "config" as *;
-$selectors: ("m": margin, "p": padding);
+$properties: ("m": margin, "p": padding);
 
-@each $prefix, $selector in $selectors {
+@each $prefix, $property in $properties {
     @each $suffix, $space in $spacing {
         .#{$prefix}-#{$suffix} {
-            #{$selector}: #{$space} !important;
+            #{$property}: #{$space} !important;
         }
     }
 }
@@ -105,44 +123,44 @@ Okay, we've got that one covered. Next we are going to do is to cover cases for 
 // _spacing.scss
 @use "config" as *;
 
-$selectors: ("m": margin, "p": padding);
+$properties: ("m": margin, "p": padding);
 $directions: ("t": top, "b": bottom, "l": left, "r": right);
 $axes: "y", "x";
 
-// Mapping $spacing values per $selector
+// Mapping $spacing values per $property
 
-@each $prefix, $selector in $selectors {
+@each $prefix, $property in $properties {
     @each $suffix, $space in $spacing {
         .#{$prefix}-#{$suffix} {
-            #{$selector}: #{$space} !important;
+            #{$property}: #{$space} !important;
         }
     }
 }
 
-// Mapping $spacing values per $selector and $direction
+// Mapping $spacing values per $property and $direction
 
-@each $prefix, $selector in $selectors {
+@each $prefix, $property in $properties {
     @each $abbr-dir, $direction in $directions {
         @each $suffix, $space in $spacing {
             .#{$prefix}#{$abbr-dir}-#{$suffix} {
-                #{$selector}-#{$direction}: #{$space} !important;
+                #{$property}-#{$direction}: #{$space} !important;
             }
         }
     }
 }
 
-// Mapping $spacing values per $selector and $axis
+// Mapping $spacing values per $property and $axis
 
-@each $prefix, $selector in $selectors {
+@each $prefix, $property in $properties {
     @each $axis in $axes {
         @each $suffix, $space in $spacing {
             .#{$prefix}#{$axis}-#{$suffix} {
                 @if $axis == "y" {
-                    #{$selector}-top: #{$space} !important;
-                    #{$selector}-bottom: #{$space} !important;
+                    #{$property}-top: #{$space} !important;
+                    #{$property}-bottom: #{$space} !important;
                 } @else if $axis == "x" {
-                    #{$selector}-left: #{$space} !important;
-                    #{$selector}-right: #{$space} !important;
+                    #{$property}-left: #{$space} !important;
+                    #{$property}-right: #{$space} !important;
                 }
             }
         }
@@ -150,43 +168,45 @@ $axes: "y", "x";
 }
 ```
 
-That's it, all cases are covered. Now we just need to analyze our code and look for potential improvements.
+
+
+Now we just need to analyze our code and look for potential improvements.
 
 ### Minor Refactor
 
 We can recognize a repetitive pattern in our nested loops. We are looping through `$selectors` and `$spacing` three times, that is for each orientation individual and per axis. That can be simplified by nesting them together and loop through each of them one time only for all cases.
 
 ```scss
-@each $prefix, $selector in $selectors {
+@each $prefix, $property in $properties {
     @each $suffix, $space in $spacing {
         // Cover all cases here
     }
 }
 ```
 
-Now cover all other cases. The first set that produces all-direction spacing (`m-sm` or `p-sm`) is generated without additional loops. But direction and axis-oriented spacings each need one additional loop.
+Now cover all other cases. The first set that produces all-direction spacing (`m-8` or `p-8`) is generated without additional loops. But direction and axis-oriented spacings each need one additional loop.
 
 ```scss {7,13}
-@each $prefix, $selector in $selectors {
+@each $prefix, $property in $properties {
     @each $suffix, $space in $spacing {
         .#{$prefix}-#{$suffix} {
-            #{$selector}: #{$space} !important;
+            #{$property}: #{$space} !important;
         }
 
         @each $abbr-dir, $direction in $directions {
             .#{$prefix}#{$abbr-dir}-#{$suffix} {
-                #{$selector}-#{$direction}: #{$space} !important;
+                #{$property}-#{$direction}: #{$space} !important;
             }
         }
 
         @each $axis in $axes {
             .#{$prefix}#{$axis}-#{$suffix} {
                 @if $axis == "y" {
-                    #{$selector}-top: #{$space} !important;
-                    #{$selector}-bottom: #{$space} !important;
+                    #{$property}-top: #{$space} !important;
+                    #{$property}-bottom: #{$space} !important;
                 } @else if $axis == "x" {
-                    #{$selector}-left: #{$space} !important;
-                    #{$selector}-right: #{$space} !important;
+                    #{$property}-left: #{$space} !important;
+                    #{$property}-right: #{$space} !important;
                 }
             }
         }
@@ -201,37 +221,106 @@ The job is almost done. To complete it, all we need to do is to add type checker
 Done and done! We have a fully functioning utility class generator with a type-check guard. The `$spacing` map now only receives numerical values in px, em or rem.
 
 ```scss
-// _spacing.scss
-@use "config" as *;
+// _mixins.scss
+@mixin validate-unit($value, $value-type, $units...) {
+    @if type-of($value) != $value-type or index($units, unit($value)) == null {
+        @error "Invalid unit #{unit($value)} for value #{$value}.";
+    }
+}
+```
 
-$selectors: ("m": margin, "p": padding);
+Breakpoints have to be included in the parent loop because of the cascade rule (mobile-first design)
+
+```scss
+// _config.scss
+$spacing: (
+    0: 0px,
+    8: 8px,
+    16: 16px,
+    32: 32px,
+    64: 64px
+);
+
+$breakpoints: (
+    "xs": 375px,
+    "sm": 480px,
+    "md": 768px,
+    "lg": 1080px,
+    "xl": 1440px,
+    "xxl": 1920px
+);
+```
+
+```scss
+// _spacing.scss
+@use "sass:map";
+@use "sass:math";
+@use "config" as *;
+@use "mixins" as *;
+
+$properties: ("m": margin, "p": padding);
 $directions: ("t": top, "b": bottom, "l": left, "r": right);
 $axes: "y", "x";
 
-@each $prefix, $selector in $selectors {
-    @each $suffix, $space in $spacing {
-        @if type-of($space) != "number" or index("px" "em" "rem", unit($space)) == null {
-            @error "Invalid space value: #{$space}.";
-        }
-      
-        .#{$prefix}-#{$suffix} {
-            #{$selector}: #{$space} !important;
-        }
-      
-        @each $abbr-dir, $direction in $directions {
-            .#{$prefix}#{$abbr-dir}-#{$suffix} {
-                #{$selector}-#{$direction}: #{$space} !important;
+$breakpoint-values: map.values($breakpoints);
+$min-breakpoint: math.min($breakpoint-values...);
+
+@each $breakpoint, $breakpoint-value in $breakpoints {
+    @if $breakpoint-value == $min-breakpoint {
+        @each $prefix, $property in $properties {
+            @each $suffix, $space in $spacing {
+                @include validate-type($space, number);
+
+                .#{$prefix}-#{$suffix} {
+                    #{$property}: #{$space} !important;
+                }
+
+                @each $axis in $axes {
+                    .#{$prefix}#{$axis}-#{$suffix} {
+                        @if $axis == "y" {
+                            #{$property}-top: #{$space} !important;
+                            #{$property}-bottom: #{$space} !important;
+                        } @else if $axis == "x" {
+                            #{$property}-left: #{$space} !important;
+                            #{$property}-right: #{$space} !important;
+                        }
+                    }
+                }
+
+                @each $abbr-dir, $direction in $directions {
+                    .#{$prefix}#{$abbr-dir}-#{$suffix} {
+                        #{$property}-#{$direction}: #{$space} !important;
+                    }
+                }
             }
         }
-      
-        @each $axis in $axes {
-            .#{$prefix}#{$axis}-#{$suffix} {
-                @if $axis == "y" {
-                    #{$selector}-top: #{$space} !important;
-                    #{$selector}-bottom: #{$space} !important;
-                } @else if $axis == "x" {
-                    #{$selector}-left: #{$space} !important;
-                    #{$selector}-right: #{$space} !important;
+    } @else {
+        @media (min-width: $breakpoint-value) {
+            @each $prefix, $property in $properties {
+                @each $suffix, $space in $spacing {
+                    @include validate-type($space, number);
+
+                    .#{$prefix}-#{$breakpoint}-#{$suffix} {
+                        #{$property}: #{$space} !important;
+                    }
+
+                    @each $axis in $axes {
+                        .#{$prefix}#{$axis}-#{$breakpoint}-#{$suffix} {
+                            @if $axis == "y" {
+                                #{$property}-top: #{$space} !important;
+                                #{$property}-bottom: #{$space} !important;
+                            } @else if $axis == "x" {
+                                #{$property}-left: #{$space} !important;
+                                #{$property}-right: #{$space} !important;
+                            }
+                        }
+                    }
+
+                    @each $abbr-dir, $direction in $directions {
+                        .#{$prefix}#{$abbr-dir}-#{$breakpoint}-#{$suffix} {
+                            #{$property}-#{$direction}: #{$space} !important;
+                        }
+                    }
                 }
             }
         }
