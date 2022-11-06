@@ -82,10 +82,10 @@ To get there, we're going to take a walk through the whole process. I am going t
 npm create vite@latest
 ```
 
-2. Install dependencies:
+2. Install Sass:
 
 ```text
-npm i sass postcss @fullhuman/postcss-purgecss -D
+npm i sass -D
 ```
 
 Now let's create two partial files and name them `_config.scss` and `_spacing.scss`. In _config_ file we're going to declare a map with key-value pairs that will be consumed in _spacing_ file to generate utility classes like those in the `output.css` file.
@@ -101,7 +101,7 @@ $spacing: (
 );
 ```
 
-Then, the logic comes into play. By looping through `$selectors` and `$spacing` maps, the preprocessor generates classes containing `margin` or `padding` property with values in pixels.
+Then, the logic comes into play. By looping through `$properties` and `$spacing` maps, the preprocessor generates classes containing `margin` or `padding` property with values in pixels.
 
 ```scss
 // _spacing.scss
@@ -172,9 +172,9 @@ $axes: "y", "x";
 
 Now we just need to analyze our code and look for potential improvements.
 
-### Minor Refactor
+### Minor Refactor #1
 
-We can recognize a repetitive pattern in our nested loops. We are looping through `$selectors` and `$spacing` three times, that is for each orientation individual and per axis. That can be simplified by nesting them together and loop through each of them one time only for all cases.
+You may recognize a repetitive pattern in our nested loops. We are looping through `$properties` and `$spacing` three times, that is for each orientation individual and per axis, which can be simplified by nesting them together and loop through each of them one time only for all cases.
 
 ```scss
 @each $prefix, $property in $properties {
@@ -214,11 +214,7 @@ Now cover all other cases. The first set that produces all-direction spacing (`m
 }
 ```
 
-The job is almost done. To complete it, all we need to do is to add type checker to prevent developer from assigning values to `$spacing` that either `margin` or `padding` property doesn't accept, such as `auto`, because `padding: auto;` is not valid. 
-
-### End Result
-
-Done and done! We have a fully functioning utility class generator with a type-check guard. The `$spacing` map now only receives numerical values in px, em or rem.
+The job is almost done. To complete it, all we need to do is to add a validator to prevent developer from assigning values to `$spacing` that either `margin` or `padding` property doesn't accept, such as `auto`, because `padding: auto;` is not valid. For this purpose, we're going to create `_mixins.scss` and inside that file declare `validate-unit` which will be used in `_spacing.scss`.
 
 ```scss
 // _mixins.scss
@@ -229,18 +225,57 @@ Done and done! We have a fully functioning utility class generator with a type-c
 }
 ```
 
-Breakpoints have to be included in the parent loop because of the cascade rule (mobile-first design)
+The resulting Scss will give us what we initially wanted – utility classes for spacing. We can use them to set spacings without "polluting" our css files with margin or padding properties. Pretty neat!
+
+```scss {11}
+// _spacing.scss
+@use "config" as *;
+@use "mixins" as *;
+
+$properties: ("m": margin, "p": padding);
+$directions: ("t": top, "b": bottom, "l": left, "r": right);
+$axes: "y", "x";
+
+@each $prefix, $property in $properties {
+    @each $suffix, $space in $spacing {
+        @include validate-unit($space, number, px);
+        
+        .#{$prefix}-#{$suffix} {
+            #{$property}: #{$space} !important;
+        }
+
+        @each $abbr-dir, $direction in $directions {
+            .#{$prefix}#{$abbr-dir}-#{$suffix} {
+                #{$property}-#{$direction}: #{$space} !important;
+            }
+        }
+
+        @each $axis in $axes {
+            .#{$prefix}#{$axis}-#{$suffix} {
+                @if $axis == "y" {
+                    #{$property}-top: #{$space} !important;
+                    #{$property}-bottom: #{$space} !important;
+                } @else if $axis == "x" {
+                    #{$property}-left: #{$space} !important;
+                    #{$property}-right: #{$space} !important;
+                }
+            }
+        }
+    }
+}
+```
+
+My job here is done. (long pause) NOT! :stuck_out_tongue_winking_eye:
+
+Almost every single website or app today is responsive. That means we cannot use our spacings as they are, but we need to upgrade them to accept breakpoints too. This can be achieved by placing another loop for breakpoints.
+
+### Adding Breakpoints
+
+First, `$breakpoints` are configurable, hence they'll go to `_config.scss`.
 
 ```scss
 // _config.scss
-$spacing: (
-    0: 0px,
-    8: 8px,
-    16: 16px,
-    32: 32px,
-    64: 64px
-);
-
+$spacing: (...);
 $breakpoints: (
     "xs": 375px,
     "sm": 480px,
@@ -251,10 +286,10 @@ $breakpoints: (
 );
 ```
 
+Second, they have to be included in the (grand)parent loop because of the cascade rule (mobile-first web design). We are dictating the generation of utility classes to increase `min-width` from top to bottom.
+
 ```scss
 // _spacing.scss
-@use "sass:map";
-@use "sass:math";
 @use "config" as *;
 @use "mixins" as *;
 
@@ -262,21 +297,50 @@ $properties: ("m": margin, "p": padding);
 $directions: ("t": top, "b": bottom, "l": left, "r": right);
 $axes: "y", "x";
 
-$breakpoint-values: map.values($breakpoints);
-$min-breakpoint: math.min($breakpoint-values...);
+// classes without breakpoint abbreviation (i.e. mx-16)
+
+@each $prefix, $property in $properties {
+    @each $suffix, $space in $spacing {
+        @include validate-unit($space, number, px);
+        
+        .#{$prefix}-#{$suffix} {
+            #{$property}: #{$space} !important;
+        }
+
+        @each $abbr-dir, $direction in $directions {
+            .#{$prefix}#{$abbr-dir}-#{$suffix} {
+                #{$property}-#{$direction}: #{$space} !important;
+            }
+        }
+
+        @each $axis in $axes {
+            .#{$prefix}#{$axis}-#{$suffix} {
+                @if $axis == "y" {
+                    #{$property}-top: #{$space} !important;
+                    #{$property}-bottom: #{$space} !important;
+                } @else if $axis == "x" {
+                    #{$property}-left: #{$space} !important;
+                    #{$property}-right: #{$space} !important;
+                }
+            }
+        }
+    }
+}
+
+// classes WITH breakpoint abbreviation (i.e. mx-sm-16)
 
 @each $breakpoint, $breakpoint-value in $breakpoints {
-    @if $breakpoint-value == $min-breakpoint {
+    @media (min-width: $breakpoint-value) {
         @each $prefix, $property in $properties {
             @each $suffix, $space in $spacing {
-                @include validate-type($space, number);
+                // we don't need to validate unit here as well
 
-                .#{$prefix}-#{$suffix} {
+                .#{$prefix}-#{$breakpoint}-#{$suffix} {
                     #{$property}: #{$space} !important;
                 }
 
                 @each $axis in $axes {
-                    .#{$prefix}#{$axis}-#{$suffix} {
+                    .#{$prefix}#{$axis}-#{$breakpoint}-#{$suffix} {
                         @if $axis == "y" {
                             #{$property}-top: #{$space} !important;
                             #{$property}-bottom: #{$space} !important;
@@ -288,38 +352,8 @@ $min-breakpoint: math.min($breakpoint-values...);
                 }
 
                 @each $abbr-dir, $direction in $directions {
-                    .#{$prefix}#{$abbr-dir}-#{$suffix} {
+                    .#{$prefix}#{$abbr-dir}-#{$breakpoint}-#{$suffix} {
                         #{$property}-#{$direction}: #{$space} !important;
-                    }
-                }
-            }
-        }
-    } @else {
-        @media (min-width: $breakpoint-value) {
-            @each $prefix, $property in $properties {
-                @each $suffix, $space in $spacing {
-                    @include validate-type($space, number);
-
-                    .#{$prefix}-#{$breakpoint}-#{$suffix} {
-                        #{$property}: #{$space} !important;
-                    }
-
-                    @each $axis in $axes {
-                        .#{$prefix}#{$axis}-#{$breakpoint}-#{$suffix} {
-                            @if $axis == "y" {
-                                #{$property}-top: #{$space} !important;
-                                #{$property}-bottom: #{$space} !important;
-                            } @else if $axis == "x" {
-                                #{$property}-left: #{$space} !important;
-                                #{$property}-right: #{$space} !important;
-                            }
-                        }
-                    }
-
-                    @each $abbr-dir, $direction in $directions {
-                        .#{$prefix}#{$abbr-dir}-#{$breakpoint}-#{$suffix} {
-                            #{$property}-#{$direction}: #{$space} !important;
-                        }
                     }
                 }
             }
@@ -327,6 +361,9 @@ $min-breakpoint: math.min($breakpoint-values...);
     }
 }
 ```
+
+
+Done and done! We have a fully functioning utility class generator with a type-check guard. The `$spacing` map now only receives numerical values in px, em or rem.
 
 Instead of writing 60 lines of repetitive CSS for only one spacing value, we have achieved the same thing in 40 lines of SCSS. Given the increased complexity in our code, that didn't turn out to be a good idea. Right? But, imagine you add more spacing values in map `$spacing`, for example 5 or 6 (xs, sm, md, lg, xl, xxl), you'll get 300-400 lines of generated CSS. Now the hustle we went through really pays off!
 
