@@ -3,3 +3,4 @@ docs/.vitepress/dist/
 *.xml
 *.iml
 .idea
+.vscode
