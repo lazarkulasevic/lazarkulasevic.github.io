@@ -1,3 +1,9 @@
+import { createWriteStream } from 'node:fs'
+import { resolve } from 'node:path'
+import { SitemapStream } from 'sitemap'
+
+const links = []
+
 export default {
     lang: 'en-US',
     title: 'Lazar Kulasevic',
@@ -44,5 +50,23 @@ export default {
     markdown: {
         // options for markdown-it-anchor
         anchor: { permalink: true }
+    },
+    transformHtml: (_, id, { pageData }) => {
+        if (!/[\\/]404\.html$/.test(id)) {
+            links.push({
+                url: pageData.relativePath.replace(/\.md$/, '.html'),
+                lastmod: pageData.lastUpdated
+            })
+        }
+    },
+    buildEnd: async ({ outDir }) => {
+        const sitemap = new SitemapStream({
+          hostname: 'https://lazarkulasevic.github.io/'
+        })
+        const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
+        sitemap.pipe(writeStream)
+        links.forEach((link) => sitemap.write(link))
+        sitemap.end()
+        await new Promise((res) => writeStream.on('finish', res))
     }
 }
