@@ -1,25 +1,30 @@
-name: docs
+name: Build and Deploy
+
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+
 jobs:
   docs:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: 18
 
       - name: Remove old build files
-        run: rm -rf docs/.vitepress/dist
+        run: |
+          rm -rf docs/.vitepress/dist
 
-      - run: npm ci
-
-      - name: Build VitePress site
-        run: npm run build
+      - name: Install dependencies and build
+        run: |
+          npm ci
+          npm run build
 
       # please check out the docs of the workflow for more details
       # @see https://github.com/crazy-max/ghaction-github-pages
