@@ -52,19 +52,19 @@ Projects listed below are selected few, and they are a product of my learning cu
 
 Currently, it all revolves around Javascript.
 
-|          Tech          | Sub-tech                                                                        |
-|:----------------------:|---------------------------------------------------------------------------------|
-|       HTML, CSS        | SCSS, PostCSS and major CSS frameworks (Material, Element, Bootstrap, Tailwind) |
-| Javascript, Typescript | Vue.js, React.js                                                                |
-|      Unit testing      | Jest (Vue Test Utils)                                                           |
-|        Bundlers        | Vite, Webpack                                                                   |
-|        JamStack        | VitePress                                                                       |
-|        Node.js         | Express.js                                                                      |
-|    NoSQL databases     | Cloud Firestore                                                                 |
-|       Serverless       | Firebase services (i.e., Firestore, Storage, Auth, Cloud Functions)             |
-|          Git           | GitLab, GitHub, BitBucket, SourceTree                                           |
-|    CI/CD (frontend)    | Jenkins, Docker, Kubernetes, SonarQube                                          |
-
+|          Tech          | Sub-tech                                                                          |
+|:----------------------:|-----------------------------------------------------------------------------------|
+|       HTML, CSS        | SCSS, PostCSS and major CSS frameworks (Material, Element, Bootstrap, Tailwind)   |
+| Javascript, Typescript | Vue.js (v2, v3), React.js                                                         |
+|      Unit testing      | Jest (Vue Test Utils), Vitest                                                     |
+|        Bundlers        | Vite, Webpack                                                                     |
+|        JamStack        | VitePress                                                                         |
+|        Node.js         | Express.js                                                                        |
+|    NoSQL databases     | Cloud Firestore                                                                   |
+|       Serverless       | Firebase services (i.e., Firestore, Storage, Auth, Cloud Functions), Google API   |
+|          Git           | GitLab, GitHub, BitBucket, SourceTree                                             |
+|    CI/CD (frontend)    | Jenkins, Docker, Kubernetes, SonarQube                                            |
+|    Package Managers    | npm, pnpm                                                                         |
 <br/>
 
 # [Contact](/portfolio/#contact)
