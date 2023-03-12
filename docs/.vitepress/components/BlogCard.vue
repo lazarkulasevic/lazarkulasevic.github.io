@@ -50,8 +50,7 @@ const props = defineProps({
     grid-template-columns: 1fr;
     width: 100%;
     height: 100%;
-    min-height: 220px;
-    max-height: 280px;
+    height: 220px;
     border-radius: 14px;
     transition: box-shadow 0.2s ease-in-out;
     background-color: var(--vp-c-bg);
@@ -98,7 +97,7 @@ const props = defineProps({
 
     .image {
         position: relative;
-
+        height: 220px;
 
         img {
             object-fit: cover;
