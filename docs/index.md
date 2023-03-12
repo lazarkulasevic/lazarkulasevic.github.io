@@ -1,10 +1,10 @@
 ---
 layout: home
 editLink: false
-title: Welcome
+title: Software Engineer
 hero:
   name: Hi, I am Lazar
-  text: Front-end focused Software Developer
+  text: Sofware Engineer with DevOps skills
   tagline: Check out my portfolio and blog
   actions:
   - theme: brand
