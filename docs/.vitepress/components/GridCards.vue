@@ -56,7 +56,7 @@ const props = defineProps({
             width: 100%;
             height: 100%;
             padding: 10px 15px;
-            background-color: var(--vp-c-white-mute);
+            background-color: var(--vp-c-white);
             color: var(--vp-c-black);
             transition: 0.3s ease-in-out;
             border-radius: 20px;

@@ -4,4 +4,5 @@ docs/.vitepress/dist/
 *.iml
 .idea
 .vscode
-cache
+cache/
+.DS_Store
