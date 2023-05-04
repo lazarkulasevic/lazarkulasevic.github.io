@@ -20,9 +20,13 @@ import GridCards from '../.vitepress/components/GridCards.vue'
 
 # [Brief Intro](/portfolio/#intro)
 
-Howdy! I am a product-oriented Software Engineer who has worked on various different projects from enterprise-level sized to startups. Some of them included quite serious challenges, such as advanced data manipulation, establishing clean front-end architecture for new product and technical features, interactive data visualization, establishing cost-effective CI/CD pipelines, but also some fine-tuning work such as pixel-perfect development.
+As a product-oriented software developer with a passion for front-end technologies, I bring a wealth of experience to the table. I have worked on a variety of projects, ranging from enterprise-level applications to start-up ventures, and I have consistently demonstrated my ability to tackle complex technical challenges.
 
-Also, I have a master’s degree in Chemistry, so I can share with you a thing or two about science too.
+My expertise includes advanced data manipulation, the creation of clean front-end architectures, interactive data visualization, and the establishment of cost-effective CI/CD pipelines. Additionally, I excel at fine-tuning projects such as pixel-perfect development.
+
+Experience in splitting complex workloads into manageable, time-boxed tasks has allowed me to effectively organize and contribute to teams to achieve successful outcomes. I take pride in my ability to inspire colleagues and initiate projects that drive innovation and progress.
+
+Overall, my technical and personal skills make me a valuable asset to any team in need of a seasoned software engineer who can deliver results while fostering a collaborative and innovative work environment.
 
 # [Projects](/portfolio/#projects)
 
