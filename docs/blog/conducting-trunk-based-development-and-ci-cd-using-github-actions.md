@@ -1,9 +1,9 @@
 ---
 type: article
 title: 'Conducting Trunk-Based Development and CI/CD Practices Using Github Actions'
-image: /blog/hello-world/featured.png
+image: /blog/conducting-trunk-based-development-and-ci-cd-using-github-actions/featured.png
 description: 'A relatively young approach to development – trunk-based development (TBD) – has come out as a result of seven years of research and data from over 32,000 professionals worldwide, conducted by DORA State of DevOps. It is the longest-running academically rigorous research investigation of its kind, providing an independent view into the practices and capabilities that drive high performance in technology delivery and ultimately organizational outcomes.'
-publishedOn: 20 Apr 2023 20:00
+publishedOn: 23 May 2023 13:55
 
 head:
   - - meta
@@ -373,3 +373,7 @@ Deploy-to-production job looks exactly the same except `environment` (prod) and 
 If it fits in one blog post, it probably isn’t that hard to implement tech-wise. Other than that, proper conduction of TBD on a project requires a well-formed agile team. In other words, your team must have strong communication and a high level of transparency in order for this to work.
 
 My experience tells me that one brings out the other. Once the team gets used to TBD, it comes naturally for people to communicate better and more transparently in agile meetings.
+
+::: info © Copyright Notice
+This article has originally been published on [Symphony.is](https://symphony.is/blog/conducting-trunk-based-development-and-cicd-practices-using-github-actions).
+:::
