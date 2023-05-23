@@ -7,7 +7,7 @@ const links = []
 export default {
     lang: 'en-US',
     title: 'Lazar Kulasevic',
-    description: 'Lazar Kulasevic\'s portfolio site.',
+    description: "Lazar Kulasevic's portfolio site.",
     head: [
         ['meta', { property: 'author', content: 'Lazar Kulasevic' }],
         ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
@@ -49,7 +49,7 @@ export default {
     },
     markdown: {
         // options for markdown-it-anchor
-        anchor: { permalink: true }
+        anchor: { permalink: false }
     },
     transformHtml: (_, id, { pageData }) => {
         if (!/[\\/]404\.html$/.test(id)) {
@@ -61,7 +61,7 @@ export default {
     },
     buildEnd: async ({ outDir }) => {
         const sitemap = new SitemapStream({
-          hostname: 'https://lazarkulasevic.github.io/'
+            hostname: 'https://lazarkulasevic.github.io/'
         })
         const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
         sitemap.pipe(writeStream)

@@ -11,7 +11,7 @@ const formatDateTime = (date) => {
 
 const setAttributes = (el, attrs) => {
     for (const key in attrs) {
-        el.setAttribute(key, attrs[key]);
+        el.setAttribute(key, attrs[key])
     }
 }
 
@@ -23,6 +23,6 @@ const getRoundedAge = (dateString) => {
 
 export default {
     formatDateTime,
-    setAttributes,
-    getRoundedAge
+    setAttributes
+    // getRoundedAge
 }

@@ -89,7 +89,7 @@ const lightOrder = handleOrder(props.startLight)
     background: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     border: 2px solid var(--vp-c-white);
-    box-shadow: inset 0 0 3px var(--vp-c-white-mute);
+    box-shadow: inset 0 0 3px var(--vp-c-white);
     overflow: hidden;
 
     &::before {
