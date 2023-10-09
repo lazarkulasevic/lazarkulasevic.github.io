@@ -12,10 +12,13 @@ const { page } = useData()
 const router = useRouter()
 const isBlogPost = ref(false)
 
-watch(() => router.route.data.relativePath, () => {
-    isBlogPost.value = page.value.frontmatter.type === 'article'
-}, { immediate: true })
-
+watch(
+    () => router.route.data.relativePath,
+    () => {
+        isBlogPost.value = page.value.frontmatter.type === 'article'
+    },
+    { immediate: true }
+)
 </script>
 
 <template>
@@ -31,17 +34,20 @@ watch(() => router.route.data.relativePath, () => {
                 :title="page.frontmatter.title"
                 :published-on="page.frontmatter.publishedOn"
                 :updated-on="page.frontmatter.updatedOn"
-                :image="page.frontmatter.image">
+                :image="page.frontmatter.image"
+            >
             </PostHeader>
         </template>
         <template #doc-after>
-            <BlogComments v-if="isBlogPost" />
+            <ClientOnly>
+                <BlogComments v-if="isBlogPost" />
+            </ClientOnly>
         </template>
     </Layout>
 </template>
 
 <style lang="scss" scoped>
-@use "docs/.vitepress/style/breakpoints.scss" as b;
+@use 'docs/.vitepress/style/breakpoints.scss' as b;
 
 .Layout::v-deep(.VPContent.is-home) {
     display: grid;
@@ -70,7 +76,7 @@ watch(() => router.route.data.relativePath, () => {
     }
 }
 
-.Layout::v-deep(.VPContent .aside) {
-    display: none;
+.Layout::v-deep(.VPDocOutlineDropdown) {
+    margin: 20px 0;
 }
 </style>

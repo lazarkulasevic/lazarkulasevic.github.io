@@ -1,10 +1,10 @@
 <script setup>
-import {onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { giscusConfig } from '../config/giscus'
 import Utils from '../utils/Utils'
 
 const giscusRef = ref()
-const currentTheme = document.documentElement.classList.value === 'dark' ? 'dark_dimmed' : 'light'
+const currentTheme = document.documentElement.classList.value.includes('dark') ? 'dark_dimmed' : 'light'
 
 const renderGiscus = (currentTheme) => {
     const giscus = document.createElement('script')

@@ -2,6 +2,8 @@
 editLink: false
 title: Portfolio
 description: Lazar Kulasevic's Portfolio page
+aside: false
+outline: false
 cards:
   - title: 📁 VOD Platform
     description: In-house cost-free solution for enhanced knowledge-sharing through serving video content.

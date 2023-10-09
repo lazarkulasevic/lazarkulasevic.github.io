@@ -15,6 +15,10 @@ export default {
         ['meta', { name: 'twitter:creator', content: '@else_clause' }]
     ],
     themeConfig: {
+        aside: true,
+        outline: {
+            level: 'deep'
+        },
         nav: [
             {
                 text: 'Portfolio',
@@ -35,21 +39,19 @@ export default {
                         text: 'Contact',
                         link: '/portfolio/#contact'
                     }
-                ]
+                ],
+                activeMatch: '/portfolio'
             },
             {
                 text: 'Blog',
-                link: '/blog/'
+                link: '/blog/',
+                activeMatch: '/blog'
             }
         ],
         socialLinks: [
             { icon: 'linkedin', link: 'https://www.linkedin.com/in/lazarkulasevic/' },
             { icon: 'github', link: 'https://github.com/lazarkulasevic/' }
         ]
-    },
-    markdown: {
-        // options for markdown-it-anchor
-        anchor: { permalink: false }
     },
     transformHtml: (_, id, { pageData }) => {
         if (!/[\\/]404\.html$/.test(id)) {
