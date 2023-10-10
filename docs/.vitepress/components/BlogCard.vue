@@ -98,7 +98,6 @@ const props = defineProps({
     .image {
         position: relative;
         height: 220px;
-        aspect-ratio: 16 / 9;
 
         img {
             object-fit: cover;
