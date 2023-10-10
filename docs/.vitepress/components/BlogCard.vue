@@ -49,7 +49,6 @@ const props = defineProps({
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;
-    height: 100%;
     height: 220px;
     border-radius: 14px;
     transition: box-shadow 0.2s ease-in-out;
@@ -99,6 +98,7 @@ const props = defineProps({
     .image {
         position: relative;
         height: 220px;
+        aspect-ratio: 16 / 9;
 
         img {
             object-fit: cover;
@@ -151,7 +151,7 @@ const props = defineProps({
     }
 
     @include b.sm {
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 3fr;
 
         .text {
             position: relative;

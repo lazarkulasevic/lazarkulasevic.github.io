@@ -68,24 +68,33 @@ const handleClickTag = (tag) => {
 </script>
 
 <template>
-    <div class="blog">
-        <h2 class="blog-title">{{ $frontmatter.title }}</h2>
-        <p class="blog-description">{{ $frontmatter.description }}</p>
-        <div class="blog-tags">
-            <Tag v-for="tag of tags" :is-active="selectedTags.includes(tag)" :text="tag" @click="handleClickTag" />
+    <div class="blog-container">
+        <div class="blog">
+            <h2 class="blog-title">{{ $frontmatter.title }}</h2>
+            <p class="blog-description">{{ $frontmatter.description }}</p>
+            <div class="blog-tags">
+                <Tag v-for="tag of tags" :is-active="selectedTags.includes(tag)" :text="tag" @click="handleClickTag" />
+            </div>
+            <BlogCard v-for="post of posts" :title="post.title" :image="post.frontmatter.image"
+                :description="post.description" :path="post.relativePath.slice(0, -3)"
+                :published-on="Utils.formatDateTime(post.frontmatter.publishedOn)" @click="handleClickPost">
+            </BlogCard>
         </div>
-        <BlogCard v-for="post of posts" :title="post.title" :image="post.frontmatter.image" :description="post.description"
-            :path="post.relativePath.slice(0, -3)" :published-on="Utils.formatDateTime(post.frontmatter.publishedOn)"
-            @click="handleClickPost">
-        </BlogCard>
     </div>
 </template>
 
 <style lang="scss" scoped>
 @use "../style/breakpoints" as b;
 
+.blog-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .blog {
     margin: 24px;
+    max-width: 1374px;
 
     .blog-title {
         font-size: 2rem;
@@ -110,7 +119,7 @@ const handleClickTag = (tag) => {
     }
 
     @include b.md {
-        margin: 32px 10%;
+        margin: 32px;
 
         .blog-card {
             margin-bottom: 32px;
@@ -118,7 +127,7 @@ const handleClickTag = (tag) => {
     }
 
     @include b.lg {
-        margin: 42px 14%;
+        margin: 42px;
 
         .blog-card {
             margin-bottom: 42px;
