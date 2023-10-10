@@ -1,9 +1,12 @@
 <script setup>
+import Tag from './Tag.vue'
+
 defineProps({
     title: String,
     publishedOn: String,
     updatedOn: String,
-    image: String
+    image: String,
+    tags: Array
 })
 </script>
 
@@ -16,6 +19,9 @@ defineProps({
         </span>
     </p>
     <img :src="image" :alt="title" />
+    <div class="post-tags">
+        <Tag v-for="tag of tags" :text="tag" :enable-hover="false" />
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -35,5 +41,12 @@ defineProps({
 img {
     aspect-ratio: 16 / 9;
     object-fit: cover;
+}
+
+.post-tags {
+    display: flex;
+    flex-flow: wrap;
+    gap: 4px;
+    margin: 10px 0;
 }
 </style>

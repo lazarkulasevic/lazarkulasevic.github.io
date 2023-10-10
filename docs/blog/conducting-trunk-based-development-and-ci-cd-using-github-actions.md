@@ -4,7 +4,11 @@ title: 'Conducting Trunk-Based Development and CI/CD Practices Using Github Acti
 image: /blog/conducting-trunk-based-development-and-ci-cd-using-github-actions/featured.png
 description: 'A relatively young approach to development – trunk-based development (TBD) – has come out as a result of seven years of research and data from over 32,000 professionals worldwide, conducted by DORA State of DevOps. It is the longest-running academically rigorous research investigation of its kind, providing an independent view into the practices and capabilities that drive high performance in technology delivery and ultimately organizational outcomes.'
 publishedOn: 23 May 2023 13:55
-
+tags:
+  - DevOps
+  - CI/CD
+  - Trunk-based Development
+  - Github Actions
 head:
   - - meta
     - property: og:title

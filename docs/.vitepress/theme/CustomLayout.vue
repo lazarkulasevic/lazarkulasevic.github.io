@@ -12,13 +12,9 @@ const { page } = useData()
 const router = useRouter()
 const isBlogPost = ref(false)
 
-watch(
-    () => router.route.data.relativePath,
-    () => {
-        isBlogPost.value = page.value.frontmatter.type === 'article'
-    },
-    { immediate: true }
-)
+watch(() => router.route.data.relativePath, () => {
+    isBlogPost.value = page.value.frontmatter.type === 'article'
+}, { immediate: true })
 </script>
 
 <template>
@@ -29,13 +25,8 @@ watch(
             </GlassCard>
         </template>
         <template #doc-before>
-            <PostHeader
-                v-if="isBlogPost"
-                :title="page.frontmatter.title"
-                :published-on="page.frontmatter.publishedOn"
-                :updated-on="page.frontmatter.updatedOn"
-                :image="page.frontmatter.image"
-            >
+            <PostHeader v-if="isBlogPost" :title="page.frontmatter.title" :published-on="page.frontmatter.publishedOn"
+                :updated-on="page.frontmatter.updatedOn" :image="page.frontmatter.image" :tags="page.frontmatter?.tags">
             </PostHeader>
         </template>
         <template #doc-after>

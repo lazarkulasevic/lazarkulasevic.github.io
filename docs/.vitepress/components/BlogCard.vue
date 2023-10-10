@@ -53,7 +53,8 @@ const props = defineProps({
     height: 220px;
     border-radius: 14px;
     transition: box-shadow 0.2s ease-in-out;
-    background-color: var(--vp-c-bg);
+    background-color: var(--vp-c-default-soft);
+    box-shadow: 0 4px 20px -12px var(--vp-c-black);
 
     .text {
         position: absolute;
@@ -136,7 +137,7 @@ const props = defineProps({
 
     &:focus,
     &:hover {
-        box-shadow: 0 0 0 1px var(--vp-c-brand-lighter);
+        box-shadow: none;
 
         .title {
             color: var(--vp-c-brand);
@@ -184,5 +185,4 @@ const props = defineProps({
         }
     }
 }
-
 </style>

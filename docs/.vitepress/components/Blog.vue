@@ -1,9 +1,15 @@
 <script setup>
+import { ref } from 'vue'
 import { useRouter } from 'vitepress'
 import BlogCard from './BlogCard.vue'
+import Tag from './Tag.vue'
 import Utils from '../utils/Utils'
 
+const allTagsValue = 'All Posts'
+
 const router = useRouter()
+const posts = ref([])
+const selectedTags = ref([allTagsValue])
 
 const getPosts = async () => {
     const modules = import.meta.glob('../../blog/*.md')
@@ -18,12 +24,46 @@ const getPosts = async () => {
 
 const rawPosts = await getPosts()
 
-const posts = rawPosts
+const allPosts = rawPosts
     .map(post => post.__pageData)
     .sort((a, b) => new Date(a.frontmatter.publishedOn) > new Date(b.frontmatter.publishedOn) ? -1 : 1)
 
-const handleClick = (event) => {
+posts.value = allPosts
+
+const tags = posts.value
+    .flatMap(post => post.frontmatter?.tags)
+    .filter((value, index, array) => value && array.indexOf(value) === index)
+tags.unshift(allTagsValue)
+
+const handleClickPost = (event) => {
     router.go(event)
+}
+
+const handleClickTag = (tag) => {
+    if (tag === allTagsValue) {
+        selectedTags.value = [allTagsValue]
+    } else {
+        selectedTags.value = selectedTags.value.filter(selectedTag => selectedTag !== allTagsValue)
+
+        if (selectedTags.value.includes(tag)) {
+            selectedTags.value = selectedTags.value.filter(selectedTag => selectedTag !== tag)
+            if (selectedTags.value.length === 0) {
+                selectedTags.value = [allTagsValue]
+            }
+        } else {
+            selectedTags.value.push(tag)
+        }
+    }
+
+    if (selectedTags.value.includes(allTagsValue)) {
+        posts.value = allPosts
+    } else {
+        posts.value = allPosts.filter(post => {
+            if (post.frontmatter?.tags) {
+                return selectedTags.value.some(selectedTag => post.frontmatter?.tags.includes(selectedTag))
+            }
+        })
+    }
 }
 </script>
 
@@ -31,14 +71,12 @@ const handleClick = (event) => {
     <div class="blog">
         <h2 class="blog-title">{{ $frontmatter.title }}</h2>
         <p class="blog-description">{{ $frontmatter.description }}</p>
-        <BlogCard
-            v-for="post of posts"
-            :title="post.title"
-            :image="post.frontmatter.image"
-            :description="post.description"
-            :path="post.relativePath.slice(0, -3)"
-            :published-on="Utils.formatDateTime(post.frontmatter.publishedOn)"
-            @click="handleClick($event)">
+        <div class="blog-tags">
+            <Tag v-for="tag of tags" :is-active="selectedTags.includes(tag)" :text="tag" @click="handleClickTag" />
+        </div>
+        <BlogCard v-for="post of posts" :title="post.title" :image="post.frontmatter.image" :description="post.description"
+            :path="post.relativePath.slice(0, -3)" :published-on="Utils.formatDateTime(post.frontmatter.publishedOn)"
+            @click="handleClickPost">
         </BlogCard>
     </div>
 </template>
@@ -57,6 +95,13 @@ const handleClick = (event) => {
     }
 
     .blog-description {
+        margin-bottom: 20px;
+    }
+
+    .blog-tags {
+        display: flex;
+        flex-flow: wrap;
+        gap: 4px;
         margin-bottom: 20px;
     }
 

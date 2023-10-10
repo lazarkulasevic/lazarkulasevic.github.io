@@ -4,7 +4,8 @@ title: 'Pre-processing CSS: Generate Utility Classes Using Sass – Part 1'
 image: /blog/preprocessing-css-generate-utility-classes-using-sass/featured.png
 description: Generate CSS utility classes or helpers using advanced Sass features – loops, maps and type guards.
 publishedOn: 06 November 2022 21:30
-
+tags:
+  - SCSS
 head:
   - - meta
     - property: og:title
@@ -55,20 +56,20 @@ In today's article, we are going to handle spacings only. Our Scss code (e.g., `
 ```css
 /* output.css */
 .m-8 {
-    margin: 8px !important;
+  margin: 8px !important;
 }
 
 @media (min-width: 480px) {
-    .mt-sm-16 {
-        margin-top: 16px !important;
-    }
+  .mt-sm-16 {
+    margin-top: 16px !important;
+  }
 }
 
 @media (min-width: 768px) {
-    .mx-md-32 {
-        margin-left: 32px !important;
-        margin-right: 32px !important;
-    }
+  .mx-md-32 {
+    margin-left: 32px !important;
+    margin-right: 32px !important;
+  }
 }
 ```
 
@@ -95,11 +96,11 @@ Now let's create two partial files and name them `_config.scss` and `_spacing.sc
 ```scss
 // _config.scss
 $spacing: (
-    0: 0px,
-    8: 8px,
-    16: 16px,
-    32: 32px,
-    64: 64px
+  0: 0px,
+  8: 8px,
+  16: 16px,
+  32: 32px,
+  64: 64px
 );
 ```
 
@@ -107,15 +108,18 @@ Then, the logic comes into play. By looping through `$properties` and `$spacing`
 
 ```scss
 // _spacing.scss
-@use "config" as *;
-$properties: ("m": margin, "p": padding);
+@use 'config' as *;
+$properties: (
+  'm': margin,
+  'p': padding
+);
 
 @each $prefix, $property in $properties {
-    @each $suffix, $space in $spacing {
-        .#{$prefix}-#{$suffix} {
-            #{$property}: #{$space} !important;
-        }
+  @each $suffix, $space in $spacing {
+    .#{$prefix}-#{$suffix} {
+      #{$property}: #{$space} !important;
     }
+  }
 }
 ```
 
@@ -123,7 +127,7 @@ Okay, we've got that one covered. This piece of code will generate classes for a
 
 ```css
 .m-8 {
-    margin: 8px !important;
+  margin: 8px !important;
 }
 ```
 
@@ -131,50 +135,58 @@ Next we are going to do is to cover cases for each axis and direction.
 
 ```scss
 // _spacing.scss
-@use "config" as *;
+@use 'config' as *;
 
-$properties: ("m": margin, "p": padding);
-$directions: ("t": top, "b": bottom, "l": left, "r": right);
-$axes: "y", "x";
+$properties: (
+  'm': margin,
+  'p': padding
+);
+$directions: (
+  't': top,
+  'b': bottom,
+  'l': left,
+  'r': right
+);
+$axes: 'y', 'x';
 
 // Mapping $spacing values per $property
 
 @each $prefix, $property in $properties {
-    @each $suffix, $space in $spacing {
-        .#{$prefix}-#{$suffix} {
-            #{$property}: #{$space} !important;
-        }
+  @each $suffix, $space in $spacing {
+    .#{$prefix}-#{$suffix} {
+      #{$property}: #{$space} !important;
     }
+  }
 }
 
 // Mapping $spacing values per $property and $axis
 
 @each $prefix, $property in $properties {
-    @each $axis in $axes {
-        @each $suffix, $space in $spacing {
-            .#{$prefix}#{$axis}-#{$suffix} {
-                @if $axis == "y" {
-                    #{$property}-top: #{$space} !important;
-                    #{$property}-bottom: #{$space} !important;
-                } @else if $axis == "x" {
-                    #{$property}-left: #{$space} !important;
-                    #{$property}-right: #{$space} !important;
-                }
-            }
+  @each $axis in $axes {
+    @each $suffix, $space in $spacing {
+      .#{$prefix}#{$axis}-#{$suffix} {
+        @if $axis == 'y' {
+          #{$property}-top: #{$space} !important;
+          #{$property}-bottom: #{$space} !important;
+        } @else if $axis == 'x' {
+          #{$property}-left: #{$space} !important;
+          #{$property}-right: #{$space} !important;
         }
+      }
     }
+  }
 }
 
 // Mapping $spacing values per $property and $direction
 
 @each $prefix, $property in $properties {
-    @each $infix, $direction in $directions {
-        @each $suffix, $space in $spacing {
-            .#{$prefix}#{$infix}-#{$suffix} {
-                #{$property}-#{$direction}: #{$space} !important;
-            }
-        }
+  @each $infix, $direction in $directions {
+    @each $suffix, $space in $spacing {
+      .#{$prefix}#{$infix}-#{$suffix} {
+        #{$property}-#{$direction}: #{$space} !important;
+      }
     }
+  }
 }
 ```
 
@@ -182,11 +194,11 @@ And those will look as the following.
 
 ```css
 .mx-8 {
-    margin: 8px !important;
+  margin: 8px !important;
 }
 
 .mt-8 {
-    margin: 8px !important;
+  margin: 8px !important;
 }
 ```
 
@@ -198,9 +210,9 @@ You may recognize a repetitive pattern in our nested loops. We are looping throu
 
 ```scss
 @each $prefix, $property in $properties {
-    @each $suffix, $space in $spacing {
-        // Cover all cases here
-    }
+  @each $suffix, $space in $spacing {
+    // Cover all cases here
+  }
 }
 ```
 
@@ -208,42 +220,42 @@ The first set that produces all-direction spacing (`m-8` or `p-8`) is generated 
 
 ```scss {7,19}
 @each $prefix, $property in $properties {
-    @each $suffix, $space in $spacing {
-        .#{$prefix}-#{$suffix} {
-            #{$property}: #{$space} !important;
-        }
-
-        @each $axis in $axes {
-            .#{$prefix}#{$axis}-#{$suffix} {
-                @if $axis == "y" {
-                    #{$property}-top: #{$space} !important;
-                    #{$property}-bottom: #{$space} !important;
-                } @else if $axis == "x" {
-                    #{$property}-left: #{$space} !important;
-                    #{$property}-right: #{$space} !important;
-                }
-            }
-        }
-        
-        @each $infix, $direction in $directions {
-            .#{$prefix}#{$infix}-#{$suffix} {
-                #{$property}-#{$direction}: #{$space} !important;
-            }
-        }
+  @each $suffix, $space in $spacing {
+    .#{$prefix}-#{$suffix} {
+      #{$property}: #{$space} !important;
     }
+
+    @each $axis in $axes {
+      .#{$prefix}#{$axis}-#{$suffix} {
+        @if $axis == 'y' {
+          #{$property}-top: #{$space} !important;
+          #{$property}-bottom: #{$space} !important;
+        } @else if $axis == 'x' {
+          #{$property}-left: #{$space} !important;
+          #{$property}-right: #{$space} !important;
+        }
+      }
+    }
+
+    @each $infix, $direction in $directions {
+      .#{$prefix}#{$infix}-#{$suffix} {
+        #{$property}-#{$direction}: #{$space} !important;
+      }
+    }
+  }
 }
 ```
 
-The job is almost done. To complete it, all we need to do is to add a validator to prevent developer from assigning values to `$spacing` that either `margin` or `padding` property doesn't accept, such as _auto_, because `padding: auto;` is not valid. 
+The job is almost done. To complete it, all we need to do is to add a validator to prevent developer from assigning values to `$spacing` that either `margin` or `padding` property doesn't accept, such as _auto_, because `padding: auto;` is not valid.
 
 For this purpose, we're going to create `_mixins.scss` and inside that file declare `validate-unit` which will be used in `_spacing.scss`.
 
 ```scss
 // _mixins.scss
 @mixin validate-unit($value, $value-type, $units...) {
-    @if type-of($value) != $value-type or index($units, unit($value)) == null {
-        @error "Invalid unit #{unit($value)} for value #{$value}.";
-    }
+  @if type-of($value) != $value-type or index($units, unit($value)) == null {
+    @error "Invalid unit #{unit($value)} for value #{$value}.";
+  }
 }
 ```
 
@@ -251,39 +263,47 @@ Inject the validator in the `$spacing` loop.
 
 ```scss {11}
 // _spacing.scss
-@use "config" as *;
-@use "mixins" as *;
+@use 'config' as *;
+@use 'mixins' as *;
 
-$properties: ("m": margin, "p": padding);
-$directions: ("t": top, "b": bottom, "l": left, "r": right);
-$axes: "y", "x";
+$properties: (
+  'm': margin,
+  'p': padding
+);
+$directions: (
+  't': top,
+  'b': bottom,
+  'l': left,
+  'r': right
+);
+$axes: 'y', 'x';
 
 @each $prefix, $property in $properties {
-    @each $suffix, $space in $spacing {
-        @include validate-unit($space, number, px);
-        
-        .#{$prefix}-#{$suffix} {
-            #{$property}: #{$space} !important;
-        }
+  @each $suffix, $space in $spacing {
+    @include validate-unit($space, number, px);
 
-        @each $infix, $direction in $directions {
-            .#{$prefix}#{$infix}-#{$suffix} {
-                #{$property}-#{$direction}: #{$space} !important;
-            }
-        }
-
-        @each $axis in $axes {
-            .#{$prefix}#{$axis}-#{$suffix} {
-                @if $axis == "y" {
-                    #{$property}-top: #{$space} !important;
-                    #{$property}-bottom: #{$space} !important;
-                } @else if $axis == "x" {
-                    #{$property}-left: #{$space} !important;
-                    #{$property}-right: #{$space} !important;
-                }
-            }
-        }
+    .#{$prefix}-#{$suffix} {
+      #{$property}: #{$space} !important;
     }
+
+    @each $infix, $direction in $directions {
+      .#{$prefix}#{$infix}-#{$suffix} {
+        #{$property}-#{$direction}: #{$space} !important;
+      }
+    }
+
+    @each $axis in $axes {
+      .#{$prefix}#{$axis}-#{$suffix} {
+        @if $axis == 'y' {
+          #{$property}-top: #{$space} !important;
+          #{$property}-bottom: #{$space} !important;
+        } @else if $axis == 'x' {
+          #{$property}-left: #{$space} !important;
+          #{$property}-right: #{$space} !important;
+        }
+      }
+    }
+  }
 }
 ```
 
@@ -296,9 +316,7 @@ Our job here is done. (long pause) **NOT!** :stuck_out_tongue_winking_eye:
 Almost every single website or app today is responsive. That means we cannot use our spacings as they are, because mobile spacings are usually small and growing as screen size increases. That's why we need to upgrade them to accept breakpoints too, so that we can dynamically change spacing based on the screen size.
 
 ```html
-<div class="m-8 m-sm-16 m-md-32 m-lg-64">
-    Hi mom!
-</div>
+<div class="m-8 m-sm-16 m-md-32 m-lg-64">Hi mom!</div>
 ```
 
 #### Adding Breakpoints
@@ -309,12 +327,12 @@ First, `$breakpoints` are configurable, hence they'll go to `_config.scss`.
 // _config.scss
 $spacing: (...);
 $breakpoints: (
-    "xs": 375px,
-    "sm": 480px,
-    "md": 768px,
-    "lg": 1080px,
-    "xl": 1440px,
-    "xxl": 1920px
+  'xs': 375px,
+  'sm': 480px,
+  'md': 768px,
+  'lg': 1080px,
+  'xl': 1440px,
+  'xxl': 1920px
 );
 ```
 
@@ -326,73 +344,81 @@ Fully functioning utility class generator.
 
 ```scss
 // _spacing.scss
-@use "config" as *;
-@use "mixins" as *;
+@use 'config' as *;
+@use 'mixins' as *;
 
-$properties: ("m": margin, "p": padding);
-$directions: ("t": top, "b": bottom, "l": left, "r": right);
-$axes: "y", "x";
+$properties: (
+  'm': margin,
+  'p': padding
+);
+$directions: (
+  't': top,
+  'b': bottom,
+  'l': left,
+  'r': right
+);
+$axes: 'y', 'x';
 
 // Classes without breakpoint abbreviation (e.g. m-16)
 
 @each $prefix, $property in $properties {
-    @each $suffix, $space in $spacing {
-        @include validate-unit($space, number, px);
-        
-        .#{$prefix}-#{$suffix} {
-            #{$property}: #{$space} !important;
-        }
+  @each $suffix, $space in $spacing {
+    @include validate-unit($space, number, px);
 
-        @each $infix, $direction in $directions {
-            .#{$prefix}#{$infix}-#{$suffix} {
-                #{$property}-#{$direction}: #{$space} !important;
-            }
-        }
-
-        @each $axis in $axes {
-            .#{$prefix}#{$axis}-#{$suffix} {
-                @if $axis == "y" {
-                    #{$property}-top: #{$space} !important;
-                    #{$property}-bottom: #{$space} !important;
-                } @else if $axis == "x" {
-                    #{$property}-left: #{$space} !important;
-                    #{$property}-right: #{$space} !important;
-                }
-            }
-        }
+    .#{$prefix}-#{$suffix} {
+      #{$property}: #{$space} !important;
     }
+
+    @each $infix, $direction in $directions {
+      .#{$prefix}#{$infix}-#{$suffix} {
+        #{$property}-#{$direction}: #{$space} !important;
+      }
+    }
+
+    @each $axis in $axes {
+      .#{$prefix}#{$axis}-#{$suffix} {
+        @if $axis == 'y' {
+          #{$property}-top: #{$space} !important;
+          #{$property}-bottom: #{$space} !important;
+        } @else if $axis == 'x' {
+          #{$property}-left: #{$space} !important;
+          #{$property}-right: #{$space} !important;
+        }
+      }
+    }
+  }
 }
 
 // Classes WITH breakpoint abbreviation (e.g. m-sm-16)
 
 @each $breakpoint, $breakpoint-value in $breakpoints {
-    @media (min-width: $breakpoint-value) {
-        @each $prefix, $property in $properties {
-            @each $suffix, $space in $spacing {
-                .#{$prefix}-#{$breakpoint}-#{$suffix} {
-                    #{$property}: #{$space} !important;
-                }
-
-                @each $axis in $axes {
-                    .#{$prefix}#{$axis}-#{$breakpoint}-#{$suffix} {
-                        @if $axis == "y" {
-                            #{$property}-top: #{$space} !important;
-                            #{$property}-bottom: #{$space} !important;
-                        } @else if $axis == "x" {
-                            #{$property}-left: #{$space} !important;
-                            #{$property}-right: #{$space} !important;
-                        }
-                    }
-                }
-
-                @each $infix, $direction in $directions {
-                    .#{$prefix}#{$infix}-#{$breakpoint}-#{$suffix} {
-                        #{$property}-#{$direction}: #{$space} !important;
-                    }
-                }
-            }
+  @media (min-width: $breakpoint-value) {
+    @each $prefix, $property in $properties {
+      @each $suffix, $space in $spacing {
+        .#{$prefix}-#{$breakpoint}-#{$suffix} {
+          #{$property}: #{$space} !important;
         }
+
+        @each $axis in $axes {
+          .#{$prefix}#{$axis}-#{$breakpoint}-#{$suffix} {
+            @if $axis == 'y' {
+              #{$property}-top: #{$space} !important;
+              #{$property}-bottom: #{$space} !important;
+            } @else if $axis == 'x' {
+              #{$property}-left: #{$space} !important;
+              #{$property}-right: #{$space} !important;
+            }
+          }
+        }
+
+        @each $infix, $direction in $directions {
+          .#{$prefix}#{$infix}-#{$breakpoint}-#{$suffix} {
+            #{$property}-#{$direction}: #{$space} !important;
+          }
+        }
+      }
     }
+  }
 }
 ```
 
