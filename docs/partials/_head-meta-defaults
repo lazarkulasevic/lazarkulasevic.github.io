@@ -1,13 +1,13 @@
 head:
   - - meta
     - property: og:title
-      content: Lazar Kulasevic
+      content: Lazar Kulasevic | Portfolio
   - - meta
     - property: og:description
-      content: Lazar Kulasevic is a Software Engineer with DevOps skills. Check out his portfolio and blog.
+      content: Lazar Kulasevic is a Software Engineer specializing in front-end technologies. Check out his portfolio and blog.
   - - meta
     - property: keywords
-      content: Lazar Kulasevic, Software Engineer
+      content: Lazar Kulasevic, Software Engineer, Front-end Developer
   - - meta
     - property: og:type
       content: website
@@ -19,10 +19,10 @@ head:
       content: https://lazarkulasevic.github.io/featured.png
   - - meta
     - name: twitter:title
-      content: Lazar Kulasevic
+      content: Lazar Kulasevic | Portfolio
   - - meta
     - name: twitter:description
-      content: Lazar Kulasevic is a Software Engineer with DevOps skills. Check out his portfolio and blog.
+      content: Lazar Kulasevic is a Software Engineer specializing in front-end technologies. Check out his portfolio and blog.
   - - meta
     - property: og:url
       content: https://lazarkulasevic.github.io
