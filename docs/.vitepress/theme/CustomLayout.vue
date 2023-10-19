@@ -38,7 +38,7 @@ watch(() => router.route.data.relativePath, () => {
 </template>
 
 <style lang="scss" scoped>
-@use 'docs/.vitepress/style/breakpoints.scss' as b;
+@use '../style/breakpoints.scss' as b;
 
 .Layout::v-deep(.VPContent.is-home) {
     display: grid;
@@ -53,6 +53,10 @@ watch(() => router.route.data.relativePath, () => {
     align-items: center;
     overflow: hidden;
     z-index: 0;
+
+    @include b.xs {
+        padding-bottom: 206px;
+    }
 
     @include b.lg {
         flex-direction: row;

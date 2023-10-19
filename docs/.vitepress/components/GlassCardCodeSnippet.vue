@@ -1,5 +1,5 @@
 <template>
-    <div class="code-card" style="position: relative;font-size: 16px;">
+    <div class="code-card">
         <div>
             <div class="language-js"><span class="copy"></span>
                 <pre><code><span class="line"><span style="font-style:italic;" class="code--blue">while</span><span class="code--purple"> (working) </span><span class="code--blue">{</span></span>
@@ -20,6 +20,8 @@
 
 .code-card {
     padding: 0 20px;
+    position: relative;
+    font-size: 15px;
 }
 
 .code {

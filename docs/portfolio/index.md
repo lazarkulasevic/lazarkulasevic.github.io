@@ -5,21 +5,37 @@ description: Lazar Kulasevic's Portfolio page
 aside: false
 outline: false
 cards:
-  - title: 📁 VOD Platform
-    description: In-house cost-free solution for enhanced knowledge-sharing through serving video content.
+  - title: Learning Platform
+    description: In-house cost-free VOD platform for enhanced knowledge-sharing through serving video content and presentations using Google Cloud Platform services.
 
   - title: otisak.org
     description: A platform that offers citizens of Serbia the opportunity to check how safe and protected their personal data is, which they leave and trust to a state body or a privately owned company.
     link: https://otisak.org
+
+worklog:
+  - title: Software Engineer
+    company: Symphony.is
+    date:
+      start: 01 Dec 2022
+      end: Present
+    summary:
+
+  - title: Frontend Developer
+    company: Badin Soft
+    date:
+      start: 07 Dec 2020
+      end: 30 Nov 2022
+    summary: Increased my proficiency in various areas through active contributions to diverse projects and teams. Played an important role in developing a live user interaction monitoring platform, where I worked on both the front-end and CI/CD pipeline using Jenkins with Slack notifications. Actively participated in agile meetings, defined user stories and effectively prioritized tasks to ensure successful delivery. Overall, I focused on ongoing feature development, improvements and bug fixes while consistently proposing new technical and product features and offering effective design solutions for new requirements. Nonetheless, demonstrated my attention to detail and commitment to quality work by implementing pixel-perfect designs and animations.
 
 <!-- @include: ../partials/_head-meta-defaults -->
 ---
 
 <script setup>
 import GridCards from '../.vitepress/components/GridCards.vue'
+import Timeline from '../.vitepress/components/Timeline.vue'
 </script>
 
-# [Brief Intro](/portfolio/#intro)
+# [:star: Brief Intro](/portfolio/#intro)
 
 Worked on a variety of projects, ranging from enterprise-level applications to start-up ventures and I have consistently demonstrated my ability to tackle complex technical challenges. My expertise includes the creation of clean front-end architectures, interactive data visualization and the establishment of necessary CI/CD pipelines. Additionally, I excel at fine-tuning projects such as pixel-perfect development.
 
@@ -27,35 +43,29 @@ Experienced in splitting complex workloads into manageable, time-boxed tasks has
 
 Overall, my technical and personal skills make me a valuable asset to any team in need of a seasoned software engineer who can deliver results while fostering a collaborative and innovative work environment.
 
-Feel free to reach out ツ
+# [:briefcase: Experience](/portfolio/#experience)
 
-# [Projects](/portfolio/#projects)
+<Timeline />
 
-Major projects that I am especially proud of are shown using these colorful cards. Hover over each one to read the short description and visit the external link if you take an interest in some of them. Some of them that are marked as confidential will have 📁 in front of their (made up) name.
+# [:file_cabinet: Projects](/portfolio/#projects)
+
+Major projects that I am especially proud of are shown using these colorful cards. Hover over each one to read the short description and visit the external link if you take an interest in some of them.
 
 <GridCards :height="180"></GridCards>
 
-### 📁 VOD Platform
+### VOD Platform
 
 During my employment at Symphony, I came up with an idea to improve already-in-place knowledge-sharing practices. Soon after, a team was formed around the idea until we released the first version of the product that is currently in use. I took the advantage of a fresh start to establish the processes of Trunk-based development and Kanban. Developed CI/CD pipelines and generously contributed to the project architecture and code quality by unit testing vital app parts.
 
-### Otisak (Fingerprint)
+### Otisak
 
-In under 4 months of part-time dedication I've managed to singlehandedly build this platform using Vue.js and Firebase as a serverless solution. The platform consists of two major parts — website and dashboard. Website is open to the public, so feel free to check it out by clicking the link within the colorful card.
-
-Dashboard, on the other hand, can be accessed only by registered users and admin. The logic spreads over several highly intuitive pages with a dark mode option and role based authorization:
-
-- Companies related analytics
-- Companies management
-- Comments management
-- User management
-- Settings that includes database synchronization scripts
+In under 4 months of part-time dedication I've managed to singlehandedly build this platform which consists of two major parts — public website and private dashboard that can be accessed only by registered users and admins. The logic spreads over several highly intuitive pages with a dark mode option and role based authorization: companies related analytics and their management, comments management, user management and settings page that includes database optimization scripts and sidebar ad setup section.
 
 ### Mini side-projects
 
-I used to build lots of mini apps, some of them to address certain problems and other just for fun. You can find all of these on [my Github](https://github.com/lazarkulasevic).
+I used to build lots of mini apps, some of them to address certain problems and other just for fun. You can find all of these on [my Github profile](https://github.com/lazarkulasevic).
 
-# [Tech Stack](/portfolio/#tech-stack)
+# [:man_technologist: Tech Stack](/portfolio/#tech-stack)
 
 |          Tech          | Sub-tech (framework)                                                  |
 | :--------------------: | --------------------------------------------------------------------- |
@@ -70,9 +80,9 @@ I used to build lots of mini apps, some of them to address certain problems and 
 
 <br/>
 
-# [Contact](/portfolio/#contact)
+# [:mailbox_with_mail: Get In Touch](/portfolio/#contact)
 
-I encourage you to contact me directly on [LinkedIn](https://www.linkedin.com/in/lazarkulasevic) or via email.
+Feel free to reach out on [LinkedIn](https://www.linkedin.com/in/lazarkulasevic) or via email
 
 ::: details Click here to reveal the email
 lazar.kulasevic@gmail.com

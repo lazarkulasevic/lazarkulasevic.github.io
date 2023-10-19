@@ -28,6 +28,10 @@ export default {
                         link: '/portfolio/#intro'
                     },
                     {
+                        text: 'Experience',
+                        link: '/portfolio/#experience'
+                    },
+                    {
                         text: 'Projects',
                         link: '/portfolio/#projects'
                     },

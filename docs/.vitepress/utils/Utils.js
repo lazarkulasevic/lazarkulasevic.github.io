@@ -15,14 +15,40 @@ const setAttributes = (el, attrs) => {
     }
 }
 
-const getRoundedAge = (dateString) => {
-    const differenceInMilliseconds = Date.now() - new Date(dateString).getTime()
-    const yearInMilliseconds = 31536000000
-    return Math.round(differenceInMilliseconds / yearInMilliseconds)
+const getRoundedAge = (startDate, endDate) => {
+    const differenceInMilliseconds = new Date(endDate).getTime() - new Date(startDate).getTime()
+    const monthInMilliseconds = 2629746000
+    const differenceInMonths = Math.round(differenceInMilliseconds / monthInMilliseconds)
+    const years = Math.floor(differenceInMonths / 12)
+    const months = Math.round(differenceInMonths % 12)
+
+    let resultString = ''
+
+    if (years) {
+        resultString += `${years} year`
+
+        if (years > 1) {
+            resultString += 's'
+        }
+    }
+
+    if (years && months) {
+        resultString += ', '
+    }
+
+    if (months) {
+        resultString += `${months} month`
+
+        if (months > 1) {
+            resultString += 's'
+        }
+    }
+
+    return resultString
 }
 
 export default {
     formatDateTime,
-    setAttributes
-    // getRoundedAge
+    setAttributes,
+    getRoundedAge
 }
