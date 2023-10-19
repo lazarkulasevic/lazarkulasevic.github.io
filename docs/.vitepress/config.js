@@ -17,6 +17,7 @@ export default {
   ],
   cleanUrls: true,
   themeConfig: {
+    logo: { src: '/logo.png', width: 24, height: 24 },
     aside: true,
     outline: {
       level: 'deep'

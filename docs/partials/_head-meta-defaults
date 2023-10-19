@@ -16,7 +16,7 @@ head:
       content: https://lazarkulasevic.github.io
   - - meta
     - property: og:image
-      content: https://lazarkulasevic.github.io/featured.png
+      content: https://lazarkulasevic.github.io/featured.webp
   - - meta
     - name: twitter:title
       content: Lazar Kulasevic | Portfolio
@@ -25,4 +25,4 @@ head:
       content: Lazar Kulasevic is a Software Engineer specializing in front-end technologies. Check out his portfolio and blog.
   - - meta
     - name: twitter:image
-      content: https://lazarkulasevic.github.io/featured.png
+      content: https://lazarkulasevic.github.io/featured.webp
