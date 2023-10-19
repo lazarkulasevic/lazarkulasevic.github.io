@@ -1,7 +1,6 @@
 ---
 editLink: false
 title: Portfolio
-description: Lazar Kulasevic's Portfolio page
 aside: false
 outline: false
 cards:
@@ -35,7 +34,7 @@ import GridCards from '../.vitepress/components/GridCards.vue'
 import Timeline from '../.vitepress/components/Timeline.vue'
 </script>
 
-# [:star: Brief Intro](/portfolio/#intro)
+# :star: Brief Intro
 
 Worked on a variety of projects, ranging from enterprise-level applications to start-up ventures and I have consistently demonstrated my ability to tackle complex technical challenges. My expertise includes the creation of clean front-end architectures, interactive data visualization and the establishment of necessary CI/CD pipelines. Additionally, I excel at fine-tuning projects such as pixel-perfect development.
 
@@ -43,11 +42,11 @@ Experienced in splitting complex workloads into manageable, time-boxed tasks has
 
 Overall, my technical and personal skills make me a valuable asset to any team in need of a seasoned software engineer who can deliver results while fostering a collaborative and innovative work environment.
 
-# [:briefcase: Experience](/portfolio/#experience)
+# :briefcase: Experience
 
 <Timeline />
 
-# [:file_cabinet: Projects](/portfolio/#projects)
+# :file_cabinet: Projects
 
 Major projects that I am especially proud of are shown using these colorful cards. Hover over each one to read the short description and visit the external link if you take an interest in some of them.
 
@@ -65,9 +64,11 @@ In under 4 months of part-time dedication I've managed to singlehandedly build t
 
 I used to build lots of mini apps, some of them to address certain problems and other just for fun. You can find all of these on [my Github profile](https://github.com/lazarkulasevic).
 
-# [:man_technologist: Tech Stack](/portfolio/#tech-stack)
+# :hammer_and_wrench: Tech Stack
 
-|          Tech          | Sub-tech (framework)                                                  |
+Below is a table of technologies and practices I'm familiar with:
+
+|  Tech (lang/practice)  | Sub-tech (framework/library)                                          |
 | :--------------------: | --------------------------------------------------------------------- |
 | Javascript, Typescript | Next, React, Vue (v2, v3), VitePress                                  |
 |       HTML, CSS        | SCSS, PostCSS and major CSS frameworks (Material, Element, Bootstrap) |
@@ -75,12 +76,12 @@ I used to build lots of mini apps, some of them to address certain problems and 
 |        Tooling         | Vite, Webpack, (p)npm, eslint, prettier, husky, hygen, versioning...  |
 |        Node.js         | Next (SSR), Express                                                   |
 |       Databases        | Cloud Firestore (NoSQL), PostgreSQL                                   |
-|       Serverless       | Vercel, Firebase, Google Cloud Console                                |
-|    CI/CD (frontend)    | Github Actions, Jenkins, Docker, SonarQube                            |
+|       Serverless       | Vercel, Firebase, Google Cloud Platform (Drive, Storage)              |
+| TBD, CI/CD (frontend)  | Github Actions, Jenkins, Docker, SonarQube                            |
 
 <br/>
 
-# [:mailbox_with_mail: Get In Touch](/portfolio/#contact)
+# :mailbox_with_mail: Get In Touch
 
 Feel free to reach out on [LinkedIn](https://www.linkedin.com/in/lazarkulasevic) or via email
 

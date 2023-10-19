@@ -1,8 +1,9 @@
 {
   "printWidth": 120,
   "useTabs": false,
-  "tabWidth": 4,
+  "tabWidth": 2,
   "trailingComma": "none",
+  "vue/html-indent": "off",
   "semi": false,
   "singleQuote": true,
   "bracketSpacing": true,

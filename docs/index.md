@@ -1,7 +1,6 @@
 ---
 layout: home
-editLink: false
-title: Software Engineer
+title: Howdy 👋
 hero:
   name: Hi, I am Lazar
   text: Frontend specialized Sofware Engineer

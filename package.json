@@ -1,12 +1,13 @@
 {
-  "name": "minimalistico",
+  "name": "vitepress-blog",
   "version": "1.0.0",
   "description": "Personal portfolio",
   "main": "index.js",
   "scripts": {
     "dev": "vitepress dev docs --open",
     "build": "vitepress build docs",
-    "serve": "vitepress serve docs"
+    "serve": "vitepress serve docs",
+    "prettier": "prettier --write \"**/*.{js,vue,json,scss}\""
   },
   "author": "Lazar Kulasevic",
   "license": "MIT",

@@ -24,8 +24,5 @@ head:
     - name: twitter:description
       content: Lazar Kulasevic is a Software Engineer specializing in front-end technologies. Check out his portfolio and blog.
   - - meta
-    - property: og:url
-      content: https://lazarkulasevic.github.io
-  - - meta
     - name: twitter:image
       content: https://lazarkulasevic.github.io/featured.png

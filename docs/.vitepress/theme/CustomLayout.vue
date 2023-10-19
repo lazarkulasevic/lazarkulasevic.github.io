@@ -12,66 +12,76 @@ const { page } = useData()
 const router = useRouter()
 const isBlogPost = ref(false)
 
-watch(() => router.route.data.relativePath, () => {
+watch(
+  () => router.route.data.relativePath,
+  () => {
     isBlogPost.value = page.value.frontmatter.type === 'article'
-}, { immediate: true })
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
-    <Layout>
-        <template #home-hero-after>
-            <GlassCard :height="216">
-                <GlassCardCodeSnippet />
-            </GlassCard>
-        </template>
-        <template #doc-before>
-            <PostHeader v-if="isBlogPost" :title="page.frontmatter.title" :published-on="page.frontmatter.publishedOn"
-                :updated-on="page.frontmatter.updatedOn" :image="page.frontmatter.image" :tags="page.frontmatter?.tags">
-            </PostHeader>
-        </template>
-        <template #doc-after>
-            <ClientOnly>
-                <BlogComments v-if="isBlogPost" />
-            </ClientOnly>
-        </template>
-    </Layout>
+  <Layout>
+    <template #home-hero-after>
+      <GlassCard :height="216">
+        <GlassCardCodeSnippet />
+      </GlassCard>
+    </template>
+    <template #doc-before>
+      <PostHeader
+        v-if="isBlogPost"
+        :title="page.frontmatter.title"
+        :published-on="page.frontmatter.publishedOn"
+        :updated-on="page.frontmatter.updatedOn"
+        :image="page.frontmatter.image"
+        :tags="page.frontmatter?.tags"
+      >
+      </PostHeader>
+    </template>
+    <template #doc-after>
+      <ClientOnly>
+        <BlogComments v-if="isBlogPost" />
+      </ClientOnly>
+    </template>
+  </Layout>
 </template>
 
 <style lang="scss" scoped>
 @use '../style/breakpoints.scss' as b;
 
 .Layout::v-deep(.VPContent.is-home) {
-    display: grid;
-    align-content: center;
-    align-items: center;
-    justify-items: stretch;
+  display: grid;
+  align-content: center;
+  align-items: center;
+  justify-items: stretch;
 }
 
 .Layout::v-deep(.VPHome) {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  z-index: 0;
+
+  @include b.xs {
+    padding-bottom: 206px;
+  }
+
+  @include b.lg {
+    flex-direction: row;
     align-items: center;
-    overflow: hidden;
-    z-index: 0;
+    justify-content: space-around;
+    min-height: 90vh;
 
-    @include b.xs {
-        padding-bottom: 206px;
+    .VPHero {
+      padding-left: 100px;
+      padding-right: 0;
     }
-
-    @include b.lg {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        min-height: 90vh;
-
-        .VPHero {
-            padding-left: 100px;
-            padding-right: 0;
-        }
-    }
+  }
 }
 
 .Layout::v-deep(.VPDocOutlineDropdown) {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 </style>

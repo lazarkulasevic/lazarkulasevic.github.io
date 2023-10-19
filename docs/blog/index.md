@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Tech Blog
-description: Hello and welcome! I am grateful to whom or whatever has brought you here. Posts on this blog will mostly cover development topics. Enjoy!
+description: Hello and welcome! 👋 I am grateful to whom or whatever has brought you here. Posts on this blog will mostly cover development topics. Enjoy reading!
 
 <!-- @include: ../partials/_head-meta-defaults -->
 ---

@@ -8,7 +8,7 @@ const formatMonthYear = (date) => new Intl.DateTimeFormat('en-GB', { month: 'sho
 
 <template>
   <ul class="timeline">
-    <li v-for="log of  frontmatter.worklog " :key="log.date">
+    <li v-for="log of frontmatter.worklog" :key="log.date">
       <div class="circle-container">
         <div class="circle"></div>
       </div>
@@ -17,12 +17,12 @@ const formatMonthYear = (date) => new Intl.DateTimeFormat('en-GB', { month: 'sho
         <h4 class="company">{{ log.company }}</h4>
         <div class="date">
           <span v-if="isValidDate(log.date.start)">{{ formatMonthYear(new Date(log.date.start)) }}</span>
-          <span v-if="isValidDate(log.date.end)"> – {{ formatMonthYear(new Date(log.date.end)) }} ({{
-            Utils.getRoundedAge(log.date.start, log.date.end)
-          }})</span>
-          <span v-else> – Present ({{
-            Utils.getRoundedAge(log.date.start, new Date())
-          }})</span>
+          <span v-if="isValidDate(log.date.end)">
+            – {{ formatMonthYear(new Date(log.date.end)) }} ({{
+              Utils.getRoundedAge(log.date.start, log.date.end)
+            }})</span
+          >
+          <span v-else> – Present ({{ Utils.getRoundedAge(log.date.start, new Date()) }})</span>
         </div>
         <p class="summary">{{ log.summary }}</p>
       </div>
@@ -70,6 +70,10 @@ p {
     font-weight: 500;
     color: var(--vp-c-text-2);
   }
+
+  .company {
+    font-style: italic;
+  }
 }
 
 .circle-container {
@@ -90,7 +94,7 @@ p {
     z-index: 1;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       background-color: var(--vp-c-bg);
       width: calc(100% - 8px);
@@ -100,7 +104,7 @@ p {
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     background-color: var(--vp-c-default-2);
     width: 4px;
