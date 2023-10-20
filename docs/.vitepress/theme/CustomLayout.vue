@@ -29,14 +29,8 @@ watch(
       </GlassCard>
     </template>
     <template #doc-before>
-      <PostHeader
-        v-if="isBlogPost"
-        :title="page.frontmatter.title"
-        :published-on="page.frontmatter.publishedOn"
-        :updated-on="page.frontmatter.updatedOn"
-        :image="page.frontmatter.image"
-        :tags="page.frontmatter?.tags"
-      >
+      <PostHeader v-if="isBlogPost" :title="page.frontmatter.title" :published-on="page.frontmatter.publishedOn"
+        :updated-on="page.frontmatter.updatedOn" :image="page.frontmatter.image" :tags="page.frontmatter?.tags">
       </PostHeader>
     </template>
     <template #doc-after>
@@ -48,31 +42,29 @@ watch(
 </template>
 
 <style lang="scss" scoped>
+@use '../style/variables.scss' as v;
 @use '../style/breakpoints.scss' as b;
-
-.Layout::v-deep(.VPContent.is-home) {
-  display: grid;
-  align-content: center;
-  align-items: center;
-  justify-items: stretch;
-}
 
 .Layout::v-deep(.VPHome) {
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  z-index: 0;
+  padding-bottom: 180px;
 
-  @include b.xs {
-    padding-bottom: 206px;
+  .clip {
+    background-color: var(--vp-c-brand-3);
+    background: -webkit-linear-gradient(120deg, v.$light-purple 30%, v.$light-blue);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   @include b.lg {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    min-height: 90vh;
+    padding-top: calc(var(--vp-nav-height) + 40px);
 
     .VPHero {
       padding-left: 100px;

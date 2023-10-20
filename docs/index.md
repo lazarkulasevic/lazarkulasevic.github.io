@@ -12,6 +12,5 @@ hero:
     - theme: alt
       text: Tech Blog
       link: /blog/
-
 <!-- @include: ./partials/_head-meta-defaults -->
 ---

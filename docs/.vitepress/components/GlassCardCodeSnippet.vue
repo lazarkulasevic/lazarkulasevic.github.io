@@ -35,7 +35,7 @@
   }
 
   &--green {
-    color: #0c934d;
+    color: $dark-green;
   }
 
   &--yellow {

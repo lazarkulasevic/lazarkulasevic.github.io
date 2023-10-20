@@ -15,8 +15,5 @@
     "sass": "^1.69.0",
     "vitepress": "^1.0.0-rc.20",
     "vue": "^3.3.4"
-  },
-  "dependencies": {
-    "sitemap": "^7.1.1"
   }
 }

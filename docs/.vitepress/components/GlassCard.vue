@@ -4,25 +4,13 @@ const props = defineProps({
     type: Number,
     default: 240
   },
-  startLight: {
-    type: Number,
-    default: 0
-  }
 })
 const height = `${props.height}px`
-
-const handleOrder = (startLight) => {
-  const lights = [0, 1, 2, 3]
-  return [...lights.slice(startLight, 4), ...lights.slice(0, startLight)]
-}
-const lightOrder = handleOrder(props.startLight)
 </script>
 
 <template>
   <div class="card">
-    <div class="bg-light">
-      <span v-for="i of lightOrder" :key="i" :style="`--glass-card-index: ${i};`"></span>
-    </div>
+    <div class="bg-light"></div>
     <div class="glass">
       <slot></slot>
     </div>
@@ -31,49 +19,30 @@ const lightOrder = handleOrder(props.startLight)
 
 <style lang="scss" scoped>
 @use '../style/variables' as v;
+@use '../style/breakpoints.scss' as b;
 
 .card {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: calc(v-bind('height') * 1.4);
   height: v-bind('height');
 }
 
 .bg-light {
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 120%;
+  height: 120%;
+  background-color: v.$base-blue;
+  background-image: linear-gradient(-45deg, v.$light-purple 50%, v.$light-blue 50%);
+  filter: blur(64px);
+  border-radius: 50%;
 
-  span {
-    position: absolute;
-    top: 50%;
-    width: v-bind('height');
-    height: v-bind('height');
-    display: block;
-    border-radius: 50%;
-    transform-origin: calc(v-bind('height') / 1.94) 0;
-    transform: rotate(calc(90deg * var(--glass-card-index)));
-    filter: blur(calc(v-bind('height') / 4.75));
-    opacity: 0.75;
-    z-index: -1;
-  }
-
-  span:nth-of-type(1) {
-    background: v.$base-green;
-  }
-
-  span:nth-of-type(2) {
-    background: v.$base-yellow;
-  }
-
-  span:nth-of-type(3) {
-    background: v.$base-blue;
-  }
-
-  span:nth-of-type(4) {
-    background: v.$base-red;
+  @include b.md {
+    width: 130%;
+    height: 130%;
+    filter: blur(80px);
   }
 }
 
