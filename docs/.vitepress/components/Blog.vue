@@ -75,16 +75,14 @@ const handleClickTag = (tag) => {
       <div class="blog-tags">
         <Tag v-for="tag of tags" :is-active="selectedTags.includes(tag)" :text="tag" @click="handleClickTag" />
       </div>
-      <BlogCard
-        v-for="post of posts"
-        :title="post.title"
-        :image="post.frontmatter.image"
-        :description="post.description"
-        :path="post.relativePath.slice(0, -3)"
-        :published-on="Utils.formatDateTime(post.frontmatter.publishedOn)"
-        @click="handleClickPost"
-      >
-      </BlogCard>
+      <ul>
+        <li v-for="post of posts" class="card">
+          <BlogCard :title="post.title" :image="post.frontmatter.image" :description="post.description"
+            :path="post.relativePath.slice(0, -3)" :published-on="Utils.formatDateTime(post.frontmatter.publishedOn)"
+            @click="handleClickPost">
+          </BlogCard>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -120,10 +118,6 @@ const handleClickTag = (tag) => {
     margin-bottom: 20px;
   }
 
-  .blog-card {
-    margin-bottom: 24px;
-  }
-
   @include b.md {
     margin: 32px;
 
@@ -138,6 +132,18 @@ const handleClickTag = (tag) => {
     .blog-card {
       margin-bottom: 42px;
     }
+  }
+}
+
+.card {
+  margin-bottom: 24px;
+
+  @include b.md {
+    margin-bottom: 32px;
+  }
+
+  @include b.lg {
+    margin-bottom: 42px;
   }
 }
 </style>

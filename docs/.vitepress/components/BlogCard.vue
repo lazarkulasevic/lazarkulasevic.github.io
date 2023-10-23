@@ -25,7 +25,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="blog-card" tabindex="0" @click="emit('click', props.path)">
+  <article class="blog-card" tabindex="0" @click="emit('click', props.path)">
     <div class="image">
       <img :src="props.image" :alt="props.title" />
     </div>
@@ -36,7 +36,7 @@ const props = defineProps({
         <p class="description">{{ props.description }}</p>
       </div>
     </div>
-  </div>
+  </article>
 </template>
 
 <style lang="scss" scoped>
