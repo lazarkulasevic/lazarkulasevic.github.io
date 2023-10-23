@@ -5,6 +5,10 @@ import BlogCard from './BlogCard.vue'
 import Tag from './Tag.vue'
 import Utils from '../utils/Utils'
 
+/**
+ * @todo Use content feature when stable https://vitepress.dev/guide/data-loading#createcontentloader and refactor component
+ */
+
 const allTagsValue = 'All Posts'
 
 const router = useRouter()
