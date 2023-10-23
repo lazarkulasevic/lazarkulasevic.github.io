@@ -11,9 +11,9 @@ worklog:
       start: 01 Dec 2022
       end: Present
     summary:
-      - Analytics Dashboard – Platform with lots of charts, graphs and filters, interconected on many levels.
-      - Booking Platform (MVP) – Full-stack generic solution that connect providers with consumers based on their level of competence.
-      - Learning Platform – Company initiated project based on my idea of an in-house cost-free VOD platform for enhanced knowledge-sharing through serving video content and presentations using Google Cloud Platform services as a backend. I took the advantage of a fresh start to establish the processes of trunk-based development and kanban. Developed CI/CD pipelines and generously contributed to the project architecture and test coverage.
+      - Analytics Dashboard – Platform with lots of charts, graphs and filters, interconnected on many levels.
+      - Booking Platform (MVP) – Full-stack generic solution that connects providers with consumers based on their level of competence.
+      - Learning Platform – Company initiated project based on my idea of an in-house cost-free VOD platform for enhanced knowledge-sharing through serving video content and presentations using Google Cloud Platform services as a backend. I took advantage of a fresh start to establish the processes of trunk-based development and kanban. Developed CI/CD pipelines and generously contributed to the project architecture and test coverage.
 
   - title: Frontend Developer
     company: Badin Soft
@@ -22,8 +22,8 @@ worklog:
       end: 30 Nov 2022
     summary:
       - Company-wide analytics platform – Played an important role in developing a live user interaction monitoring platform, where I worked on both the feature development and CI/CD pipeline using Jenkins with Slack notifications. Actively participated in agile meetings, defined user stories and effectively prioritized tasks to ensure efficient delivery.
-      - Video Management System – Primarily focused on ongoing feature development, improvements and bug fixes while consistently proposing new technical and product features and offering effective design solutions for new requirements. Other responsibilities included the guarantee of code quality by following already established CI/CD process.
-      - News Media Portals – Implementation of ixel-perfect design to four lookalike media portals.
+      - Video Management System – Primarily focused on ongoing feature development, improvements and bug fixes while consistently proposing new technical and product features and offering effective design solutions for new requirements. Other responsibilities included the guarantee of code quality by following the already established CI/CD process.
+      - News Media Portals – Implementation of pixel-perfect design to four lookalike media portals.
 
 <!-- @include: ../partials/_head-meta-defaults -->
 ---
@@ -57,7 +57,7 @@ My technical expertise includes the creation of clean front-end architectures, i
 
 On the other hand, splitting complex workloads into manageable, time-boxed tasks has allowed me to effectively organize and contribute to team dynamics and ensure a successful incremental delivery.
 
-Also I have proven the ability to inspire colleagues and initiate projects that drive innovation and progress, such as a Learning Platform (alias) which you'll learn more about in the timeline below.
+Also, I have proven the ability to inspire colleagues and initiate projects that drive innovation and progress, such as a Learning Platform (alias) which you'll learn more about in the timeline below.
 
 <Timeline />
 
