@@ -34,24 +34,20 @@ function nav() {
       text: 'Portfolio',
       items: [
         {
-          text: 'Intro',
-          link: '/portfolio/#intro'
+          text: 'About Me',
+          link: '/portfolio/#briefly-about-me'
         },
         {
-          text: 'Experience',
-          link: '/portfolio/#experience'
-        },
-        {
-          text: 'Projects',
-          link: '/portfolio/#projects'
+          text: 'Work Experience',
+          link: '/portfolio/#work-experience'
         },
         {
           text: 'Tech Stack',
           link: '/portfolio/#tech-stack'
         },
         {
-          text: 'Contact',
-          link: '/portfolio/#contact'
+          text: 'Get In Touch',
+          link: '/portfolio/#get-in-touch'
         }
       ],
       activeMatch: '/portfolio'

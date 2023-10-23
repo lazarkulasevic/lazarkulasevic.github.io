@@ -19,12 +19,13 @@ const formatMonthYear = (date) => new Intl.DateTimeFormat('en-GB', { month: 'sho
           <span v-if="isValidDate(log.date.start)">{{ formatMonthYear(new Date(log.date.start)) }}</span>
           <span v-if="isValidDate(log.date.end)">
             – {{ formatMonthYear(new Date(log.date.end)) }} ({{
-              Utils.getRoundedAge(log.date.start, log.date.end)
-            }})</span
-          >
+                        Utils.getRoundedAge(log.date.start, log.date.end)
+                        }})</span>
           <span v-else> – Present ({{ Utils.getRoundedAge(log.date.start, new Date()) }})</span>
         </div>
-        <p class="summary">{{ log.summary }}</p>
+        <div class="summary">
+          <p v-for="paragraph of log.summary">{{ paragraph }}</p>
+        </div>
       </div>
     </li>
   </ul>
@@ -73,6 +74,10 @@ p {
 
   .company {
     font-style: italic;
+  }
+
+  .summary p {
+    margin: 16px 0;
   }
 }
 
