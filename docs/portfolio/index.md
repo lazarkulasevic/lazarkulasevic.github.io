@@ -11,7 +11,8 @@ worklog:
       start: 01 Dec 2022
       end: Present
     summary:
-      - Analytics Dashboard – Platform with lots of charts, graphs and filters, interconnected on many levels.
+      - Microfrontends, npm packages – Developing new features and libraries for an enterprise, while taking care of numerous metrics under scrum principles.
+      - Analytics Dashboard – Developed front-end in Next.js (SSR) for a dashboard with lots of charts, graphs and filters; interaction-heavy features such as calendar widget with date-range selection, dynamic navigation menu.
       - Booking Platform (MVP) – Full-stack generic solution that connects providers with consumers based on their level of competence.
       - Learning Platform – Company initiated project based on my idea of an in-house cost-free VOD platform for enhanced knowledge-sharing through serving video content and presentations using Google Cloud Platform services as a backend. I took advantage of a fresh start to establish the processes of trunk-based development and kanban. Developed CI/CD pipelines and generously contributed to the project architecture and test coverage.
 
