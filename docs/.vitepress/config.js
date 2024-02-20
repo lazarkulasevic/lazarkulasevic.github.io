@@ -12,7 +12,13 @@ export default {
     ['meta', { name: 'og:site_name', content: 'Lazar Kulasevic' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:site', content: '@else_clause' }],
-    ['meta', { name: 'twitter:creator', content: '@else_clause' }]
+    ['meta', { name: 'twitter:creator', content: '@else_clause' }],
+    ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-8QCP4NQ66W' }],
+    [
+      'script',
+      {},
+      "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-8QCP4NQ66W');"
+    ]
   ],
   themeConfig: {
     logo: { src: '/logo.png', width: 24, height: 24 },
