@@ -108,4 +108,8 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
 .Layout::v-deep(.VPDocOutlineDropdown) {
   margin: 20px 0;
 }
+
+.Layout::v-deep(.vp-doc.container) {
+  display: none;
+}
 </style>

@@ -28,6 +28,7 @@ worklog:
 
 <!-- @include: ../partials/_head-meta-defaults -->
 ---
+
 <style>
 .vp-doc h2 {
   border-top: none;
@@ -42,7 +43,7 @@ worklog:
 import Timeline from '../.vitepress/components/Timeline.vue'
 </script>
 
-## :star: Briefly About Me
+## :wave: Briefly About Me
 
 Hey there! I'm a passionate software engineer with a focus on front-end development, navigating the exciting realms of JavaScript, TypeScript, React, Next.js, Vue, and more. Crafting seamless and engaging user experiences is my forte, and I thrive on the ever-evolving landscape of web technologies.
 
@@ -50,7 +51,7 @@ Beyond the screen, my life is a vibrant mix of diverse interests. I'm an avid mo
 
 But it's not all code and pixels. Assembling Marvel figures and conquering 3D puzzles are my therapeutic hobbies — they bring a sense of accomplishment akin to solving a complex coding challenge. Life's an adventure, and I'm here to code, create, and conquer it all! 🧗‍♂️
 
-## :briefcase: Work Experience
+## :man_technologist: Work Experience
 
 Worked on a variety of projects, ranging from enterprise-level applications to start-up ventures throughout which I have demonstrated my ability to tackle complex technical challenges.
 
@@ -70,24 +71,24 @@ I used to build lots of mini apps back in the day, some of them to address certa
 
 ## :hammer_and_wrench: Tech Stack
 
-Below is a table of technologies and practices I'm familiar with:
+Below is a table of technologies and practices that I have worked with so far. Something must have been left out, but the most important ones will be listed out.
 
-|  Tech (lang/practice)  | Sub-tech (framework/library)                                            |
-| :--------------------: | ------------------------------------------------------------------------|
-| Javascript, Typescript | Next, React, Vue (v2, v3), VitePress                                    |
-|       HTML, CSS        | SCSS, PostCSS and major CSS frameworks (Material, Element, Bootstrap)   |
-|      Unit testing      | Vitest, Jest                                                            |
-|        Tooling         | Vite, Webpack, (p)npm, eslint, prettier, husky, hygen, versioning, etc. |
-|        Node.js         | Next (SSR), Express                                                     |
-|       Databases        | Cloud Firestore (NoSQL), PostgreSQL                                     |
-|       Serverless       | Vercel, Firebase, Google Cloud Platform (Drive, Storage)                |
-| TBD, CI/CD (frontend)  | Github Actions, Jenkins, Docker, SonarQube                              |
+|  Tech (lang/practice)  | Sub-tech (framework/library)                                                 |
+| :--------------------: | :--------------------------------------------------------------------------- |
+| Javascript, Typescript | Next, React, Vue (v2, v3), VitePress                                         |
+|       HTML, CSS        | SCSS, PostCSS and major CSS frameworks (Material, Element, Bootstrap)        |
+|      Unit testing      | Vitest, Jest (Vue test utils, React testing library)                         |
+|        Tooling         | Vite, Webpack, (p)npm, eslint, prettier, husky, hygen, versioning, etc.      |
+|        Node.js         | Next (SSR), Express                                                          |
+|       Databases        | Cloud Firestore (NoSQL), PostgreSQL                                          |
+|         CI/CD          | GitFlow/TBD, Github Actions, Jenkins, Docker, SonarQube, Kubernetes (basics) |
+| :pushpin: Architecture |                                                                              |
+|     Microfrontends     | React, Webpack, Github Actions, Microsoft Azure                              |
+|          SSR           | Next, Vercel, Github Actions                                                 |
+|     SPA/Serverless     | Vercel, Firebase, Google Cloud Platform (Drive, Storage)                     |
 
-## :mailbox_with_mail: Get In Touch
+## :call_me_hand: Get In Touch
 
 I believe my technical and personal skills make me a valuable asset to a team in need of an experienced software engineer who will deliver results while fostering a collaborative and innovative work environment.
 
-::: details Click here to reveal the email
-lazar.kulasevic@gmail.com
-
-:::
+Please don't hesitate to reach out to me on [LinkedIn](https://www.linkedin.com/in/lazarkulasevic/) for any inquiries or to connect.
