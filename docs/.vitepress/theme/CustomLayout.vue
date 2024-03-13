@@ -23,6 +23,7 @@ watch(
   },
   { immediate: true }
 )
+
 provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
   if (!enableTransitions()) {
     isDark.value = !isDark.value
@@ -98,9 +99,8 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
     justify-content: space-around;
     padding-top: calc(var(--vp-nav-height) + 40px);
 
-    .VPHero {
-      padding-left: 100px;
-      padding-right: 0;
+    .card {
+      padding-right: 120px;
     }
   }
 }
