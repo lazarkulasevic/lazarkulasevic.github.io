@@ -4,8 +4,9 @@ title: 'Feature Flags with Vite: A Step-by-Step Guide'
 image: /blog/feature-flags/featured.jpg
 description: Are you looking to implement feature flags swiftly within your Vite-powered applications? Feature flags, also known as feature toggles, allow developers to toggle features on and off without changing code, enabling incremental feature releases and controlled feature rollouts. In this tutorial, we'll walk you through the process of setting up feature flags using Vite, the next-generation frontend tooling framework.
 publishedOn: 11 March 2024 17:02
-updatedOn: null
+updatedOn: 20 March 2024 12:54
 tags:
+  - Agile
   - CI/CD
 head:
   - - meta
@@ -16,7 +17,7 @@ head:
       content: Feature flags, also known as feature toggles, allow developers to toggle features on and off without changing code, enabling incremental feature releases and controlled feature rollouts.
   - - meta
     - property: keywords
-      content: 'Feature Flags with Vite: A Step-by-Step Guide'
+      content: feature flags, vite, agile development
   - - meta
     - property: og:type
       content: article
@@ -205,9 +206,9 @@ Congratulations! You've successfully integrated feature flags into your Vite-pow
 
 With feature flags, you gain greater control over feature releases, enabling smoother deployments and user experiences.
 
-In this tutorial, we've covered setting up environment configurations, defining feature flags, and implementing feature flag logic within components. Experiment with different features and environments to see how feature flags can enhance your development workflow.
+In this tutorial, we've covered setting up environment configurations, defining static feature flags and implementing feature flag logic within components. Experiment with different features and environments to see how feature flags can enhance your development workflow.
 
-Stay tuned for more insights and tutorials on modern frontend development techniques. Happy coding!
+Next level would be real-time feature flags managed through an SDK in live application. Stay tuned for more insights and tutorials on modern frontend development techniques. Happy coding!
 
 ::: info Check out the code
 Repo: https://github.com/lazarkulasevic/vite-feature-flags
