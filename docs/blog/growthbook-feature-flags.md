@@ -96,14 +96,14 @@ In the example below we can see which features are enabled in which environments
 | `react_logo` | :green_circle: | :green_circle: |     TRUE      |                |
 |  `counter`   | :green_circle: |  :red_circle:  |     TRUE      |                |
 
-The second approach is a more clean one, as it demands you to _review and publish_ rules everytime you change them. So you will have a change history, which really comes handy when you work in a bigger team where all of your teammates have access to GrowthBook platform. Whenever someone makes changes, those can be reviewed and published (just like on Github).
+The second approach is a more clean one, as it requires you to _review and publish_ rules every time you make changes. This provides a change history, which is particularly useful when working in larger teams where all team members have access to the GrowthBook platform. Whenever someone makes changes, those can be reviewed and published (just like on Github).
 
 |   FEATURE    |  DEVELOPMENT   |   PRODUCTION   | DEFAULT VALUE | OVERRIDE RULES |
 | :----------: | :------------: | :------------: | :-----------: | -------------- |
 | `react_logo` | :green_circle: | :green_circle: |     FALSE     | force +1 more  |
 |  `counter`   | :green_circle: | :green_circle: |     FALSE     | force +1 more  |
 
-One thing to bare in mind, when you publish new rules, it takes about 30-60 seconds for them to reach your application, so don't panic if you don't see your changes immediately. That is why I chose the first approach for this tutorial — the satisfaction of remotely toggling and seeing changes immediately is priceless. :star_struck:
+One thing to bear in mind, when you publish new rules, it takes about 30-60 seconds for them to reach your application, so don't panic if you don't see your changes immediately. That is why I chose the first approach for this tutorial — the satisfaction of remotely toggling and seeing changes immediately is priceless. :star_struck:
 
 ### Let's Code
 
