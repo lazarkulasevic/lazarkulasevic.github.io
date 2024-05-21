@@ -135,7 +135,6 @@ const resetFilters = () => {
 
 .blog {
   margin: 24px;
-  max-width: 1374px;
 
   .blog-title {
     font-size: 2rem;
@@ -177,6 +176,7 @@ const resetFilters = () => {
 
   @include b.lg {
     margin: 42px;
+    width: 1374px;
 
     .blog-card {
       margin-bottom: 42px;
