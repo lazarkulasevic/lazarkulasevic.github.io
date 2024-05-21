@@ -25,6 +25,8 @@ jobs:
       - name: Install dependencies and build
         run: |
           npm ci
+          npm run generate-index
+          git update-index --again
           npm run build
 
       - name: Deploy to GitHub Pages
