@@ -12,7 +12,8 @@ export default {
     ['meta', { name: 'og:site_name', content: 'Lazar Kulasevic' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:site', content: '@else_clause' }],
-    ['meta', { name: 'twitter:creator', content: '@else_clause' }]
+    ['meta', { name: 'twitter:creator', content: '@else_clause' }],
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }]
   ],
   themeConfig: {
     logo: { src: '/logo.png', width: 24, height: 24 },
