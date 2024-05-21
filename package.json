@@ -7,7 +7,8 @@
     "dev": "vitepress dev docs --open",
     "build": "vitepress build docs",
     "serve": "vitepress serve docs",
-    "prettier": "prettier --write \"**/*.{js,vue,json,scss}\""
+    "prettier": "prettier --write \"**/*.{js,vue,json,scss}\"",
+    "generate-index": "node scripts/generateSearchIndex.js"
   },
   "author": "Lazar Kulasevic",
   "license": "MIT",
@@ -15,5 +16,8 @@
     "sass": "^1.76.0",
     "vitepress": "^1.1.4",
     "vue": "^3.3.4"
+  },
+  "dependencies": {
+    "lunr": "^2.3.9"
   }
 }
