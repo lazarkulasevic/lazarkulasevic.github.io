@@ -15,7 +15,7 @@
   "devDependencies": {
     "sass": "^1.76.0",
     "vitepress": "^1.1.4",
-    "vue": "^3.3.4"
+    "vue": "^3.4.31"
   },
   "dependencies": {
     "lunr": "^2.3.9"
