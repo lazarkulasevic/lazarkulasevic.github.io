@@ -45,21 +45,13 @@ import Timeline from '../.vitepress/components/Timeline.vue'
 
 ## :wave: Briefly About Me
 
-Hey there! I'm a passionate software engineer with a focus on front-end development, navigating the exciting realms of JavaScript, TypeScript, React, Next.js, Vue, and more. Crafting seamless and engaging user experiences is my forte, and I thrive on the ever-evolving landscape of web technologies.
-
-Beyond the screen, my life is a vibrant mix of diverse interests. I'm an avid movie buff, always up for exploring cinematic worlds and dissecting storytelling nuances. When I'm not coding or catching the latest blockbuster, you'll find me immersed in the world of words, penning down thoughts on tech and everything in between on my blog. Speaking of travel, Europe is my playground — I love uncovering hidden gems, tasting diverse cuisines and soaking in the rich tapestry of cultures.
-
-But it's not all code and pixels. Assembling Marvel figures and conquering 3D puzzles are my therapeutic hobbies — they bring a sense of accomplishment akin to solving a complex coding challenge. Life's an adventure, and I'm here to code, create, and conquer it all! 🧗‍♂️
+Frontend specialized Software Engineer with a focus on the product; navigating the realms of TypeScript, JavaScript, React, Next.js, Vue and other newer technologies. Crafting seamless and engaging user experiences is my forte.
 
 ## :man_technologist: Work Experience
 
-Worked on a variety of projects, ranging from enterprise-level applications to start-up ventures throughout which I have demonstrated my ability to tackle complex technical challenges.
+Worked on a variety of projects, ranging from enterprise-level applications to start-up ventures. My technical expertise includes the creation of clean front-end architectures, interactive data presentation on the web and the establishment of necessary CI/CD pipelines to ensure code quality and provide good developer experience.
 
-My technical expertise includes the creation of clean front-end architectures, interactive data visualization on the web and the establishment of necessary CI/CD pipelines. Additionally, I excel at fine-tuning projects such as pixel-perfect development.
-
-On the other hand, splitting complex workloads into manageable, time-boxed tasks has allowed me to effectively organize and contribute to team dynamics and ensure a successful incremental delivery.
-
-Also, I have proven the ability to inspire colleagues and initiate projects that drive innovation and progress, such as a Learning Platform (alias) which you'll learn more about in the timeline below.
+Splitting complex workloads into manageable, time-boxed tasks has allowed me to effectively organize and contribute to team dynamics and ensure a successful incremental delivery. Also, I had a chance to prove my ability to inspire colleagues and initiate projects that drive innovation and progress.
 
 <Timeline />
 
