@@ -26,6 +26,10 @@ worklog:
       - Video Management System – Primarily focused on ongoing feature development, improvements and bug fixes while consistently proposing new technical and product features and offering effective design solutions for new requirements. Other responsibilities included the guarantee of code quality by following the already established CI/CD process.
       - News Media Portals – Implementation of pixel-perfect design to four lookalike media portals.
 
+technologies: Typescript, Javascript, Next, React, Vue, CSS, SCSS, PostCSS, HTML, Vite, Webpack, npm, pnpm, Node, Express, Vitest, Jest, Cypress, VitePress, Github Actions, Jenkins, Docker, PostgreSQL, Cloud Firestore
+
+concepts: Microfrontends, SSR, Vercel, Firebase, Google Cloud Platform, Google API, SonarQube, Azure Application Insights, GitFlow, Trunk-based Development, CI/CD, Feature Flags, Kanban, Scrum
+
 <!-- @include: ../partials/_head-meta-defaults -->
 ---
 
@@ -41,6 +45,7 @@ worklog:
 </style>
 <script setup>
 import Timeline from '../.vitepress/components/Timeline.vue'
+import TagGroup from '../.vitepress/components/TagGroup.vue'
 </script>
 
 ## :wave: Briefly About Me
@@ -57,27 +62,25 @@ Splitting complex workloads into manageable, time-boxed tasks has allowed me to 
 
 ### Side Projects
 
-[Otisak](https://otisak.org) Data Protection Platform (Sep – Dec 2021) – European Union funded project, conducted by Association Pravilaw that implements the Law on Personal Data Protection in Southern and Eastern Serbia municipalities – In under 4 months of part-time effort I've managed to singlehandedly build this platform which consists of two major parts — public website and private dashboard that can be accessed only by registered users and admins. The logic spreads over several highly intuitive pages with a dark mode option and role based authorization: companies related analytics and their management, comments management, user management and settings page that includes database optimization scripts and sidebar ad setup section.
+My way of playing around with trending technologies and getting grasp of different industries, but at the same time creating something meaningful for humanity.
+
+#### :tooth: [MIA Dent](https://miadent.rs/en) (Dentistry)
+
+Dental clinic website (Oct 2024) – Growing multiangular site, SEO-optimized for Serbian, English and German speaking users.
+
+#### :balance_scale: [Otisak Platform](https://otisak.org) (Global Data Privacy Laws or GDPR)
+
+Data Protection Platform (Sep – Dec 2021) – European Union funded project, conducted by Association Pravilaw that implements the Law on Personal Data Protection in Southern and Eastern Serbia municipalities – In under 4 months of part-time effort I've managed to singlehandedly build this platform which consists of two major parts — public website and private dashboard that can be accessed only by registered users and admins. The logic spreads over several highly intuitive pages with a dark mode option and role based authorization: companies related analytics and their management, comments management, user management and settings page that includes database optimization scripts and sidebar ad setup section.
 
 I used to build lots of mini apps back in the day, some of them to address certain problems and other just for fun (learning). You can find all of these on [my Github profile](https://github.com/lazarkulasevic).
 
 ## :hammer_and_wrench: Tech Stack
 
-Below is a table of technologies and practices that I have worked with so far. Something must have been left out, but the most important ones will be listed out.
+<TagGroup frontmatterKey="technologies" />
 
-|  Tech (lang/practice)  | Sub-tech (framework/library)                                                 |
-| :--------------------: | :--------------------------------------------------------------------------- |
-| Javascript, Typescript | Next, React, Vue (v2, v3), VitePress                                         |
-|       HTML, CSS        | SCSS, PostCSS and major CSS frameworks (Material, Element, Bootstrap)        |
-|      Unit testing      | Vitest, Jest (Vue test utils, React testing library)                         |
-|        Tooling         | Vite, Webpack, (p)npm, eslint, prettier, husky, hygen, versioning, etc.      |
-|        Node.js         | Next (SSR), Express                                                          |
-|       Databases        | Cloud Firestore (NoSQL), PostgreSQL                                          |
-|         CI/CD          | GitFlow/TBD, Github Actions, Jenkins, Docker, SonarQube, Kubernetes (basics) |
-| :pushpin: Architecture |                                                                              |
-|     Microfrontends     | React, Webpack, Github Actions, Microsoft Azure                              |
-|          SSR           | Next, Vercel, Github Actions                                                 |
-|     SPA/Serverless     | Vercel, Firebase, Google Cloud Platform (Drive, Storage)                     |
+### Concepts and Platforms
+
+<TagGroup frontmatterKey="concepts" />
 
 ## :call_me_hand: Get In Touch
 
