@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Howdy 👋
+title: Lazar Kulasevic
 hero:
   name: Hi, I am Lazar
   text: Frontend specialized Sofware Engineer

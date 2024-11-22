@@ -26,7 +26,7 @@ worklog:
       - Video Management System – Primarily focused on ongoing feature development, improvements and bug fixes while consistently proposing new technical and product features and offering effective design solutions for new requirements. Other responsibilities included the guarantee of code quality by following the already established CI/CD process.
       - News Media Portals – Implementation of pixel-perfect design to four lookalike media portals.
 
-technologies: Typescript, Javascript, Next, React, Vue, CSS, SCSS, PostCSS, HTML, Vite, Webpack, npm, pnpm, Node, Express, Vitest, Jest, Cypress, VitePress, Github Actions, Jenkins, Docker, PostgreSQL, Cloud Firestore
+technologies: Typescript, Javascript, Next, React, Vue, CSS, SCSS, PostCSS, HTML, Vite, Webpack, npm, pnpm, Node, Express, Vitest, Jest, Cypress, VitePress, Zod, Github Actions, Jenkins, Docker, PostgreSQL, Cloud Firestore
 
 concepts: Microfrontends, SSR, Vercel, Firebase, Google Cloud Platform, Google API, SonarQube, Azure Application Insights, GitFlow, Trunk-based Development, CI/CD, Feature Flags, Kanban, Scrum
 
@@ -66,7 +66,7 @@ My way of playing around with trending technologies and getting grasp of differe
 
 #### :tooth: [MIA Dent](https://miadent.rs/en) (Dentistry)
 
-Dental clinic website (Oct 2024) – Growing multiangular site, SEO-optimized for Serbian, English and German speaking users.
+Dental clinic website (Oct – Nov 2024) – Growing multiangular site, SEO-optimized for Serbian, English and German speaking users.
 
 #### :balance_scale: [Otisak Platform](https://otisak.org) (Global Data Privacy Laws or GDPR)
 
