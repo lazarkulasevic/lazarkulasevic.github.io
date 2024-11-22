@@ -16,7 +16,7 @@ export default {
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' }]
   ],
   themeConfig: {
-    logo: { src: '/logo.png', width: 24, height: 24 },
+    logo: { src: '/logo.svg', width: 24, height: 24 },
     aside: true,
     outline: {
       level: 'deep'
