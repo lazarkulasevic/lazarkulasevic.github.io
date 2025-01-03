@@ -231,7 +231,7 @@ Rules I would especially like to discuss are 2 and 3. The second rule prevents m
 
 <p align="center">
   <img width="360" src="/blog/conducting-trunk-based-development-and-ci-cd-using-github-actions/git-linear.jpeg" alt="Git linear history">
-  <p align="center">Git linear history</p>
+  <span align="center">Git linear history</span>
 </p>
 
 ### Continuous Delivery (CD)

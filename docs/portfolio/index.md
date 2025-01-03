@@ -11,6 +11,7 @@ worklog:
       start: 01 Dec 2022
       end: Present
     summary:
+      - CRM Tool for HR – Organizing workload, polishing looks and feels before the rollout.
       - Microfrontends, npm packages – Developing new features and libraries for an enterprise, while taking care of numerous metrics under scrum principles.
       - Analytics Dashboard – Developed front-end in Next.js (SSR) for a dashboard with lots of charts, graphs and filters; interaction-heavy features such as calendar widget with date-range selection, dynamic navigation menu.
       - Booking Platform (MVP) – Full-stack generic solution that connects providers with consumers based on their level of competence.
@@ -26,7 +27,7 @@ worklog:
       - Video Management System – Primarily focused on ongoing feature development, improvements and bug fixes while consistently proposing new technical and product features and offering effective design solutions for new requirements. Other responsibilities included the guarantee of code quality by following the already established CI/CD process.
       - News Media Portals – Implementation of pixel-perfect design to four lookalike media portals.
 
-technologies: Typescript, Javascript, Next, React, Vue, CSS, SCSS, PostCSS, HTML, Vite, Webpack, npm, pnpm, Node, Express, Vitest, Jest, Cypress, VitePress, Zod, Github Actions, Jenkins, Docker, PostgreSQL, Cloud Firestore
+technologies: Typescript, Javascript, Next, React, Vue, CSS, SCSS, PostCSS, HTML, Vite, Webpack, npm, pnpm, Node, Express, Vitest, Jest, Cypress, VitePress, Zod, Redux, Jotai, Github Actions, Jenkins, Docker, PostgreSQL, Cloud Firestore
 
 concepts: Microfrontends, SSR, Vercel, Firebase, Google Cloud Platform, Google API, SonarQube, Azure Application Insights, GitFlow, Trunk-based Development, CI/CD, Feature Flags, Kanban, Scrum
 
@@ -64,13 +65,17 @@ Splitting complex workloads into manageable, time-boxed tasks has allowed me to 
 
 My way of playing around with trending technologies and getting grasp of different industries, but at the same time creating something meaningful for humanity.
 
-#### :tooth: [MIA Dent](https://miadent.rs/en) (Dentistry)
+#### :technologist: [Nyegosh](https://www.npmjs.com/package/nyegosh) (AI-Gen, Software Development)
 
-Dental clinic website (Oct – Nov 2024) – Growing multiangular site, SEO-optimized for Serbian, English and German speaking users.
+Nyegosh is a command-line tool that helps generate commit messages adhering to the Conventional Commit standard.Developed by the *DevBoost Lab*, where I was the team captain, during AI Hackathon organized within Symphony company, where innovative solutions and AI-driven tools were created to enhance developer workflows.
 
-#### :balance_scale: [Otisak Platform](https://otisak.org) (Global Data Privacy Laws or GDPR)
+#### :tooth: [MiaDent](https://miadent.rs/en) (Dentistry)
 
-Data Protection Platform (Sep – Dec 2021) – European Union funded project, conducted by Association Pravilaw that implements the Law on Personal Data Protection in Southern and Eastern Serbia municipalities – In under 4 months of part-time effort I've managed to singlehandedly build this platform which consists of two major parts — public website and private dashboard that can be accessed only by registered users and admins. The logic spreads over several highly intuitive pages with a dark mode option and role based authorization: companies related analytics and their management, comments management, user management and settings page that includes database optimization scripts and sidebar ad setup section.
+Dental clinic website (Nov 2024) – Growing multiangular site, SEO-optimized for Serbian, English and German speaking users.
+
+#### :balance_scale: Otisak.org Platform (Global Data Privacy Laws or GDPR)
+
+Data Protection Platform (Sep – Dec 2021) – European Union funded project, conducted by Association Pravilaw that implements the Law on Personal Data Protection in Southern and Eastern Serbia municipalities – In under 4 months of part-time effort I've managed to singlehandedly build this platform which consists of two major parts — public website and private dashboard that can be accessed only by registered users and admins. The logic spreads over several highly intuitive pages with a dark mode option and role based authorization: companies related analytics and their management, comments management, user management and settings page that includes database optimization scripts and sidebar ad setup section. Everything is hosted on Firebase, so maintenance costs remained around 0$ ([fallback URL](https://otisak-pravilaw.web.app/)).
 
 I used to build lots of mini apps back in the day, some of them to address certain problems and other just for fun (learning). You can find all of these on [my Github profile](https://github.com/lazarkulasevic).
 
