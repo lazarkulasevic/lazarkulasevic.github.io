@@ -6,3 +6,4 @@ docs/.vitepress/dist/
 .vscode
 cache/
 .DS_Store
+ROADMAP.md
