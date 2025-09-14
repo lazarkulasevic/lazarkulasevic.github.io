@@ -1,8 +1,8 @@
 export default {
   lang: 'en-US',
-  title: 'Deploy & Pray',
+  title: 'deploy & pray',
   description:
-    'Deploy & Pray started as a joke — but in reality, it’s the story of every engineer. My work is about turning those desperate prayers into confidence: solid code, smart strategy, and solutions that last.',
+    'Deploy and Pray started as a joke — but in reality, it’s the story of every engineer. My work is about turning those desperate prayers into confidence: solid code, smart strategy, and solutions that last.',
   cleanUrls: true,
   sitemap: {
     hostname: 'https://deployandpray.com',

@@ -1,8 +1,8 @@
 ---
 layout: home
-title: Deploy & Pray
+title: deploy & pray
 hero:
-  name: Deploy & Pray
+  name: deploy & pray
   text: The story of every engineer
   tagline: 'My work is about turning those desperate prayers into confidence: solid code, smart strategy and solutions that last.'
   actions:
