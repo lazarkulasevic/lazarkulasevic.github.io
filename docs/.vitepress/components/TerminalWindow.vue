@@ -22,6 +22,8 @@ const currentLineIndex = ref(0)
 const visibleLines = ref([])
 const isTyping = ref(false)
 const terminalContent = ref(null)
+const isUserScrolling = ref(false)
+const scrollTimeout = ref(null)
 
 const deploymentCommands = [
   { text: '$ git add .', type: 'command', delay: 0 },
@@ -33,8 +35,6 @@ const deploymentCommands = [
   { text: 'Writing objects: 100% (10/10), 2.3 KiB | 2.3 MiB/s, done.', type: 'output', delay: 300 },
   { text: 'Total 10 (delta 3), reused 0 (delta 0), pack-reused 0', type: 'output', delay: 600 },
   { text: 'remote: Resolving deltas: 100% (3/3), completed with 3 local objects.', type: 'output', delay: 300 },
-  { text: 'To github.com:lazarkulasevic/lazarkulasevic.github.io.git', type: 'output', delay: 400 },
-  { text: '   a1b2c3d..e4f5g6h  main -> main', type: 'output', delay: 300 },
   { text: '', type: 'spacer', delay: 1000 },
   { text: '$ npm run build', type: 'command', delay: 200 },
   { text: '> vitepress build', type: 'output', delay: 300 },
@@ -47,7 +47,7 @@ const deploymentCommands = [
   { text: '> gh-pages -d dist', type: 'output', delay: 320 },
   { text: 'Published', type: 'output', delay: 800 },
   { text: '✨ Deployment successful!', type: 'success', delay: 1200 },
-  { text: '🚀 Your site is now live at https://deployandpray.com', type: 'success', delay: 1000 }
+  { text: '🚀 Your site is now live at https://deployandpray.com', type: 'success', delay: 1200 }
 ]
 
 const startAnimation = async () => {
@@ -70,9 +70,9 @@ const startAnimation = async () => {
       isVisible: true
     })
 
-    // Auto-scroll to bottom
+    // Auto-scroll to bottom only if user isn't scrolling
     await nextTick()
-    if (terminalContent.value) {
+    if (terminalContent.value && !isUserScrolling.value) {
       terminalContent.value.scrollTop = terminalContent.value.scrollHeight
     }
 
@@ -89,7 +89,7 @@ const startAnimation = async () => {
     await new Promise(resolve => setTimeout(resolve, props.speed / 2))
   }
 
-  // Final scroll to bottom to ensure last lines are visible
+  // Final scroll to bottom to ensure last lines are visible (only if user isn't scrolling)
   await nextTick()
   if (terminalContent.value) {
     terminalContent.value.scrollTop = terminalContent.value.scrollHeight
@@ -107,10 +107,31 @@ const stopAnimation = () => {
   isRunning.value = false
 }
 
+const handleScroll = () => {
+  isUserScrolling.value = true
+
+  // Clear existing timeout
+  if (scrollTimeout.value) {
+    clearTimeout(scrollTimeout.value)
+  }
+
+  // Set timeout to detect when user stops scrolling
+  scrollTimeout.value = setTimeout(() => {
+    isUserScrolling.value = false
+  }, 150)
+}
+
 onMounted(() => {
   if (props.autoStart) {
     startAnimation()
   }
+
+  // Add scroll event listener after next tick to ensure ref is available
+  nextTick(() => {
+    if (terminalContent.value) {
+      terminalContent.value.addEventListener('scroll', handleScroll, { passive: true })
+    }
+  })
 })
 
 // Expose methods for parent components

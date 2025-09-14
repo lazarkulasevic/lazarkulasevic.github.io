@@ -103,6 +103,13 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
   }
 }
 
+.Layout::v-deep(.VPHomeHero) {
+  @include b.xl {
+    padding-left: 140px
+  }
+}
+
+
 .hero-animation {
   display: flex;
   flex-direction: column;
