@@ -2,8 +2,6 @@
 import { ref, watch, nextTick, provide } from 'vue'
 import { useData, useRouter } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import GlassCard from '../components/GlassCard.vue'
-import GlassCardCodeSnippet from '../components/GlassCardCodeSnippet.vue'
 import TerminalWindow from '../components/TerminalWindow.vue'
 import BlogComments from '../components/BlogComments.vue'
 import PostHeader from '../components/PostHeader.vue'
