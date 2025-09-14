@@ -4,6 +4,7 @@ import { useData, useRouter } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import GlassCard from '../components/GlassCard.vue'
 import GlassCardCodeSnippet from '../components/GlassCardCodeSnippet.vue'
+import TerminalWindow from '../components/TerminalWindow.vue'
 import BlogComments from '../components/BlogComments.vue'
 import PostHeader from '../components/PostHeader.vue'
 
@@ -57,9 +58,9 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
 <template>
   <Layout>
     <template #home-hero-after>
-      <GlassCard :height="216">
-        <GlassCardCodeSnippet />
-      </GlassCard>
+      <div class="hero-animation">
+        <TerminalWindow :height="400" :auto-start="true" :speed="30" />
+      </div>
     </template>
     <template #doc-before>
       <PostHeader v-if="isBlogPost" :title="page.frontmatter.title" :published-on="page.frontmatter.publishedOn"
@@ -83,7 +84,8 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  padding-bottom: 180px;
+  // padding-bottom: 180px;
+  margin-bottom: 0;
 
   .clip {
     background-color: var(--vp-c-brand-3);
@@ -102,6 +104,25 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
     .card {
       padding-right: 120px;
     }
+  }
+}
+
+.hero-animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include b.lg {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 60px;
+    padding-top: 40px;
   }
 }
 
