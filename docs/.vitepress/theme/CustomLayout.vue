@@ -82,7 +82,6 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  // padding-bottom: 180px;
 
   .clip {
     background-color: var(--vp-c-brand-3);
