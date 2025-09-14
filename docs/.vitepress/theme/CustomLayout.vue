@@ -83,7 +83,6 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
   align-items: center;
   overflow: hidden;
   // padding-bottom: 180px;
-  margin-bottom: 0;
 
   .clip {
     background-color: var(--vp-c-brand-3);
