@@ -24,10 +24,10 @@ head:
       content: article
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/conducting-trunk-based-development-and-ci-cd-using-github-actions.html
+      content: https://deployandpray.com/blog/conducting-trunk-based-development-and-ci-cd-using-github-actions.html
   - - meta
     - property: og:image
-      content: https://lazarkulasevic.github.io/blog/conducting-trunk-based-development-and-ci-cd-using-github-actions/featured.png
+      content: https://deployandpray.com/blog/conducting-trunk-based-development-and-ci-cd-using-github-actions/featured.png
   - - meta
     - name: twitter:title
       content: 'Conducting Trunk-Based Development and CI/CD Practices Using Github Actions'
@@ -36,10 +36,10 @@ head:
       content: 'A relatively young approach to development – trunk-based development (TBD) – has come out as a result of seven years of research and data from over 32,000 professionals worldwide, conducted by DORA State of DevOps. It is the longest-running academically rigorous research investigation of its kind, providing an independent view into the practices and capabilities that drive high performance in technology delivery and ultimately organizational outcomes.'
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/conducting-trunk-based-development-and-ci-cd-using-github-actions.html
+      content: https://deployandpray.com/blog/conducting-trunk-based-development-and-ci-cd-using-github-actions.html
   - - meta
     - name: twitter:image
-      content: https://lazarkulasevic.github.io/blog/conducting-trunk-based-development-and-ci-cd-using-github-actions/featured.png
+      content: https://deployandpray.com/blog/conducting-trunk-based-development-and-ci-cd-using-github-actions/featured.png
 ---
 
 A relatively young approach to development – trunk-based development (TBD) – has come out as a result of seven years of research and data from over 32,000 professionals worldwide, conducted by DORA State of DevOps. It is the longest-running academically rigorous research investigation of its kind, providing an independent view into the practices and capabilities that drive high performance in technology delivery and ultimately organizational outcomes.

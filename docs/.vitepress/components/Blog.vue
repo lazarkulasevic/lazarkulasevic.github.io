@@ -104,14 +104,9 @@ const resetFilters = () => {
       </div>
       <ul v-if="posts.length">
         <li v-for="post of posts" class="card">
-          <BlogCard
-            :title="post.title"
-            :image="post.frontmatter.image"
-            :description="post.description"
-            :path="post.relativePath.slice(0, -3)"
-            :published-on="Utils.formatDateTime(post.frontmatter.publishedOn)"
-            @click="handleClickPost"
-          >
+          <BlogCard :title="post.title" :image="post.frontmatter.image" :description="post.description"
+            :path="post.relativePath.slice(0, -3)" :published-on="Utils.formatDateTime(post.frontmatter.publishedOn)"
+            @click="handleClickPost">
           </BlogCard>
         </li>
       </ul>
@@ -145,6 +140,10 @@ const resetFilters = () => {
 
   .blog-description {
     margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+      max-width: 65%;
+    }
   }
 
   .blog-tags {

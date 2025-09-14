@@ -1,7 +1,7 @@
 head:
   - - meta
     - property: og:title
-      content: Lazar Kulasevic | Portfolio
+      content: Deploy and Pray
   - - meta
     - property: og:description
       content: Lazar Kulasevic is a Software Engineer specializing in front-end technologies. Check out his portfolio and blog.
@@ -13,16 +13,16 @@ head:
       content: website
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io
+      content: https://deployandpray.com
   - - meta
     - property: og:image
-      content: https://lazarkulasevic.github.io/featured.webp
+      content: https://deployandpray.com/featured.webp
   - - meta
     - name: twitter:title
-      content: Lazar Kulasevic | Portfolio
+      content: Deploy and Pray
   - - meta
     - name: twitter:description
       content: Lazar Kulasevic is a Software Engineer specializing in front-end technologies. Check out his portfolio and blog.
   - - meta
     - name: twitter:image
-      content: https://lazarkulasevic.github.io/featured.webp
+      content: https://deployandpray.com/featured.webp

@@ -20,10 +20,10 @@ head:
       content: article
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/hello-world.html
+      content: https://deployandpray.com/blog/hello-world.html
   - - meta
     - property: og:image
-      content: https://lazarkulasevic.github.io/blog/hello-world/featured.png
+      content: https://deployandpray.com/blog/hello-world/featured.png
   - - meta
     - name: twitter:title
       content: Hello World
@@ -32,10 +32,10 @@ head:
       content: Hello, world! I've decided to put a good use of the site generator such as VitePress and to see whether my posts here will get a good SEO.
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/hello-world.html
+      content: https://deployandpray.com/blog/hello-world.html
   - - meta
     - name: twitter:image
-      content: https://lazarkulasevic.github.io/blog/hello-world/featured.png
+      content: https://deployandpray.com/blog/hello-world/featured.png
 ---
 
 ```js

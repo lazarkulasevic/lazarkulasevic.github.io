@@ -22,10 +22,10 @@ head:
       content: article
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor.html
+      content: https://deployandpray.com/blog/metaprogramming-in-javascript-creating-interceptor.html
   - - meta
     - property: og:image
-      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor/featured.png
+      content: https://deployandpray.com/blog/metaprogramming-in-javascript-creating-interceptor/featured.png
   - - meta
     - name: twitter:title
       content: 'Metaprogramming in JavaScript: Creating a Proxy Interceptor'
@@ -34,10 +34,10 @@ head:
       content: Metaprogramming is a very specific technique in software development in which a portion of code treats other code as its data. This article is about to put a light on that concept using ES6 Proxy.
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor.html
+      content: https://deployandpray.com/blog/metaprogramming-in-javascript-creating-interceptor.html
   - - meta
     - name: twitter:image
-      content: https://lazarkulasevic.github.io/blog/metaprogramming-in-javascript-creating-interceptor/featured.png
+      content: https://deployandpray.com/blog/metaprogramming-in-javascript-creating-interceptor/featured.png
 ---
 
 Metaprogramming is a very specific technique in software development in which a portion of code treats other code as its data. Weird, right? This article is about to put a light on that concept using ES6 `Proxy`.
@@ -144,7 +144,7 @@ Very simple — just extend the `Interceptor` and inside the `super` pass the op
 
 As you may notice in the example below, Interceptor monitors 4 out of 6 of its methods in the `Dom` class.
 
-```js {5,21-23,77-84,86-92}
+```js
 import Interceptor from './Interceptor.js'
 
 class Dom extends Interceptor {
@@ -326,7 +326,7 @@ I hope you have learned something that will help you become a better Javascript 
 If you have any ideas of how this little Interceptor can be useful in a real-life application, please don't hesitate to type a comment. And don't forget to check out the live demo. :wave::wink:
 
 ::: info Live Demo and Code
-Live demo: https://lazarkulasevic.github.io/javascript-proxy
+Live demo: https://deployandpray.com/javascript-proxy
 
 Code: https://github.com/lazarkulasevic/javascript-proxy
 :::

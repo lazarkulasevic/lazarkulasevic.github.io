@@ -1,6 +1,6 @@
 ---
 editLink: false
-title: Portfolio
+title: Lazar Kulasevic
 aside: false
 outline: false
 
@@ -67,7 +67,7 @@ My way of playing around with trending technologies and getting grasp of differe
 
 #### :technologist: [Nyegosh](https://www.npmjs.com/package/nyegosh) (AI-Gen, Software Development)
 
-Nyegosh is a command-line tool that helps generate commit messages adhering to the Conventional Commit standard.Developed by the *DevBoost Lab*, where I was the team captain, during AI Hackathon organized within Symphony company, where innovative solutions and AI-driven tools were created to enhance developer workflows.
+Nyegosh is a command-line tool that helps generate commit messages adhering to the Conventional Commit standard.Developed by the _DevBoost Lab_, where I was the team captain, during AI Hackathon organized within Symphony company, where innovative solutions and AI-driven tools were created to enhance developer workflows.
 
 #### :tooth: [MiaDent](https://miadent.rs/en) (Dentistry)
 
@@ -91,4 +91,4 @@ I used to build lots of mini apps back in the day, some of them to address certa
 
 I believe my technical and personal skills make me a valuable asset to a team in need of an experienced software engineer who will deliver results while fostering a collaborative and innovative work environment.
 
-Please don't hesitate to reach out to me on [LinkedIn](https://www.linkedin.com/in/lazarkulasevic/) for any inquiries or to connect.
+Hey, reach out on [LinkedIn](https://www.linkedin.com/in/lazarkulasevic/)!

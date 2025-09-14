@@ -1,18 +1,19 @@
 export default {
   lang: 'en-US',
-  title: 'Lazar Kulasevic',
-  description: 'Lazar Kulasevic is a Software Engineer based in Nis, Serbia.',
+  title: 'Deploy & Pray',
+  description:
+    'Deploy & Pray started as a joke — but in reality, it’s the story of every engineer. My work is about turning those desperate prayers into confidence: solid code, smart strategy, and solutions that last.',
   cleanUrls: true,
   sitemap: {
-    hostname: 'https://lazarkulasevic.github.io',
+    hostname: 'https://deployandpray.com',
     lastmodDateOnly: false
   },
   head: [
     ['meta', { property: 'author', content: 'Lazar Kulasevic' }],
     ['meta', { name: 'og:site_name', content: 'Lazar Kulasevic' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:site', content: '@else_clause' }],
-    ['meta', { name: 'twitter:creator', content: '@else_clause' }],
+    // ['meta', { name: 'twitter:site', content: '@else_clause' }],
+    // ['meta', { name: 'twitter:creator', content: '@else_clause' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' }]
   ],
   themeConfig: {

@@ -21,10 +21,10 @@ head:
       content: article
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/preprocessing-css-generate-utility-classes-using-sass.html
+      content: https://deployandpray.com/blog/preprocessing-css-generate-utility-classes-using-sass.html
   - - meta
     - property: og:image
-      content: https://lazarkulasevic.github.io/blog/preprocessing-css-generate-utility-classes-using-sass/featured.png
+      content: https://deployandpray.com/blog/preprocessing-css-generate-utility-classes-using-sass/featured.png
   - - meta
     - name: twitter:title
       content: 'Pre-processing CSS: Generate Utility Classes Using Sass – Part 1'
@@ -33,10 +33,10 @@ head:
       content: Generate CSS utility classes or helpers using advanced Sass features – loops, maps and type guards.
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/preprocessing-css-generate-utility-classes-using-sass.html
+      content: https://deployandpray.com/blog/preprocessing-css-generate-utility-classes-using-sass.html
   - - meta
     - name: twitter:image
-      content: https://lazarkulasevic.github.io/blog/preprocessing-css-generate-utility-classes-using-sass/featured.png
+      content: https://deployandpray.com/blog/preprocessing-css-generate-utility-classes-using-sass/featured.png
 ---
 
 When it comes to styling, you know what I really like? Utility classes! All the boring stuff about styling such as spacing, coloring, text formatting, etc. can be easily handled by using a utility class (e.g., `m-sm` – margin small, `color-primary`, `font-lg` – font-size large). What surprised me is that I'm not the sole fan of this approach to CSS architecture. There are lots of devs out there preferring small and single-purpose classes than large semantic ones. This movement in front-end is named _Atomic CSS_, and it is gaining on velocity as we speak.

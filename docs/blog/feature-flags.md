@@ -23,10 +23,10 @@ head:
       content: article
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/feature-flags.html
+      content: https://deployandpray.com/blog/feature-flags.html
   - - meta
     - property: og:image
-      content: https://lazarkulasevic.github.io/blog/feature-flags/featured.jpg
+      content: https://deployandpray.com/blog/feature-flags/featured.jpg
   - - meta
     - name: twitter:title
       content: 'Feature Flags with Vite: A Step-by-Step Guide'
@@ -35,10 +35,10 @@ head:
       content: Feature flags, also known as feature toggles, allow developers to toggle features on and off without changing code, enabling incremental feature releases and controlled feature rollouts.
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/feature-flags.html
+      content: https://deployandpray.com/blog/feature-flags.html
   - - meta
     - name: twitter:image
-      content: https://lazarkulasevic.github.io/blog/feature-flags/featured.jpg
+      content: https://deployandpray.com/blog/feature-flags/featured.jpg
 ---
 
 Are you looking to implement feature flags swiftly within your Vite-powered applications? Feature flags, also known as feature toggles, allow developers to toggle features on and off without changing code, enabling incremental feature releases and controlled feature rollouts. In this tutorial, we'll walk you through the process of setting up feature flags using Vite, the next-generation frontend tooling framework.

@@ -23,10 +23,10 @@ head:
       content: article
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/growthbook-feature-flags.html
+      content: https://deployandpray.com/blog/growthbook-feature-flags.html
   - - meta
     - property: og:image
-      content: https://lazarkulasevic.github.io/blog/growthbook-feature-flags/featured.jpg
+      content: https://deployandpray.com/blog/growthbook-feature-flags/featured.jpg
   - - meta
     - name: twitter:title
       content: 'Feature Flags with GrowthBook: Real-Time Toggles'
@@ -35,10 +35,10 @@ head:
       content: Growthbook is a comprehensive experimentation platform that helps teams manage, track and analyze feature flags, A/B tests and other growth initiatives.
   - - meta
     - property: og:url
-      content: https://lazarkulasevic.github.io/blog/growthbook-feature-flags.html
+      content: https://deployandpray.com/blog/growthbook-feature-flags.html
   - - meta
     - name: twitter:image
-      content: https://lazarkulasevic.github.io/blog/growthbook-feature-flags/featured.jpg
+      content: https://deployandpray.com/blog/growthbook-feature-flags/featured.jpg
 ---
 
 Welcome to a tale of innovation and seamless user experiences in the digital realm. In the world of software development, there exists a powerful tool known as feature flags. These flags, akin to keys that unlock hidden treasures, enable developers and product managers to make changes to a product's features while keeping them hidden from the public eye until they are ready for unveiling.
@@ -160,7 +160,7 @@ function App() {
 
 ### Let's Test
 
-If you go to the live app at [lazarkulasevic.github.io/growthbook-feature-flags](https://lazarkulasevic.github.io/growthbook-feature-flags/) you won't be able to see the counter. But if you start this project in localhost, you'll see both features, react logo and counter. The code is linked in the bottom of this article. Try it out and let me know what you think!
+If you go to the live app at [deployandpray.com/growthbook-feature-flags](https://deployandpray.com/growthbook-feature-flags/) you won't be able to see the counter. But if you start this project in localhost, you'll see both features, react logo and counter. The code is linked in the bottom of this article. Try it out and let me know what you think!
 
 ![image](https://github.com/lazarkulasevic/vite-feature-flags/assets/68285821/04934d6c-25b1-4517-915f-c283174cfae3)
 

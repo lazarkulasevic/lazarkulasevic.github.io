@@ -1,7 +1,7 @@
 {
-  "name": "vitepress-blog",
+  "name": "deploy-and-pray",
   "version": "1.0.0",
-  "description": "Personal portfolio",
+  "description": "Deploy and Pray - Lazar Kulasevic's personal portfolio and tech blog",
   "main": "index.js",
   "scripts": {
     "dev": "vitepress dev docs --open",

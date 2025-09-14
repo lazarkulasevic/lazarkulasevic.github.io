@@ -1,16 +1,16 @@
 ---
 layout: home
-title: Lazar Kulasevic
+title: Deploy & Pray
 hero:
-  name: Hi, I am Lazar
-  text: Frontend specialized Sofware Engineer
-  tagline: Check out my portfolio and blog
+  name: Deploy & Pray
+  text: The story of every engineer
+  tagline: 'My work is about turning those desperate prayers into confidence: solid code, smart strategy and solutions that last.'
   actions:
-    - theme: brand
+    - theme: alt
       text: Portfolio
       link: portfolio/
-    - theme: alt
-      text: Tech Blog
+    - theme: brand
+      text: Blog
       link: /blog/
 <!-- @include: ./partials/_head-meta-defaults -->
 ---
