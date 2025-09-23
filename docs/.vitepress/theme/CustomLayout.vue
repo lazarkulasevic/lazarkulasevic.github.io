@@ -117,7 +117,6 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
   gap: 40px;
   width: 100%;
   max-width: 720px;
-  margin: 0 auto;
   padding: 0 20px;
 
   @include b.lg {
