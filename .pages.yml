@@ -1,4 +1,5 @@
 media: media
+
 content:
   - name: posts
     label: Posts
@@ -21,8 +22,8 @@ content:
         label: Body
         type: rich-text
   - name: config
-    label: Jekyll config
-    path: _config.yml
+    label: Images
+    path: public/blog
     type: file
     fields:
       - name: title
