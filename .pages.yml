@@ -1,7 +1,7 @@
 media:
   - name: images
     label: Images
-    input: public/blog
+    input: docs/public/blog
     output: /blog
     extensions: [ png, jpeg, jpg, webp ]
 
