@@ -14,7 +14,11 @@ export default {
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     // ['meta', { name: 'twitter:site', content: '@else_clause' }],
     // ['meta', { name: 'twitter:creator', content: '@else_clause' }],
-    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' }]
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' }],
+    [
+      'script',
+      { src: '//gc.zgo.at/count.js', 'data-goatcounter': 'https://deployandpray.goatcounter.com/count', async: true }
+    ]
   ],
   themeConfig: {
     logo: { src: '/logo.svg', width: 24, height: 24 },
