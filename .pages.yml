@@ -1,0 +1,9 @@
+content:
+  - name: posts
+    label: Posts
+    path: docs/blog
+    type: collection
+    fields:
+      - { name: title, label: Title }
+      - { name: date, label: Date }
+      - { name: body, label: Body }
