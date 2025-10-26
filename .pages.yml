@@ -1,6 +1,6 @@
 media:
-  - name: images
-    label: Images
+  - name: media
+    label: Media
     input: docs/public/blog
     output: /blog
     extensions: [ png, jpeg, jpg, webp ]
