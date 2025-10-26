@@ -1,4 +1,9 @@
-media: media
+media:
+  - name: images
+    label: Images
+    input: public/blog
+    output: /blog
+    extensions: [ png, jpeg, jpg, webp ]
 
 content:
   - name: posts
@@ -21,23 +26,3 @@ content:
       - name: body
         label: Body
         type: rich-text
-  - name: config
-    label: Images
-    path: public/blog
-    type: file
-    fields:
-      - name: title
-        label: Website title
-        type: string
-      - name: description
-        label: Website description
-        type: string
-        description: Will be provused for any page with no description.
-      - name: url
-        label: Website URL
-        type: string
-        pattern: ^(https?:\/\/)?(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/[^\s]*)?$
-      - name: cover
-        label: Preview image
-        type: image
-        description: Image used in the social preview on social networks (e.g. Facebook, Twitter...)
