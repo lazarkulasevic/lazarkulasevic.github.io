@@ -2,7 +2,7 @@
 
 /**
  * Processes /cursor comments from PRs and applies AI-generated changes
- * Supports OpenAI and Anthropic APIs
+ * Uses Cursor API
  */
 
 const fs = require('fs');
@@ -12,20 +12,16 @@ const { execSync } = require('child_process');
 const PROMPT = process.env.PROMPT;
 const PR_NUMBER = process.env.PR_NUMBER;
 const PR_BRANCH = process.env.PR_BRANCH;
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+const CURSOR_API_KEY = process.env.CURSOR_API_KEY;
+const CURSOR_API_ENDPOINT = process.env.CURSOR_API_ENDPOINT || 'https://api.cursor.com/v1/chat/completions';
 
 if (!PROMPT) {
   console.error('No prompt provided');
   process.exit(1);
 }
 
-// Determine which AI service to use
-const useOpenAI = !!OPENAI_API_KEY;
-const useAnthropic = !!ANTHROPIC_API_KEY;
-
-if (!useOpenAI && !useAnthropic) {
-  console.error('No AI API key found. Please set OPENAI_API_KEY or ANTHROPIC_API_KEY secret.');
+if (!CURSOR_API_KEY) {
+  console.error('No Cursor API key found. Please set CURSOR_GITHUB_PERSONAL_API_KEY secret.');
   process.exit(1);
 }
 
@@ -120,22 +116,21 @@ Example response format:
 
   const fullPrompt = `${systemPrompt}\n\nUser request: ${prompt}\n\n${fileContext || 'No file context available'}`;
 
-  if (useOpenAI) {
-    return await callOpenAI(fullPrompt);
-  } else if (useAnthropic) {
-    return await callAnthropic(fullPrompt);
-  }
+  return await callCursorAPI(fullPrompt);
 }
 
-async function callOpenAI(prompt) {
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+async function callCursorAPI(prompt) {
+  // Cursor API endpoint - configurable via CURSOR_API_ENDPOINT env var
+  // Default: https://api.cursor.com/v1/chat/completions
+  console.log(`🌐 Using Cursor API endpoint: ${CURSOR_API_ENDPOINT}`);
+  const response = await fetch(CURSOR_API_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${OPENAI_API_KEY}`
+      'Authorization': `Bearer ${CURSOR_API_KEY}`
     },
     body: JSON.stringify({
-      model: 'gpt-4-turbo-preview',
+      model: 'gpt-4',
       messages: [
         { role: 'system', content: 'You are a helpful code assistant that returns only valid JSON.' },
         { role: 'user', content: prompt }
@@ -146,12 +141,29 @@ async function callOpenAI(prompt) {
   });
 
   if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`OpenAI API error: ${error}`);
+    const errorText = await response.text();
+    console.error('Cursor API error response:', errorText);
+    
+    // If the endpoint doesn't work, try alternative endpoints
+    if (response.status === 404 || response.status === 401) {
+      throw new Error(`Cursor API error (${response.status}): ${errorText}. Please verify your API key and endpoint.`);
+    }
+    throw new Error(`Cursor API error: ${errorText}`);
   }
 
   const data = await response.json();
-  const content = data.choices[0].message.content;
+  
+  // Handle different possible response structures
+  let content;
+  if (data.choices && data.choices[0] && data.choices[0].message) {
+    content = data.choices[0].message.content;
+  } else if (data.content) {
+    content = typeof data.content === 'string' ? data.content : data.content[0]?.text || data.content[0];
+  } else if (data.message) {
+    content = data.message;
+  } else {
+    throw new Error('Unexpected Cursor API response structure');
+  }
   
   // Remove markdown code blocks if present
   let jsonContent = content.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
@@ -166,50 +178,7 @@ async function callOpenAI(prompt) {
     return JSON.parse(jsonContent);
   } catch (error) {
     console.error('Failed to parse JSON response:', jsonContent.substring(0, 500));
-    throw new Error(`Invalid JSON response from AI: ${error.message}`);
-  }
-}
-
-async function callAnthropic(prompt) {
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': ANTHROPIC_API_KEY,
-      'anthropic-version': '2023-06-01'
-    },
-    body: JSON.stringify({
-      model: 'claude-3-5-sonnet-20241022',
-      max_tokens: 4096,
-      messages: [
-        { role: 'user', content: prompt }
-      ],
-      system: 'You are a helpful code assistant that returns only valid JSON.'
-    })
-  });
-
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Anthropic API error: ${error}`);
-  }
-
-  const data = await response.json();
-  const content = data.content[0].text;
-  
-  // Remove markdown code blocks if present
-  let jsonContent = content.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-  
-  // Try to extract JSON if it's wrapped in other text
-  const jsonMatch = jsonContent.match(/\{[\s\S]*\}/);
-  if (jsonMatch) {
-    jsonContent = jsonMatch[0];
-  }
-  
-  try {
-    return JSON.parse(jsonContent);
-  } catch (error) {
-    console.error('Failed to parse JSON response:', jsonContent.substring(0, 500));
-    throw new Error(`Invalid JSON response from AI: ${error.message}`);
+    throw new Error(`Invalid JSON response from Cursor API: ${error.message}`);
   }
 }
 
@@ -307,7 +276,7 @@ async function main() {
     const context = await getFileContext();
     console.log(`📁 Found ${context.changedFiles.length} changed files`);
     
-    console.log('🤖 Calling AI service...');
+    console.log('🤖 Calling Cursor API...');
     const aiResponse = await callAI(PROMPT, context);
     
     console.log('📝 Applying changes...');

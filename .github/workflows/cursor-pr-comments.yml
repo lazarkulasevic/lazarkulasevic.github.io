@@ -71,8 +71,7 @@ jobs:
           PR_BRANCH: ${{ steps.pr_info.outputs.pr_branch }}
           BASE_BRANCH: ${{ steps.pr_info.outputs.base_branch }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CURSOR_API_KEY: ${{ secrets.CURSOR_GITHUB_PERSONAL_API_KEY }}
         run: |
           node scripts/process-cursor-prompt.js
 
