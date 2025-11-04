@@ -106,7 +106,7 @@ const resetFilters = () => {
         <li v-for="post of posts" class="card">
           <BlogCard :title="post.title" :image="post.frontmatter.image" :description="post.description"
             :path="post.relativePath.slice(0, -3)" :published-on="Utils.formatDateTime(post.frontmatter.publishedOn)"
-            @click="handleClickPost">
+            :tags="post.frontmatter?.tags || []" @click="handleClickPost">
           </BlogCard>
         </li>
       </ul>
