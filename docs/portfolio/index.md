@@ -11,6 +11,7 @@ worklog:
       start: 01 Dec 2022
       end: Present
     summary:
+      - Developing an AI-powered productivity platform that integrates seamlessly with core systems used by property management companies.
       - CRM Tool for HR – Organizing workload, polishing looks and feels before the rollout.
       - Microfrontends, npm packages – Developing new features and libraries for an enterprise, while taking care of numerous metrics under scrum principles.
       - Analytics Dashboard – Developed front-end in Next.js (SSR) for a dashboard with lots of charts, graphs and filters; interaction-heavy features such as calendar widget with date-range selection, dynamic navigation menu.
