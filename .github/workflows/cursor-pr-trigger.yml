@@ -25,6 +25,15 @@ jobs:
       - name: Get Agent ID
         id: get-agent-id
         run: |
+          # Debug: Check if API key secret is accessible (without exposing value)
+          API_KEY="${{ secrets.CURSOR_GITHUB_PERSONAL_API_KEY }}"
+          if [ -z "$API_KEY" ]; then
+            echo "::error::CURSOR_GITHUB_PERSONAL_API_KEY secret is empty or not set"
+            exit 1
+          else
+            echo "API key secret is accessible (length: ${#API_KEY} chars)"
+          fi
+
           # If CURSOR_AGENT_ID secret is set, use it; otherwise fetch from API
           if [ -n "${{ secrets.CURSOR_AGENT_ID }}" ]; then
             echo "agent_id=${{ secrets.CURSOR_AGENT_ID }}" >> $GITHUB_OUTPUT
@@ -33,7 +42,7 @@ jobs:
             echo "Fetching agent ID from API..."
             AGENTS_RESPONSE=$(curl -s -X GET \
               "https://api.cursor.com/v0/agents" \
-              -u "${{ secrets.CURSOR_GITHUB_PERSONAL_API_KEY }}:")
+              -u "$API_KEY:")
 
             # Extract the first agent's ID (you can modify this to select a specific agent)
             AGENT_ID=$(echo "$AGENTS_RESPONSE" | jq -r '.agents[0].id // .[0].id // empty')
@@ -65,7 +74,7 @@ jobs:
           # The agent will handle commits and PR updates in the background
           curl -s -X POST \
             "https://api.cursor.com/v0/agents/${AGENT_ID}/followup" \
-            -u "${{ secrets.CURSOR_API_KEY }}:" \
+            -u "${{ secrets.CURSOR_GITHUB_PERSONAL_API_KEY }}:" \
             -H "Content-Type: application/json" \
             -d "$PAYLOAD"
 
