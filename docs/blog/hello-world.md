@@ -46,4 +46,6 @@ This is my first blog post. Well, to be precise, this is my first blog post on _
 
 Funny enough, I also wanted to share with the developer community some JavaScript quirks that I've stumbled across in the past year or so.
 
+> "Any fool can write code that a computer can understand. Good programmers write code that humans can understand." — Martin Fowler
+
 So buckle up, folks! It's about to get crrraz... exactly the same as yesterday, only the internet got richer by one more software development blog. Yay. :man_technologist:
