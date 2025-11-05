@@ -1,0 +1,72 @@
+name: Cursor PR Comment Trigger
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  process-cursor-command:
+    if: |
+      github.event.issue.pull_request &&
+      startsWith(github.event.comment.body, '/cursor')
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+
+    steps:
+      - name: Extract prompt from comment
+        id: extract-prompt
+        run: |
+          COMMENT_BODY="${{ github.event.comment.body }}"
+          PROMPT="${COMMENT_BODY#/cursor }"
+          echo "prompt=$PROMPT" >> $GITHUB_OUTPUT
+          echo "Extracted prompt: $PROMPT"
+
+      - name: Get Agent ID
+        id: get-agent-id
+        run: |
+          # If CURSOR_AGENT_ID secret is set, use it; otherwise fetch from API
+          if [ -n "${{ secrets.CURSOR_AGENT_ID }}" ]; then
+            echo "agent_id=${{ secrets.CURSOR_AGENT_ID }}" >> $GITHUB_OUTPUT
+            echo "Using agent ID from secret"
+          else
+            echo "Fetching agent ID from API..."
+            AGENTS_RESPONSE=$(curl -s -X GET \
+              "https://api.cursor.com/v0/agents" \
+              -u "${{ secrets.CURSOR_API_KEY }}:")
+
+            # Extract the first agent's ID (you can modify this to select a specific agent)
+            AGENT_ID=$(echo "$AGENTS_RESPONSE" | jq -r '.agents[0].id // .[0].id // empty')
+
+            if [ -z "$AGENT_ID" ] || [ "$AGENT_ID" = "null" ]; then
+              echo "::error::No agent found. Please create an agent first or set CURSOR_AGENT_ID secret."
+              exit 1
+            fi
+
+            echo "agent_id=$AGENT_ID" >> $GITHUB_OUTPUT
+            echo "Found agent ID: $AGENT_ID"
+          fi
+
+      - name: Trigger Cursor Cloud Agent Followup
+        run: |
+          set -e
+
+          PROMPT="${{ steps.extract-prompt.outputs.prompt }}"
+          AGENT_ID="${{ steps.get-agent-id.outputs.agent_id }}"
+
+          # Build JSON payload using jq to properly escape the prompt
+          PAYLOAD=$(jq -n --arg text "$PROMPT" '{
+            prompt: {
+              text: $text
+            }
+          }')
+
+          # Call Cursor Cloud Agent API to continue conversation
+          # The agent will handle commits and PR updates in the background
+          curl -s -X POST \
+            "https://api.cursor.com/v0/agents/${AGENT_ID}/followup" \
+            -u "${{ secrets.CURSOR_API_KEY }}:" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD"
+
+          echo "✅ Agent followup triggered successfully"
