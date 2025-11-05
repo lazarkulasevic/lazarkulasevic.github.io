@@ -33,7 +33,7 @@ jobs:
             echo "Fetching agent ID from API..."
             AGENTS_RESPONSE=$(curl -s -X GET \
               "https://api.cursor.com/v0/agents" \
-              -u "${{ secrets.CURSOR_API_KEY }}:")
+              -u "${{ secrets.CURSOR_GITHUB_PERSONAL_API_KEY }}:")
 
             # Extract the first agent's ID (you can modify this to select a specific agent)
             AGENT_ID=$(echo "$AGENTS_RESPONSE" | jq -r '.agents[0].id // .[0].id // empty')
