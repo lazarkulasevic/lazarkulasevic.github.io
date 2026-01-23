@@ -28,6 +28,9 @@ jobs:
           npm run generate-index
           git update-index --again
           npm run build
+          npm run extract-kb
+        env:
+          VITE_GROQ_API_KEY: ${{ secrets.VITE_GROQ_API_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4

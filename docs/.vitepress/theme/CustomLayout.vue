@@ -5,6 +5,7 @@ import DefaultTheme from 'vitepress/theme'
 import TerminalWindow from '../components/TerminalWindow.vue'
 import BlogComments from '../components/BlogComments.vue'
 import PostHeader from '../components/PostHeader.vue'
+import AiChatWidget from '../components/AiChatWidget.vue'
 
 const { Layout } = DefaultTheme
 const { page, isDark } = useData()
@@ -68,6 +69,11 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
     <template #doc-after>
       <ClientOnly>
         <BlogComments v-if="isBlogPost" />
+      </ClientOnly>
+    </template>
+    <template #layout-bottom>
+      <ClientOnly>
+        <AiChatWidget />
       </ClientOnly>
     </template>
   </Layout>

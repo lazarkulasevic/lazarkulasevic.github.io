@@ -7,3 +7,7 @@ docs/.vitepress/dist/
 cache/
 .DS_Store
 ROADMAP.md
+
+# Environment variables
+.env
+.env.local
