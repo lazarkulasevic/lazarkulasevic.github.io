@@ -22,10 +22,22 @@ onMounted(() => {
 
 watch(messages, async () => {
   await nextTick()
-  if (messagesContainer.value) {
-    messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight
-  }
+  scrollToBottom()
+}, { deep: true })
+
+watch(isTyping, async () => {
+  await nextTick()
+  scrollToBottom()
 })
+
+function scrollToBottom() {
+  if (messagesContainer.value) {
+    messagesContainer.value.scrollTo({
+      top: messagesContainer.value.scrollHeight,
+      behavior: 'smooth'
+    })
+  }
+}
 
 async function sendMessage() {
   const message = userInput.value.trim()
@@ -116,7 +128,7 @@ function parseMarkdown(content) {
   return div.innerHTML
 }
 
-function toggleChat() {
+async function toggleChat() {
   isOpen.value = !isOpen.value
   if (isOpen.value && messages.value.length === 0) {
     // Add welcome message
@@ -124,6 +136,12 @@ function toggleChat() {
       role: 'assistant',
       content: 'Hi! 👋 I\'m an AI assistant here to answer questions about Lazar\'s experience, skills, and projects. What would you like to know?'
     })
+  }
+  
+  // Scroll to bottom when opening chat
+  if (isOpen.value) {
+    await nextTick()
+    setTimeout(() => scrollToBottom(), 100)
   }
 }
 </script>
