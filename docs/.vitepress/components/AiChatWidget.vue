@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { marked } from 'marked'
 
 // Configure marked for proper markdown rendering
@@ -18,6 +18,11 @@ const messagesContainer = ref(null)
 
 onMounted(() => {
   // No need to load knowledge base - backend handles it
+})
+
+onUnmounted(() => {
+  // Cleanup: remove class if component is destroyed while chat is open
+  document.body.classList.remove('chat-open')
 })
 
 watch(messages, async () => {
@@ -130,18 +135,24 @@ function parseMarkdown(content) {
 
 async function toggleChat() {
   isOpen.value = !isOpen.value
-  if (isOpen.value && messages.value.length === 0) {
-    // Add welcome message
-    messages.value.push({
-      role: 'assistant',
-      content: 'Hi! 👋 I\'m an AI assistant here to answer questions about Lazar\'s experience, skills, and projects. What would you like to know?'
-    })
-  }
   
-  // Scroll to bottom when opening chat
+  // Toggle body scroll lock class for mobile
   if (isOpen.value) {
+    document.body.classList.add('chat-open')
+    
+    if (messages.value.length === 0) {
+      // Add welcome message
+      messages.value.push({
+        role: 'assistant',
+        content: 'Hi! 👋 I\'m an AI assistant here to answer questions about Lazar\'s experience, skills, and projects. What would you like to know?'
+      })
+    }
+    
+    // Scroll to bottom when opening chat
     await nextTick()
     setTimeout(() => scrollToBottom(), 100)
+  } else {
+    document.body.classList.remove('chat-open')
   }
 }
 </script>
@@ -149,7 +160,11 @@ async function toggleChat() {
 <template>
   <!-- Chat button -->
   <Transition name="fade">
-    <button v-if="!isOpen" class="chat-button" @click="toggleChat" aria-label="Open chat">
+    <button 
+      v-if="!isOpen" 
+      class="chat-button" 
+      @click="toggleChat" 
+      aria-label="Open chat">
       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -158,7 +173,7 @@ async function toggleChat() {
   </Transition>
 
   <!-- Chat window -->
-  <Transition name="slide-up">
+  <Transition name="fade">
     <div v-if="isOpen" class="chat-window">
       <div class="chat-header">
         <div class="header-content">
@@ -223,33 +238,18 @@ async function toggleChat() {
 </template>
 
 <style scoped>
-/* Animations */
-.fade-enter-active,
+/* Simple fade in/out */
+.fade-enter-active {
+  transition: opacity 0.2s ease-in;
+}
+
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.15s ease-out;
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-}
-
-.slide-up-enter-active {
-  transition: all 0.3s ease;
-}
-
-.slide-up-leave-active {
-  transition: all 0.2s ease;
-}
-
-.slide-up-enter-from {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.slide-up-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
 }
 
 /* Chat button */
@@ -289,6 +289,7 @@ async function toggleChat() {
   right: 24px;
   width: 400px;
   height: 600px;
+  max-height: calc(100vh - 120px);
   background: var(--vp-c-bg);
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
@@ -297,18 +298,23 @@ async function toggleChat() {
   z-index: 1000;
   overflow: hidden;
   border: 1px solid var(--vp-c-divider);
+  overscroll-behavior: contain;
 }
 
 /* Chat header */
 .chat-header {
   padding: 16px 20px;
-  background: var(--vp-c-brand-2);
+  background: var(--vp-c-brand-3);
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
+  user-select: none; /* Prevent text selection during swipe */
+  -webkit-user-select: none;
+  touch-action: pan-y; /* Allow vertical pan gesture */
 }
+
 
 .header-content {
   display: flex;
@@ -366,11 +372,14 @@ async function toggleChat() {
 .chat-messages {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   background: var(--vp-c-bg-soft);
+  overscroll-behavior: contain; /* Prevent scroll chaining to page behind */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -744,12 +753,19 @@ async function toggleChat() {
 /* Mobile responsive */
 @media (max-width: 768px) {
   .chat-window {
+    position: fixed;
+    inset: 0; /* top: 0, right: 0, bottom: 0, left: 0 */
     width: 100vw;
     height: 100vh;
-    bottom: 0;
-    right: 0;
+    height: 100dvh; /* Use dynamic viewport height on mobile (avoids address bar issues) */
     border-radius: 0;
     max-width: 100%;
+    max-height: 100%;
+    z-index: 9999; /* Ensure it's above everything */
+  }
+  
+  .chat-header {
+    padding-top: max(16px, env(safe-area-inset-top)); /* iOS notch */
   }
 
   .chat-button {
@@ -757,10 +773,23 @@ async function toggleChat() {
     right: 20px;
     width: 56px;
     height: 56px;
+    z-index: 1000;
   }
 
   .message {
     max-width: 90%;
+  }
+  
+  .chat-messages {
+    padding: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+  
+  .chat-input-wrapper {
+    background: var(--vp-c-bg);
+    padding-bottom: max(16px, env(safe-area-inset-bottom)); /* iOS home indicator */
   }
 }
 
@@ -788,6 +817,18 @@ async function toggleChat() {
   .chat-input input {
     font-size: 16px;
     /* Prevents zoom on iOS */
+  }
+}
+</style>
+
+<style>
+/* Global styles - body scroll lock for mobile chat */
+@media (max-width: 768px) {
+  body.chat-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
   }
 }
 </style>
