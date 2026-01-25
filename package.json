@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "extract-kb": "node scripts/extractKnowledgeBase.js",
-    "dev": "npm run extract-kb && vitepress dev docs --open",
+    "dev": "npm run generate-index && npm run extract-kb && vitepress dev docs --open",
     "build": "vitepress build docs",
     "serve": "vitepress serve docs",
     "prettier": "prettier --write \"**/*.{js,vue,json,scss}\"",

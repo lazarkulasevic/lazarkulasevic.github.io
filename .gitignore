@@ -11,3 +11,7 @@ ROADMAP.md
 # Environment variables
 .env
 .env.local
+
+# Generated files
+docs/public/search-index.json
+docs/public/knowledge-base.json

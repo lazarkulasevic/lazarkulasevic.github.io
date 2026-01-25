@@ -157,14 +157,8 @@ INSTRUCTIONS FOR AI ASSISTANT:
 - Keep responses focused on Lazar's professional experience and technical expertise
 - If unsure about something not covered here, suggest checking the portfolio website or reaching out directly`
 
-    // Determine output path based on NODE_ENV or dist folder existence
-    const distPath = path.join(__dirname, '../docs/.vitepress/dist/knowledge-base.json')
-    const publicPath = path.join(__dirname, '../docs/public/knowledge-base.json')
-
-    // Use dist if it exists and has content (post-build), otherwise public (for dev)
-    const distDir = path.join(__dirname, '../docs/.vitepress/dist')
-    const distHtmlExists = fs.existsSync(path.join(distDir, 'index.html'))
-    const outputPath = distHtmlExists ? distPath : publicPath
+    // Always output to public/ - VitePress copies it to dist/ during build
+    const outputPath = path.join(__dirname, '../docs/public/knowledge-base.json')
 
     const jsonOutput = {
       generatedAt: new Date().toISOString(),

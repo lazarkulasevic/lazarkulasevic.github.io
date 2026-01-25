@@ -26,9 +26,8 @@ jobs:
         run: |
           npm ci
           npm run generate-index
-          git update-index --again
-          npm run build
           npm run extract-kb
+          npm run build
         env:
           VITE_GROQ_API_KEY: ${{ secrets.VITE_GROQ_API_KEY }}
 
