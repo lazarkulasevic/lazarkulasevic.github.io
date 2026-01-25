@@ -13,11 +13,11 @@ worklog:
     summary:
       - Building an AI-powered productivity platform with seamless integrations into core property management systems.
       - Paginated Web Editor – Built a rich text editor using TipTap with pagination support and modern drag-and-drop features, including smart blocks that can be dynamically inserted or removed from the document.
-      - SignalR Frontend Library – Built a centralized React library for SignalR integration, featuring custom hooks, connection persistence, auto-reconnect, simplified subscription management, and loading state handling across multiple hubs.
+      - SignalR wrapper – Built a centralized React library for SignalR integration, featuring custom hooks, connection persistence, auto-reconnect, simplified subscription management, and loading state handling across multiple hubs.
       - CRM Tool for HR – Delivered a CRM tool for HR teams, refining UX and organizing complex workflows ahead of company-wide rollout.
-      - Microfrontends, npm packages – Developed and maintained microfrontends and npm packages for enterprise clients, driving feature delivery under Scrum while monitoring quality metrics.
+      - Microfrontends, npm packages – Developed and maintained microfrontends and npm packages for enterprise client, driving feature delivery under Scrum while monitoring quality metrics.
       - Analytics Dashboard – Built a data-rich Analytics Dashboard in Next.js (SSR) featuring interactive charts, a calendar widget with date-range selection, and dynamic navigation.
-      - Booking Platform (MVP) – Architected and developed a full-stack Booking Platform MVP connecting service providers with consumers based on competence matching.
+      - Booking Platform (MVP) – Developed a full-stack Booking Platform MVP connecting service providers with consumers based on competence matching.
       - Learning Platform – Initiated and led an in-house VOD Learning Platform built on Google Cloud Platform, establishing trunk-based development, Kanban workflows, CI/CD pipelines, and comprehensive test coverage from the ground up.
 
   - title: Frontend Developer
