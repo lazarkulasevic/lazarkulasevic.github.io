@@ -11,12 +11,14 @@ worklog:
       start: 01 Dec 2022
       end: Present
     summary:
-      - Developing an AI-powered productivity platform that integrates seamlessly with core systems used by property management companies.
-      - CRM Tool for HR – Organizing workload, polishing looks and feels before the rollout.
-      - Microfrontends, npm packages – Developing new features and libraries for an enterprise, while taking care of numerous metrics under scrum principles.
-      - Analytics Dashboard – Developed front-end in Next.js (SSR) for a dashboard with lots of charts, graphs and filters; interaction-heavy features such as calendar widget with date-range selection, dynamic navigation menu.
-      - Booking Platform (MVP) – Full-stack generic solution that connects providers with consumers based on their level of competence.
-      - Learning Platform – Company initiated project based on my idea of an in-house cost-free VOD platform for enhanced knowledge-sharing through serving video content and presentations using Google Cloud Platform services as a backend. I took advantage of a fresh start to establish the processes of trunk-based development and kanban. Developed CI/CD pipelines and generously contributed to the project architecture and test coverage.
+      - Building an AI-powered productivity platform with seamless integrations into core property management systems.
+      - Paginated Web Editor – Built a rich text editor using TipTap with pagination support and modern drag-and-drop features, including smart blocks that can be dynamically inserted or removed from the document.
+      - SignalR Frontend Library – Built a centralized React library for SignalR integration, featuring custom hooks, connection persistence, auto-reconnect, simplified subscription management, and loading state handling across multiple hubs.
+      - CRM Tool for HR – Delivered a CRM tool for HR teams, refining UX and organizing complex workflows ahead of company-wide rollout.
+      - Microfrontends, npm packages – Developed and maintained microfrontends and npm packages for enterprise clients, driving feature delivery under Scrum while monitoring quality metrics.
+      - Analytics Dashboard – Built a data-rich Analytics Dashboard in Next.js (SSR) featuring interactive charts, a calendar widget with date-range selection, and dynamic navigation.
+      - Booking Platform (MVP) – Architected and developed a full-stack Booking Platform MVP connecting service providers with consumers based on competence matching.
+      - Learning Platform – Initiated and led an in-house VOD Learning Platform built on Google Cloud Platform, establishing trunk-based development, Kanban workflows, CI/CD pipelines, and comprehensive test coverage from the ground up.
 
   - title: Frontend Developer
     company: Badin Soft
@@ -24,11 +26,11 @@ worklog:
       start: 07 Dec 2020
       end: 30 Nov 2022
     summary:
-      - Company-wide analytics platform – Played an important role in developing a live user interaction monitoring platform, where I worked on both the feature development and CI/CD pipeline using Jenkins with Slack notifications. Actively participated in agile meetings, defined user stories and effectively prioritized tasks to ensure efficient delivery.
-      - Video Management System – Primarily focused on ongoing feature development, improvements and bug fixes while consistently proposing new technical and product features and offering effective design solutions for new requirements. Other responsibilities included the guarantee of code quality by following the already established CI/CD process.
-      - News Media Portals – Implementation of pixel-perfect design to four lookalike media portals.
+      - Company-wide analytics platform – Played a key role in building a real-time user interaction monitoring platform, contributing to feature development, CI/CD pipelines with Jenkins and Slack notifications, and actively shaping user stories in agile ceremonies.
+      - Video Management System – Led ongoing feature development and improvements for a Video Management System, proactively proposing technical and product enhancements while maintaining code quality through established CI/CD processes.
+      - News Media Portals – Delivered pixel-perfect implementations across four media portal frontends.
 
-technologies: Typescript, Javascript, Next, React, Vue, CSS, SCSS, PostCSS, HTML, Vite, Webpack, npm, pnpm, Node, Express, Vitest, Jest, Cypress, VitePress, Zod, Redux, Jotai, Github Actions, Jenkins, Docker, PostgreSQL, Cloud Firestore
+technologies: Typescript, Javascript, Next, React, Vue, TipTap, SignalR, CSS, SCSS, PostCSS, HTML, Vite, Webpack, npm, pnpm, Node, Express, Vitest, Jest, Cypress, VitePress, Zod, Redux, Jotai, Github Actions, Jenkins, Docker, PostgreSQL, Cloud Firestore
 
 concepts: Microfrontends, SSR, Vercel, Firebase, Google Cloud Platform, Google API, SonarQube, Azure Application Insights, GitFlow, Trunk-based Development, CI/CD, Feature Flags, Kanban, Scrum
 
