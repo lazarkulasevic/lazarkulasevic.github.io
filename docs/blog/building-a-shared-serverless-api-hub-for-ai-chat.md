@@ -6,9 +6,9 @@ description: A production-ready AI chat assistant for my portfolio site using a 
 publishedOn: 27 January 2026 17:03
 updatedOn: null
 tags:
+  - AI
   - Serverless
   - Security
-  - AI
 head:
   - - meta
     - property: og:title
