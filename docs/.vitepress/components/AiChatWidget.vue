@@ -135,11 +135,11 @@ function parseMarkdown(content) {
 
 async function toggleChat() {
   isOpen.value = !isOpen.value
-  
+
   // Toggle body scroll lock class for mobile
   if (isOpen.value) {
     document.body.classList.add('chat-open')
-    
+
     if (messages.value.length === 0) {
       // Add welcome message
       messages.value.push({
@@ -147,7 +147,7 @@ async function toggleChat() {
         content: 'Hi! 👋 I\'m an AI assistant here to answer questions about Lazar\'s experience, skills, and projects. What would you like to know?'
       })
     }
-    
+
     // Scroll to bottom when opening chat
     await nextTick()
     setTimeout(() => scrollToBottom(), 100)
@@ -160,11 +160,7 @@ async function toggleChat() {
 <template>
   <!-- Chat button -->
   <Transition name="fade">
-    <button 
-      v-if="!isOpen" 
-      class="chat-button" 
-      @click="toggleChat" 
-      aria-label="Open chat">
+    <button v-if="!isOpen" class="chat-button" @click="toggleChat" aria-label="Open chat">
       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -187,10 +183,11 @@ async function toggleChat() {
               <path d="M15 13v2"></path>
               <path d="M9 13v2"></path>
             </svg>
+            <span class="online-dot"></span>
           </div>
           <div class="header-text">
-            <h3>Ask about Lazar</h3>
-            <p>AI Assistant • Usually replies instantly</p>
+            <h3>AI Assistant</h3>
+            <p>Usually replies instantly</p>
           </div>
         </div>
         <button class="close-btn" @click="toggleChat" aria-label="Close chat">
@@ -229,7 +226,6 @@ async function toggleChat() {
           </button>
         </div>
         <div class="chat-footer">
-          <span class="powered-by">AI Assistant</span>
           <span class="disclaimer">AI-generated answers may occasionally be inaccurate</span>
         </div>
       </div>
@@ -310,9 +306,11 @@ async function toggleChat() {
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
-  user-select: none; /* Prevent text selection during swipe */
+  user-select: none;
+  /* Prevent text selection during swipe */
   -webkit-user-select: none;
-  touch-action: pan-y; /* Allow vertical pan gesture */
+  touch-action: pan-y;
+  /* Allow vertical pan gesture */
 }
 
 
@@ -323,6 +321,7 @@ async function toggleChat() {
 }
 
 .avatar {
+  position: relative;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -332,6 +331,17 @@ async function toggleChat() {
   justify-content: center;
   font-weight: 600;
   font-size: 14px;
+}
+
+.online-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 2px solid var(--vp-c-brand-3);
 }
 
 .avatar svg {
@@ -378,8 +388,10 @@ async function toggleChat() {
   flex-direction: column;
   gap: 12px;
   background: var(--vp-c-bg-soft);
-  overscroll-behavior: contain; /* Prevent scroll chaining to page behind */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  overscroll-behavior: contain;
+  /* Prevent scroll chaining to page behind */
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scrolling on iOS */
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -683,7 +695,7 @@ async function toggleChat() {
 
 .chat-input input {
   flex: 1;
-  padding: 12px 16px;
+  padding: 10px 16px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 24px;
   background: var(--vp-c-bg-soft);
@@ -694,7 +706,7 @@ async function toggleChat() {
 }
 
 .chat-input input:focus {
-  border-color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-2);
   background: var(--vp-c-bg);
 }
 
@@ -707,7 +719,7 @@ async function toggleChat() {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-3);
   color: white;
   border: none;
   cursor: pointer;
@@ -738,11 +750,6 @@ async function toggleChat() {
   gap: 0;
 }
 
-.chat-footer .powered-by {
-  font-size: 11px;
-  line-height: 1.2;
-}
-
 .chat-footer .disclaimer {
   font-size: 10px;
   opacity: 0.7;
@@ -754,18 +761,22 @@ async function toggleChat() {
 @media (max-width: 768px) {
   .chat-window {
     position: fixed;
-    inset: 0; /* top: 0, right: 0, bottom: 0, left: 0 */
+    inset: 0;
+    /* top: 0, right: 0, bottom: 0, left: 0 */
     width: 100vw;
     height: 100vh;
-    height: 100dvh; /* Use dynamic viewport height on mobile (avoids address bar issues) */
+    height: 100dvh;
+    /* Use dynamic viewport height on mobile (avoids address bar issues) */
     border-radius: 0;
     max-width: 100%;
     max-height: 100%;
-    z-index: 9999; /* Ensure it's above everything */
+    z-index: 9999;
+    /* Ensure it's above everything */
   }
-  
+
   .chat-header {
-    padding-top: max(16px, env(safe-area-inset-top)); /* iOS notch */
+    padding-top: max(16px, env(safe-area-inset-top));
+    /* iOS notch */
   }
 
   .chat-button {
@@ -779,17 +790,19 @@ async function toggleChat() {
   .message {
     max-width: 90%;
   }
-  
+
   .chat-messages {
     padding: 16px;
     overflow-y: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on iOS */
   }
-  
+
   .chat-input-wrapper {
     background: var(--vp-c-bg);
-    padding-bottom: max(16px, env(safe-area-inset-bottom)); /* iOS home indicator */
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    /* iOS home indicator */
   }
 }
 
