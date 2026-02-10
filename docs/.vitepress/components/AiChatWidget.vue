@@ -434,7 +434,7 @@ async function toggleChat() {
 }
 
 .message.user {
-  background: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-3);
   color: white;
   border-bottom-right-radius: 4px;
 }
