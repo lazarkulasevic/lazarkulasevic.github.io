@@ -1,0 +1,193 @@
+{
+  "generatedAt": "2026-02-23T15:29:50.766Z",
+  "profile": {
+    "name": "Lazar Kulasevic",
+    "title": "Software Engineer",
+    "summary": "Frontend-specialized Software Engineer focused on product development. Experienced in TypeScript, JavaScript, React, Next.js, Vue, and modern frontend technologies. Strong emphasis on building seamless user experiences, clean architecture, and scalable systems."
+  },
+  "technicalSkills": [
+    "TypeScript",
+    "JavaScript",
+    "Next.js",
+    "React",
+    "Vue",
+    "TipTap",
+    "SignalR",
+    "CSS",
+    "SCSS",
+    "PostCSS",
+    "HTML",
+    "Vite",
+    "Webpack",
+    "npm",
+    "pnpm",
+    "Node.js",
+    "Express",
+    "Vitest",
+    "Jest",
+    "Cypress",
+    "VitePress",
+    "Zod",
+    "Redux",
+    "Jotai",
+    "GitHub Actions",
+    "Jenkins",
+    "Docker",
+    "PostgreSQL",
+    "Cloud Firestore"
+  ],
+  "conceptsAndPlatforms": [
+    "Microfrontends",
+    "SSR",
+    "Vercel",
+    "Firebase",
+    "Google Cloud Platform",
+    "Google API",
+    "SonarQube",
+    "Azure Application Insights",
+    "GitFlow",
+    "Trunk-Based Development",
+    "CI/CD",
+    "Feature Flags",
+    "Kanban",
+    "Scrum"
+  ],
+  "workExperience": [
+    {
+      "company": "Symphony.is",
+      "role": "Software Engineer",
+      "period": "Dec 2022 - Present",
+      "highlights": [
+        "Building an AI-powered productivity platform with seamless integrations into core property management systems.",
+        "Paginated Web Editor – Built a rich text editor using TipTap with pagination support and modern drag-and-drop features, including smart blocks that can be dynamically inserted or removed from the document.",
+        "SignalR wrapper – Built a centralized React library for SignalR integration, featuring custom hooks, connection persistence, auto-reconnect, simplified subscription management, and loading state handling across multiple hubs.",
+        "CRM Tool for HR – Delivered a CRM tool for HR teams, refining UX and organizing complex workflows ahead of company-wide rollout.",
+        "Microfrontends, npm packages – Developed and maintained microfrontends and npm packages for enterprise client, driving feature delivery under Scrum while monitoring quality metrics.",
+        "Analytics Dashboard – Built a data-rich Analytics Dashboard in Next.js (SSR) featuring interactive charts, a calendar widget with date-range selection, and dynamic navigation.",
+        "Booking Platform (MVP) – Developed a full-stack Booking Platform MVP connecting service providers with consumers based on competence matching.",
+        "Learning Platform – Initiated and led an in-house VOD Learning Platform built on Google Cloud Platform, establishing trunk-based development, Kanban workflows, CI/CD pipelines, and comprehensive test coverage from the ground up."
+      ]
+    },
+    {
+      "company": "Badin Soft",
+      "role": "Frontend Developer",
+      "period": "Dec 2020 - Nov 2022",
+      "highlights": [
+        "Company-wide analytics platform – Played a key role in building a real-time user interaction monitoring platform, contributing to feature development, CI/CD pipelines with Jenkins and Slack notifications, and actively shaping user stories in agile ceremonies.",
+        "Video Management System – Led ongoing feature development and improvements for a Video Management System, proactively proposing technical and product enhancements while maintaining code quality through established CI/CD processes.",
+        "News Media Portals – Delivered pixel-perfect implementations across four media portal frontends."
+      ]
+    }
+  ],
+  "sideProjects": [
+    {
+      "name": "Nyegosh",
+      "description": "CLI tool that generates Conventional Commit messages. Built during an AI Hackathon at Symphony.",
+      "link": "https://www.npmjs.com/package/nyegosh"
+    },
+    {
+      "name": "MiaDent",
+      "description": "SEO-optimized multilingual dental clinic website (Serbian, English, German).",
+      "link": "https://miadent.rs/en"
+    },
+    {
+      "name": "Otisak.org Platform",
+      "description": "EU-funded GDPR data protection platform built on Firebase with role-based authorization and analytics.",
+      "link": "https://otisak-pravilaw.web.app/"
+    }
+  ],
+  "blog": {
+    "website": "https://deployandpray.com/blog",
+    "articles": [
+      {
+        "title": "Adding LLM Health Checks and Discord Alerts to the API Hub (Part 2)",
+        "topics": [
+          "AI",
+          "Serverless",
+          "Monitoring"
+        ],
+        "url": "https://deployandpray.com/blog/adding-llm-health-checks-discord-alerts-api-hub-part-2"
+      },
+      {
+        "title": "Building a Shared Serverless API Hub: How I Built an AI Chat Assistant for My Portfolio Site",
+        "topics": [
+          "AI",
+          "Serverless",
+          "Security"
+        ],
+        "url": "https://deployandpray.com/blog/building-a-shared-serverless-api-hub-for-ai-chat"
+      },
+      {
+        "title": "Why Engineers Are Quietly Giving Up in the AI Era (And How to Stop It)",
+        "topics": [
+          "AI",
+          "Career",
+          "Philosophy"
+        ],
+        "url": "https://deployandpray.com/blog/why-engineers-are-quietly-giving-up-in-the-ai-era-and-how-to-stop-it"
+      },
+      {
+        "title": "Introducing react-feature-flagz: A Lightweight Feature Flag Library for React",
+        "topics": [
+          "React",
+          "Feature Flags",
+          "NPM Package",
+          "TypeScript"
+        ],
+        "url": "https://deployandpray.com/blog/react-feature-flagz-npm-package"
+      },
+      {
+        "title": "Feature Flags with GrowthBook: Real-Time Toggles",
+        "topics": [
+          "Agile",
+          "CI/CD",
+          "Feature Flags"
+        ],
+        "url": "https://deployandpray.com/blog/growthbook-feature-flags"
+      },
+      {
+        "title": "Feature Flags with Vite: A Step-by-Step Guide",
+        "topics": [
+          "Agile",
+          "CI/CD",
+          "Feature Flags"
+        ],
+        "url": "https://deployandpray.com/blog/feature-flags"
+      },
+      {
+        "title": "Conducting Trunk-Based Development and CI/CD Practices Using Github Actions",
+        "topics": [
+          "Agile",
+          "CI/CD",
+          "Trunk-Based Development",
+          "Github Actions"
+        ],
+        "url": "https://deployandpray.com/blog/conducting-trunk-based-development-and-ci-cd-using-github-actions"
+      },
+      {
+        "title": "Pre-processing CSS: Generate Utility Classes Using Sass – Part 1",
+        "topics": [
+          "SCSS"
+        ],
+        "url": "https://deployandpray.com/blog/preprocessing-css-generate-utility-classes-using-sass"
+      },
+      {
+        "title": "Metaprogramming in JavaScript: Creating a Proxy Interceptor",
+        "topics": [
+          "JavaScript",
+          "Metaprogramming"
+        ],
+        "url": "https://deployandpray.com/blog/metaprogramming-in-javascript-creating-interceptor"
+      },
+      {
+        "title": "Hello World",
+        "topics": [],
+        "url": "https://deployandpray.com/blog/hello-world"
+      }
+    ]
+  },
+  "contact": {
+    "linkedin": "https://www.linkedin.com/in/lazarkulasevic/",
+    "github": "https://github.com/lazarkulasevic"
+  }
+}
