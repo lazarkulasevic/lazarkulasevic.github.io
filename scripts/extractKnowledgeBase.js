@@ -3,6 +3,58 @@ const path = require('path')
 const yaml = require('js-yaml')
 
 /**
+ * Normalization maps for consistent casing
+ */
+const TECH_NORMALIZATION = {
+  'typescript': 'TypeScript',
+  'javascript': 'JavaScript',
+  'next': 'Next.js',
+  'node': 'Node.js',
+  'github actions': 'GitHub Actions',
+  'postgresql': 'PostgreSQL',
+  'tiptap': 'TipTap',
+  'signalr': 'SignalR',
+  'css': 'CSS',
+  'scss': 'SCSS',
+  'postcss': 'PostCSS',
+  'html': 'HTML',
+  'vite': 'Vite',
+  'webpack': 'Webpack',
+  'npm': 'npm',
+  'pnpm': 'pnpm',
+  'express': 'Express',
+  'vitest': 'Vitest',
+  'jest': 'Jest',
+  'cypress': 'Cypress',
+  'vitepress': 'VitePress',
+  'zod': 'Zod',
+  'redux': 'Redux',
+  'jotai': 'Jotai',
+  'jenkins': 'Jenkins',
+  'docker': 'Docker',
+  'vue': 'Vue',
+  'react': 'React',
+  'cloud firestore': 'Cloud Firestore'
+}
+
+const CONCEPT_NORMALIZATION = {
+  'microfrontends': 'Microfrontends',
+  'ssr': 'SSR',
+  'vercel': 'Vercel',
+  'firebase': 'Firebase',
+  'google cloud platform': 'Google Cloud Platform',
+  'google api': 'Google API',
+  'sonarqube': 'SonarQube',
+  'azure application insights': 'Azure Application Insights',
+  'gitflow': 'GitFlow',
+  'trunk-based development': 'Trunk-Based Development',
+  'ci/cd': 'CI/CD',
+  'feature flags': 'Feature Flags',
+  'kanban': 'Kanban',
+  'scrum': 'Scrum'
+}
+
+/**
  * Parse frontmatter from markdown file
  */
 function parseFrontmatter(content) {
@@ -24,106 +76,150 @@ function parseFrontmatter(content) {
 }
 
 /**
- * Extract portfolio content
+ * Normalize a comma-separated list using a normalization map
  */
-function extractPortfolio() {
+function normalizeList(csvString, normalizationMap) {
+  if (!csvString) return []
+  
+  return csvString
+    .split(',')
+    .map(item => item.trim())
+    .filter(Boolean)
+    .map(item => {
+      const lowerItem = item.toLowerCase()
+      return normalizationMap[lowerItem] || item
+    })
+}
+
+/**
+ * Parse date string (handles formats like "01 Dec 2022" or "Present")
+ */
+function parseDate(dateStr) {
+  if (!dateStr || dateStr === 'Present') return null
+  
+  try {
+    const date = new Date(dateStr)
+    if (isNaN(date.getTime())) return null
+    return date
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Format date to "Mon YYYY" format (e.g., "Dec 2022")
+ */
+function formatDate(dateStr) {
+  if (!dateStr || dateStr === 'Present') return 'Present'
+  
+  const date = parseDate(dateStr)
+  if (!date) return dateStr
+  
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  return `${months[date.getMonth()]} ${date.getFullYear()}`
+}
+
+/**
+ * Extract structured portfolio data
+ */
+function extractPortfolioData() {
   const portfolioPath = path.join(__dirname, '../docs/portfolio/index.md')
   const content = fs.readFileSync(portfolioPath, 'utf-8')
+  const { frontmatter } = parseFrontmatter(content)
 
-  const { frontmatter, content: markdownContent } = parseFrontmatter(content)
+  // Extract profile
+  const profile = {
+    name: frontmatter.profile?.name || frontmatter.title || 'Lazar Kulasevic',
+    title: frontmatter.profile?.title || 'Software Engineer',
+    summary: frontmatter.profile?.summary || 'Frontend-specialized Software Engineer focused on product development.'
+  }
 
-  // Extract technologies and concepts from frontmatter
-  const technologies = frontmatter.technologies || ''
-  const concepts = frontmatter.concepts || ''
+  // Extract and normalize technical skills
+  const technicalSkills = normalizeList(frontmatter.technologies || '', TECH_NORMALIZATION)
 
-  // Clean markdown content
-  let cleanContent = markdownContent
-    // Remove Vue components
-    .replace(/<Timeline\s*\/>/g, '')
-    .replace(/<TagGroup[^>]*\/>/g, '')
-    .replace(/<script setup>[\s\S]*?<\/script>/g, '')
-    .replace(/<style[^>]*>[\s\S]*?<\/style>/g, '')
-    .replace(/<!--[\s\S]*?-->/g, '')
-    // Remove emoji shortcodes (optional - can keep them)
-    .replace(/:[\w_]+:/g, '')
-    .trim()
+  // Extract and normalize concepts and platforms
+  const conceptsAndPlatforms = normalizeList(frontmatter.concepts || '', CONCEPT_NORMALIZATION)
 
-  // Build structured portfolio content
-  const portfolio = `
-ABOUT LAZAR KULASEVIC:
+  // Extract work experience
+  const workExperience = (frontmatter.worklog || []).map(job => ({
+    company: job.company || 'Company',
+    role: job.title || 'Position',
+    period: `${formatDate(job.date?.start)} - ${formatDate(job.date?.end)}`,
+    highlights: Array.isArray(job.summary) ? job.summary : []
+  }))
 
-${cleanContent}
+  // Extract side projects
+  const sideProjects = (frontmatter.sideProjects || []).map(project => ({
+    name: project.name || '',
+    description: project.description || '',
+    link: project.link || ''
+  }))
 
-TECHNICAL SKILLS:
-${technologies}
+  // Extract contact info
+  const contact = {
+    linkedin: frontmatter.contact?.linkedin || 'https://www.linkedin.com/in/lazarkulasevic/',
+    github: frontmatter.contact?.github || 'https://github.com/lazarkulasevic'
+  }
 
-CONCEPTS & PLATFORMS:
-${concepts}
-
-WORK EXPERIENCE:
-${frontmatter.worklog ? formatWorkExperience(frontmatter.worklog) : ''}
-`.trim()
-
-  return portfolio
+  return {
+    profile,
+    technicalSkills,
+    conceptsAndPlatforms,
+    workExperience,
+    sideProjects,
+    contact
+  }
 }
 
 /**
- * Format work experience from frontmatter
+ * Extract blog articles (only type: article)
  */
-function formatWorkExperience(worklog) {
-  if (!Array.isArray(worklog)) return ''
-
-  return worklog.map((job, index) => {
-    const title = job.title || 'Position'
-    const company = job.company || 'Company'
-    const dateStart = job.date?.start || 'Start Date'
-    const dateEnd = job.date?.end || 'Present'
-    const summary = Array.isArray(job.summary) ? job.summary.join('\n- ') : ''
-
-    return `
-${index + 1}. ${title} at ${company} (${dateStart} - ${dateEnd})
-- ${summary}
-    `.trim()
-  }).join('\n\n')
-}
-
-/**
- * Extract blog posts
- */
-function extractBlogPosts() {
+function extractBlogArticles() {
   const blogDir = path.join(__dirname, '../docs/blog')
   const files = fs.readdirSync(blogDir)
     .filter(f => f.endsWith('.md') && f !== 'index.md')
-    .sort()
 
-  return files.map(file => {
+  const articles = []
+
+  for (const file of files) {
     const filePath = path.join(blogDir, file)
     const content = fs.readFileSync(filePath, 'utf-8')
     const { frontmatter } = parseFrontmatter(content)
 
+    // Only include articles
+    if (frontmatter.type !== 'article') continue
+
     const title = frontmatter.title || 'Untitled'
-    const description = frontmatter.description || ''
-    const tags = Array.isArray(frontmatter.tags) ? frontmatter.tags : []
+    const topics = Array.isArray(frontmatter.tags) ? frontmatter.tags : []
     const url = `https://deployandpray.com/blog/${file.replace('.md', '')}`
+    const publishedOn = frontmatter.publishedOn
 
-    return { title, description, tags, url }
+    articles.push({
+      title,
+      topics,
+      url,
+      publishedOn,
+      fileName: file
+    })
+  }
+
+  // Sort by published date (newest first), fall back to filename
+  articles.sort((a, b) => {
+    const dateA = parseDate(a.publishedOn)
+    const dateB = parseDate(b.publishedOn)
+
+    if (dateA && dateB) {
+      return dateB.getTime() - dateA.getTime()
+    }
+
+    if (dateA) return -1
+    if (dateB) return 1
+
+    return a.fileName.localeCompare(b.fileName)
   })
-}
 
-/**
- * Format blog posts for knowledge base
- */
-function formatBlogPosts(blogPosts) {
-  return blogPosts.map((post, index) => {
-    const tagsStr = post.tags.length > 0 ? `Topics: ${post.tags.join(', ')}` : ''
-
-    return `
-${index + 1}. "${post.title}"
-   ${post.description ? `${post.description.slice(0, 150)}${post.description.length > 150 ? '...' : ''}` : ''}
-   ${tagsStr}
-   Read: ${post.url}
-    `.trim()
-  }).join('\n\n')
+  // Remove temporary sorting fields
+  return articles.map(({ title, topics, url }) => ({ title, topics, url }))
 }
 
 /**
@@ -133,41 +229,29 @@ function generateKnowledgeBase() {
   console.log('Extracting knowledge base from markdown files...')
 
   try {
-    const portfolio = extractPortfolio()
-    const blogPosts = extractBlogPosts()
-    const blogSection = formatBlogPosts(blogPosts)
+    // Extract portfolio data
+    const portfolioData = extractPortfolioData()
 
-    const knowledgeBase = `You are an AI assistant helping recruiters learn about Lazar Kulasevic, a Software Engineer.
+    // Extract blog articles
+    const articles = extractBlogArticles()
 
-${portfolio}
-
-BLOG & TECHNICAL WRITING:
-
-Lazar writes technical articles about software development on his blog at deployandpray.com/blog. Here are his published articles:
-
-${blogSection}
-
-INSTRUCTIONS FOR AI ASSISTANT:
-- Be professional, friendly, and concise in your responses
-- When asked about specific skills or technologies, provide relevant examples from work experience
-- When asked about blog topics, list relevant articles with links
-- Encourage visiting deployandpray.com/blog for full technical articles
-- For detailed questions about blog content, provide the article link rather than trying to summarize
-- Always mention LinkedIn (https://www.linkedin.com/in/lazarkulasevic/) for direct contact
-- Keep responses focused on Lazar's professional experience and technical expertise
-- If unsure about something not covered here, suggest checking the portfolio website or reaching out directly`
+    // Build the structured knowledge base
+    const knowledgeBase = {
+      generatedAt: new Date().toISOString(),
+      profile: portfolioData.profile,
+      technicalSkills: portfolioData.technicalSkills,
+      conceptsAndPlatforms: portfolioData.conceptsAndPlatforms,
+      workExperience: portfolioData.workExperience,
+      sideProjects: portfolioData.sideProjects,
+      blog: {
+        website: 'https://deployandpray.com/blog',
+        articles: articles
+      },
+      contact: portfolioData.contact
+    }
 
     // Always output to public/ - VitePress copies it to dist/ during build
     const outputPath = path.join(__dirname, '../docs/public/knowledge-base.json')
-
-    const jsonOutput = {
-      generatedAt: new Date().toISOString(),
-      content: knowledgeBase,
-      stats: {
-        portfolioExtracted: true,
-        blogPostsCount: blogPosts.length
-      }
-    }
 
     // Ensure directory exists
     const outputDir = path.dirname(outputPath)
@@ -175,15 +259,19 @@ INSTRUCTIONS FOR AI ASSISTANT:
       fs.mkdirSync(outputDir, { recursive: true })
     }
 
-    fs.writeFileSync(outputPath, JSON.stringify(jsonOutput, null, 2), 'utf-8')
+    fs.writeFileSync(outputPath, JSON.stringify(knowledgeBase, null, 2), 'utf-8')
 
     console.log('✅ Knowledge base generated successfully!')
     console.log(`📝 Output: ${outputPath}`)
-    console.log(`📊 Portfolio content extracted`)
-    console.log(`📚 Blog posts extracted: ${blogPosts.length}`)
+    console.log(`📊 Profile: ${knowledgeBase.profile.name}`)
+    console.log(`🔧 Technical skills: ${knowledgeBase.technicalSkills.length}`)
+    console.log(`💼 Work experience entries: ${knowledgeBase.workExperience.length}`)
+    console.log(`🚀 Side projects: ${knowledgeBase.sideProjects.length}`)
+    console.log(`📚 Blog articles: ${knowledgeBase.blog.articles.length}`)
 
   } catch (error) {
     console.error('❌ Error generating knowledge base:', error.message)
+    console.error(error.stack)
     process.exit(1)
   }
 }

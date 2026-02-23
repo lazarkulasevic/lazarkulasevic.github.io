@@ -4,6 +4,26 @@ title: Lazar Kulasevic
 aside: false
 outline: false
 
+profile:
+  name: Lazar Kulasevic
+  title: Software Engineer
+  summary: Frontend-specialized Software Engineer focused on product development. Experienced in TypeScript, JavaScript, React, Next.js, Vue, and modern frontend technologies. Strong emphasis on building seamless user experiences, clean architecture, and scalable systems.
+
+sideProjects:
+  - name: Nyegosh
+    description: CLI tool that generates Conventional Commit messages. Built during an AI Hackathon at Symphony.
+    link: https://www.npmjs.com/package/nyegosh
+  - name: MiaDent
+    description: SEO-optimized multilingual dental clinic website (Serbian, English, German).
+    link: https://miadent.rs/en
+  - name: Otisak.org Platform
+    description: EU-funded GDPR data protection platform built on Firebase with role-based authorization and analytics.
+    link: https://otisak-pravilaw.web.app/
+
+contact:
+  linkedin: https://www.linkedin.com/in/lazarkulasevic/
+  github: https://github.com/lazarkulasevic
+
 worklog:
   - title: Software Engineer
     company: Symphony.is
