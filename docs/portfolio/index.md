@@ -94,7 +94,7 @@ Nyegosh is a command-line tool that helps generate commit messages adhering to t
 
 #### :tooth: [MiaDent](https://miadent.rs/en) (Dentistry)
 
-Dental clinic website (Nov 2024) – Growing multiangular site, SEO-optimized for Serbian, English and German speaking users.
+Dental clinic website (Nov 2024/maintenance) – Growing multiangular site, SEO-optimized for Serbian, English and German speaking users with AI assistant per selected language.
 
 #### :balance_scale: Otisak.org Platform (Global Data Privacy Laws or GDPR)
 
