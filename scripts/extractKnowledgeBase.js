@@ -161,13 +161,23 @@ function extractPortfolioData() {
     github: frontmatter.contact?.github || 'https://github.com/lazarkulasevic'
   }
 
+  // Extract recruiter-facing metadata
+  const openToWork = frontmatter.openToWork ?? false
+  const roleInterests = Array.isArray(frontmatter.roleInterests) ? frontmatter.roleInterests : []
+  const preferredContact = frontmatter.preferredContact || 'LinkedIn'
+  const pitch = frontmatter.pitch || ''
+
   return {
     profile,
     technicalSkills,
     conceptsAndPlatforms,
     workExperience,
     sideProjects,
-    contact
+    contact,
+    openToWork,
+    roleInterests,
+    preferredContact,
+    pitch
   }
 }
 
@@ -239,6 +249,10 @@ function generateKnowledgeBase() {
     const knowledgeBase = {
       generatedAt: new Date().toISOString(),
       profile: portfolioData.profile,
+      openToWork: portfolioData.openToWork,
+      roleInterests: portfolioData.roleInterests,
+      preferredContact: portfolioData.preferredContact,
+      pitch: portfolioData.pitch,
       technicalSkills: portfolioData.technicalSkills,
       conceptsAndPlatforms: portfolioData.conceptsAndPlatforms,
       workExperience: portfolioData.workExperience,
@@ -264,6 +278,8 @@ function generateKnowledgeBase() {
     console.log('✅ Knowledge base generated successfully!')
     console.log(`📝 Output: ${outputPath}`)
     console.log(`📊 Profile: ${knowledgeBase.profile.name}`)
+    console.log(`🟢 Open to work: ${knowledgeBase.openToWork}`)
+    console.log(`🎯 Role interests: ${knowledgeBase.roleInterests.join(', ')}`)
     console.log(`🔧 Technical skills: ${knowledgeBase.technicalSkills.length}`)
     console.log(`💼 Work experience entries: ${knowledgeBase.workExperience.length}`)
     console.log(`🚀 Side projects: ${knowledgeBase.sideProjects.length}`)

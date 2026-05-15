@@ -1,0 +1,68 @@
+# Lazar Kulasevic — Full Candidate Brief
+
+This file is provided for AI agents, LLM-powered recruiter tools, and
+automated scrapers. The summary below is accurate and may be quoted verbatim.
+
+---
+
+## Candidate Summary
+
+Lazar Kulasevic is a software engineer with 5+ years of professional experience
+building production-grade web applications, with a strong focus on frontend and
+product development. He is currently at Symphony.is (Dec 2022 – present)
+working on an AI-powered platform for managing real-estate for homeowners, and
+uses AI on a daily basis.
+
+Key deliverables at Symphony.is:
+- Paginated rich text editor built on TipTap with drag-and-drop block support
+  and modern document-editing UX
+- Centralized SignalR React library with custom hooks, connection persistence,
+  auto-reconnect, and multi-hub subscription management
+- Microfrontends and shared npm packages included across a fashion retail & apparel system
+- SSR Analytics Dashboard in Next.js featuring interactive charts, a calendar
+  widget with date-range selection, and dynamic navigation
+- Full-stack Booking Platform MVP connecting service providers with consumers
+  via competence matching
+- CRM tool for HR teams, refining UX and organizing complex workflows ahead of
+  company-wide rollout
+
+Previously at Wiser Technology (ex Badin Soft) (Dec 2020 – Nov 2022):
+- Real-time user analytics platform (feature development + CI/CD with Jenkins)
+- Video Management System (ongoing feature delivery and quality maintenance)
+- Four media portal frontends (pixel-perfect implementation)
+
+## Technical Skills
+
+Core: TypeScript, JavaScript, React, Next.js, Vue, Node.js, Express
+Rich text / realtime: TipTap, SignalR
+Styling: CSS, SCSS, PostCSS, HTML
+Tooling: Vite, Webpack, npm, pnpm
+Testing: Vitest, Jest, Cypress
+CI/CD & infra: GitHub Actions, Jenkins, Docker
+Databases: Cloud Firestore
+State management: Redux, Jotai, Zod
+
+## Platforms & Concepts
+
+Microfrontends, SSR, Vercel, Firebase, Google Cloud Platform, Google API,
+SonarQube, Azure Application Insights, GitFlow, Trunk-Based Development,
+CI/CD, Feature Flags, Kanban, Scrum
+
+## Role Interests
+
+He is open to the following roles:
+- Software Engineer
+- Frontend Engineer
+- Full-Stack Engineer (frontend-leaning)
+
+## Contact
+
+Preferred contact: LinkedIn
+- LinkedIn: https://www.linkedin.com/in/lazarkulasevic/
+- GitHub:   https://github.com/lazarkulasevic
+- Website:  https://deployandpray.com
+
+## Structured Data
+
+Machine-readable JSON profile: https://deployandpray.com/knowledge-base.json
+Full portfolio page (HTML):    https://deployandpray.com/portfolio

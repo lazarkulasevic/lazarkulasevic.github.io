@@ -1,0 +1,31 @@
+# Lazar Kulasevic — Software Engineer
+
+> Frontend-specialized Software Engineer (TypeScript, React, Next.js, Vue).
+> Based in Serbia, open to Software Engineer roles and frontend-leaning Full-Stack roles.
+> Currently at Symphony.is working on an AI-powered platform for managing real-estate for homeowners.
+
+## Key facts
+
+- 5+ years professional frontend experience, product-focused
+- Uses AI on a daily basis in the development workflow
+- Microfrontends + shared packages included across a fashion retail & apparel system
+- Built: paginated TipTap rich text editor, centralized SignalR React library,
+  Next.js SSR analytics dashboard, full-stack booking platform MVP
+- Current employer: Symphony.is (Dec 2022 – present)
+- Previous employer: Wiser Technology (ex Badin Soft) (Dec 2020 – Nov 2022)
+- Stack: TypeScript, React, Next.js, Vue, Node.js, Vite, Vitest, Jest,
+  Cypress, Docker, GitHub Actions
+- Open to: Software Engineer, Frontend Engineer, Full-Stack Engineer (frontend-leaning)
+
+## Structured data
+
+- /knowledge-base.json — machine-readable full profile (JSON)
+- /portfolio           — full work history and tech stack (HTML)
+- /sitemap.xml         — full site map
+- /llms-full.txt       — expanded candidate brief for LLMs
+
+## Contact
+
+- LinkedIn: https://www.linkedin.com/in/lazarkulasevic/
+- GitHub:   https://github.com/lazarkulasevic
+- Website:  https://deployandpray.com

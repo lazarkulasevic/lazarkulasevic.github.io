@@ -18,6 +18,42 @@ export default {
     [
       'script',
       { src: '//gc.zgo.at/count.js', 'data-goatcounter': 'https://deployandpray.goatcounter.com/count', async: true }
+    ],
+    [
+      'script',
+      { type: 'application/ld+json' },
+      JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Lazar Kulasevic',
+        jobTitle: 'Software Engineer',
+        description:
+          'Frontend-specialized Software Engineer with 5+ years of experience. TypeScript/React/Next.js/Vue. Currently at Symphony.is working on an AI-powered platform for managing real-estate for homeowners and uses AI daily. Experience with microfrontends and shared packages in a fashion retail & apparel system. Open to Software Engineer roles and frontend-leaning Full-Stack roles.',
+        url: 'https://deployandpray.com',
+        sameAs: [
+          'https://www.linkedin.com/in/lazarkulasevic/',
+          'https://github.com/lazarkulasevic'
+        ],
+        knowsAbout: [
+          'TypeScript', 'JavaScript', 'React', 'Next.js', 'Vue', 'Node.js',
+          'Express', 'TipTap', 'SignalR', 'CSS', 'SCSS', 'HTML', 'Vite',
+          'Webpack', 'Vitest', 'Jest', 'Cypress', 'Docker', 'GitHub Actions',
+          'Cloud Firestore', 'Redux', 'Jotai', 'Zod',
+          'Microfrontends', 'SSR', 'CI/CD', 'Firebase', 'Google Cloud Platform'
+        ],
+        worksFor: {
+          '@type': 'Organization',
+          name: 'Symphony.is',
+          url: 'https://symphony.is'
+        },
+        alumniOf: {
+          '@type': 'Organization',
+          name: 'Wiser Technology (ex Badin Soft)',
+          url: 'https://wisertech.com/'
+        },
+        knowsLanguage: ['en', 'sr'],
+        nationality: 'Serbian'
+      })
     ]
   ],
   themeConfig: {
